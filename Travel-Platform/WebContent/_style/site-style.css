@@ -1,0 +1,42 @@
+@charset "UTF-8";
+body{
+	margin: 0;
+	border: 0;
+	padding: 0;
+}
+#header{
+    font-size: 23px;
+    background-color: #fff;
+}
+#header-right{
+    font-size: 23px;
+    background-color: #fff;
+}
+#main-block{
+	width:400px;
+	margin:0 auto;
+	margin-top:40px;
+	border-style: solid;
+	border-color: #0f4c8188;
+	border-width: 1px;
+	padding: 5px;
+}
+a{
+	text-decoration: none;
+	color: inherit;
+}
+#main-table{
+	width: 80%;
+}
+.cent{
+    margin: 0 auto;
+}
+#index-body{
+    background-image: url(/S1/th.jfif);
+}
+.error{
+	color: #c00;
+}
+s:fielderror{
+    color: #c00;
+}
