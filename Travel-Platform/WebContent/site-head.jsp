@@ -9,7 +9,7 @@
 <script type="text/javascript" src="/Travel-Platform/_scripts/picker.date.js"></script>
 <script type="text/javascript" src="/Travel-Platform/_scripts/picker.time.js"></script>
 <script type="text/javascript" src="/Travel-Platform/_scripts/legacy.js"></script>
-<link rel="icon" href="/Travel-Platform/logo.svg">
+<link rel="icon" href="/Travel-Platform/TPlogo.svg">
 <link rel="stylesheet" href="/Travel-Platform/_style/site-style.css">
 <link rel="stylesheet" href="/Travel-Platform/_style/fabric.components.min.css">
 <link rel="stylesheet" href="/Travel-Platform/_style/fabric.min.css">
