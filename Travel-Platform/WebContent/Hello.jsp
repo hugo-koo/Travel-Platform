@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" info="Hello"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html>
 <html>
 
@@ -57,7 +58,7 @@
                             </CardContent>
                         </CardActionArea>
                         <CardActions>
-                            <a href="/Travel-Platform/index.jsp">
+                            <a href="<s:url action="action_test"/>">
                                 <Button size="small" color="primary">
                                     <%out.print("去首页");%>
                                 </Button>
