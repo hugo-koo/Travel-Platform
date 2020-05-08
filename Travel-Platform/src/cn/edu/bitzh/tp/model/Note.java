@@ -53,6 +53,12 @@ public class Note {
 	public int getNote_permission() {
 		return note_permission;
 	}
+	/**
+	 * 1: private, 2: public
+	 * @author 古学懂_Victor
+	 * @date 2020年5月8日 上午10:41:22
+	 * @param note_permission
+	 */
 	public void setNote_permission(int note_permission) {
 		this.note_permission = note_permission;
 	}

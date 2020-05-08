@@ -35,9 +35,10 @@ class SessionTest {
 		noteDtl.setNote_header("Test");
 		note.setNoteDtl(noteDtl);
 		int num = Integer.parseInt(session.save(note).toString());
+		session.save(noteDtl);
 		transaction.commit();
 		System.out.println(num);
-		fail("Not yet implemented");
+//		fail("Not yet implemented");
 	}
 	@After
 	void after() {
