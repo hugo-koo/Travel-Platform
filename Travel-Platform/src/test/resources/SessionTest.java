@@ -1,6 +1,8 @@
-package test;
+package test.resources;
 
 import static org.junit.jupiter.api.Assertions.fail;
+
+import java.util.Date;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -26,7 +28,9 @@ class SessionTest {
 		transaction = session.beginTransaction();
 		Note note = new Note();
 		NoteDtl noteDtl=new NoteDtl();
-//		note.setNote_author(111);
+		note.setNote_author(1000);
+		note.setNote_permission(1);
+		note.setNote_post_date(new Date());
 		noteDtl.setNote(note);
 		noteDtl.setNote_header("Test");
 		note.setNoteDtl(noteDtl);

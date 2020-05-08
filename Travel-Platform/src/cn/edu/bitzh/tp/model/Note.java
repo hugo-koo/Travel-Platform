@@ -14,6 +14,11 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "t_note")
+/**
+ * 游记
+ * @author 古学懂_Victor
+ * @date 2020年5月8日
+ */
 public class Note {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,7 +29,7 @@ public class Note {
 	private int favorite_count;
 	private int like_count;
 	private int comment_count;
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
+	@OneToOne(fetch = FetchType.LAZY, optional = false, mappedBy = "note")
 	@PrimaryKeyJoinColumn
 	private NoteDtl noteDtl;
 	public NoteDtl getNoteDtl() {

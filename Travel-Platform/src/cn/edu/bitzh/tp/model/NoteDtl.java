@@ -16,22 +16,21 @@ import org.hibernate.annotations.Parameter;
 @Table
 @Entity(name = "t_note_dtl")
 /**
- * 
+ *  游记内容
  * @author 古学懂_Victor
  * @date 2020年5月5日
- * 游记内容
  */
 public class NoteDtl {
 	@Id
-	@GenericGenerator(name = "foreignKey", 
+	@GenericGenerator(name = "fk", 
 	strategy = "foreign", 
 	parameters = @Parameter(name="property", value="note"))
-	@GeneratedValue(generator = "foreignKey")
+	@GeneratedValue(generator = "fk")
 	private int note_id;
 	private String note_header;
 	@Lob
 	private String note_content;
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "noteDtl", fetch = FetchType.LAZY)
+	@OneToOne(optional = false, fetch = FetchType.LAZY)
 	@PrimaryKeyJoinColumn
 	private Note note;
 
