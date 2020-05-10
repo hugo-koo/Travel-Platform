@@ -1,6 +1,6 @@
 package cn.edu.bitzh.tp.model;
 
-import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -12,6 +12,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
+
+import com.opensymphony.xwork2.util.Key;
 
 @Table
 @Entity(name = "t_note_dtl")
@@ -26,10 +28,13 @@ public class NoteDtl {
 	strategy = "foreign", 
 	parameters = @Parameter(name="property", value="note"))
 	@GeneratedValue(generator = "fk")
-	private int note_id;
-	private String note_header;
+	@Column(name = "note_id")
+	private int noteId;
+	@Column(name = "note_header")
+	private String noteHeader;
 	@Lob
-	private String note_content;
+	@Column(name = "note_content")
+	private String noteContent;
 	@OneToOne(optional = false, fetch = FetchType.LAZY)
 	@PrimaryKeyJoinColumn
 	private Note note;
@@ -42,27 +47,28 @@ public class NoteDtl {
 		this.note = note;
 	}
 
-	public int getNote_id() {
-		return note_id;
+	public int getNoteId() {
+		return noteId;
 	}
 
-	public void setNote_id(int note_id) {
-		this.note_id = note_id;
+	public void setNoteId(int noteId) {
+		this.noteId = noteId;
 	}
 
-	public String getNote_header() {
-		return note_header;
+	public String getNoteHeader() {
+		return noteHeader;
 	}
 
-	public void setNote_header(String note_header) {
-		this.note_header = note_header;
+	public void setNoteHeader(String noteHeader) {
+		this.noteHeader = noteHeader;
 	}
 
-	public String getNote_content() {
-		return note_content;
+	public String getNoteContent() {
+		return noteContent;
 	}
 
-	public void setNote_content(String note_content) {
-		this.note_content = note_content;
+	public void setNoteContent(String noteContent) {
+		this.noteContent = noteContent;
 	}
+
 }

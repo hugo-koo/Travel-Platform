@@ -3,6 +3,7 @@ package cn.edu.bitzh.tp.model;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -22,13 +23,26 @@ import javax.persistence.Table;
 public class Note {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int note_id;
-	private int note_author;
-	private int note_permission;
-	private Date note_post_date;
-	private int favorite_count;
-	private int like_count;
-	private int comment_count;
+	@Column(name = "note_id")
+	private int noteId;
+	@Column(name = "note_author")
+	private int noteAuthor;
+	@Column(name = "note_permission")
+	private int notePermission;
+	@Column(name = "note_post_date")
+	private Date notePostDate;
+	@Column(name = "favorite_count")
+	private int favoriteCount;
+	public int getFavoriteCount() {
+		return favoriteCount;
+	}
+	public void setFavoriteCount(int favoriteCount) {
+		this.favoriteCount = favoriteCount;
+	}
+	@Column(name = "like_count")
+	private int likeCount;
+	@Column(name = "comment_count")
+	private int commentCount;
 	@OneToOne(fetch = FetchType.LAZY, optional = false, mappedBy = "note")
 	@PrimaryKeyJoinColumn
 	private NoteDtl noteDtl;
@@ -38,52 +52,46 @@ public class Note {
 	public void setNoteDtl(NoteDtl noteDtl) {
 		this.noteDtl = noteDtl;
 	}
-	public int getNote_id() {
-		return note_id;
-	}
-	public void setNote_id(int note_id) {
-		this.note_id = note_id;
-	}
-	public int getNote_author() {
-		return note_author;
-	}
-	public void setNote_author(int note_author) {
-		this.note_author = note_author;
-	}
-	public int getNote_permission() {
-		return note_permission;
-	}
 	/**
 	 * 1: private, 2: public
 	 * @author 古学懂_Victor
-	 * @date 2020年5月8日 上午10:41:22
+	 * @date 2020年5月8日
 	 * @param note_permission
 	 */
-	public void setNote_permission(int note_permission) {
-		this.note_permission = note_permission;
+	public void setNotePermission(int notePermission) {
+		this.notePermission = notePermission;
 	}
-	public Date getNote_post_date() {
-		return note_post_date;
+	public int getNoteId() {
+		return noteId;
 	}
-	public void setNote_post_date(Date note_post_date) {
-		this.note_post_date = note_post_date;
+	public void setNoteId(int noteId) {
+		this.noteId = noteId;
 	}
-	public int getFavorite_count() {
-		return favorite_count;
+	public int getNoteAuthor() {
+		return noteAuthor;
 	}
-	public void setFavorite_count(int favorite_count) {
-		this.favorite_count = favorite_count;
+	public void setNoteAuthor(int noteAuthor) {
+		this.noteAuthor = noteAuthor;
 	}
-	public int getLike_count() {
-		return like_count;
+	public Date getNotePostDate() {
+		return notePostDate;
 	}
-	public void setLike_count(int like_count) {
-		this.like_count = like_count;
+	public void setNotePostDate(Date notePostDate) {
+		this.notePostDate = notePostDate;
 	}
-	public int getComment_count() {
-		return comment_count;
+	public int getLikeCount() {
+		return likeCount;
 	}
-	public void setComment_count(int comment_count) {
-		this.comment_count = comment_count;
+	public void setLikeCount(int likeCount) {
+		this.likeCount = likeCount;
+	}
+	public int getCommentCount() {
+		return commentCount;
+	}
+	public void setCommentCount(int commentCount) {
+		this.commentCount = commentCount;
+	}
+	public int getNotePermission() {
+		return notePermission;
 	}
 }

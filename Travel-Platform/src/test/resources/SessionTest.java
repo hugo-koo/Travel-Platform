@@ -1,7 +1,5 @@
 package test.resources;
 
-import static org.junit.jupiter.api.Assertions.fail;
-
 import java.util.Date;
 
 import org.hibernate.Session;
@@ -28,11 +26,11 @@ class SessionTest {
 		transaction = session.beginTransaction();
 		Note note = new Note();
 		NoteDtl noteDtl=new NoteDtl();
-		note.setNote_author(1000);
-		note.setNote_permission(1);
-		note.setNote_post_date(new Date());
+		note.setNoteAuthor(1000);
+		note.setNotePermission(1);
+		note.setNotePostDate(new Date());
 		noteDtl.setNote(note);
-		noteDtl.setNote_header("Test");
+		noteDtl.setNoteHeader("Test");
 		note.setNoteDtl(noteDtl);
 		int num = Integer.parseInt(session.save(note).toString());
 		session.save(noteDtl);

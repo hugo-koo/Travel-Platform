@@ -4,11 +4,10 @@
 "http://struts.apache.org/dtds/struts-2.5.dtd">
 <struts>
 	<package name="default" namespace="/" extends="struts-default">
-
-        <action name="action_*" class="cn.bitzh.tp.action.Struts2ActionTest"
+        <action name="action_*" class="cn.edu.bitzh.tp.action.Struts2ActionTest"
             method="{1}">
 			<result type="redirect" name="success">
-				<param name="location">/Travel-Platform/index.jsp</param>
+				<param name="location">/index.jsp</param>
 			</result>
 			<!-- 重点！Struts2.5使用通配符调用方法时，内部会验证是否允许访问该方法 -->
 			<allowed-methods>test</allowed-methods>
