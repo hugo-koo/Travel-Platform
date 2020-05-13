@@ -4,7 +4,7 @@
 "http://struts.apache.org/dtds/struts-2.5.dtd">
 <struts>
 	<package name="default" namespace="/" extends="struts-default">
-        <action name="action_*" class="cn.edu.bitzh.tp.action.Struts2ActionTest"
+        <action name="action_*" class="main.java.cn.edu.bitzh.tp.action.Struts2ActionTest"
             method="{1}">
 			<result type="redirect" name="success">
 				<param name="location">/index.jsp</param>
