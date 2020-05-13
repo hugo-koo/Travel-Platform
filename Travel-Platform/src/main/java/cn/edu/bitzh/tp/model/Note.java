@@ -1,4 +1,4 @@
-package cn.edu.bitzh.tp.model;
+package main.java.cn.edu.bitzh.tp.model;
 
 import java.util.Date;
 

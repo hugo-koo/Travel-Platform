@@ -1,4 +1,4 @@
-package cn.edu.bitzh.tp.util;
+package main.java.cn.edu.bitzh.tp.util;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
