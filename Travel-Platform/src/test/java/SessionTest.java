@@ -1,4 +1,3 @@
-package test.resources;
 
 import java.util.Date;
 
@@ -7,9 +6,8 @@ import org.hibernate.Transaction;
 import org.junit.After;
 import org.junit.jupiter.api.Test;
 
-import main.java.cn.edu.bitzh.tp.model.Note;
-import main.java.cn.edu.bitzh.tp.model.NoteDtl;
-import main.java.cn.edu.bitzh.tp.util.HibernateSessionFactory;
+import cn.edu.bitzh.tp.model.*;
+import cn.edu.bitzh.tp.util.HibernateSessionFactory;
 
 /**
  * @author 古学懂_Victor

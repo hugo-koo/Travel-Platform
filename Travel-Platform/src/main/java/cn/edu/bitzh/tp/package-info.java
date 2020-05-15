@@ -1,1 +1,1 @@
-package main.java.cn.edu.bitzh.tp;
+package cn.edu.bitzh.tp;
