@@ -1,6 +1,6 @@
 package cn.edu.bitzh.tp.action;
 import com.opensymphony.xwork2.*;
-public class Struts2ActionTest extends ActionSupport {
+public class ActionTest extends ActionSupport {
 	/**
 	 * 
 	 */
