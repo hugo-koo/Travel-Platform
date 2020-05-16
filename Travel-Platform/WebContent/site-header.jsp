@@ -1,29 +1,41 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<div class="ms-Grid" dir="ltr" id="header">
-	<div class="ms-Grid-row">
-		<div class="ms-Grid-col ms-sm6 ms-md4 ms-lg2">
-			<div class="ms-ContextualMenu-basic">
-				<button class="ms-Button ms-Button--primary">
-					<span class="ms-Button-label"> <i
-						class="ms-Icon ms-Icon--ExpandMenu" aria-hidden="true"></i>&nbsp;&nbsp;选择功能
-					</span>
-				</button>
-				<ul class="ms-ContextualMenu is-hidden">
-					<li class="ms-ContextualMenu-item"><a
-						class="ms-ContextualMenu-link" tabindex="1" href="/Travle-Platform/signup.jsp">注册</a></li>
-					<li class="ms-ContextualMenu-item"><a
-						class="ms-ContextualMenu-link" tabindex="1" href="/Travle-Platform/signin.jsp">登录</a></li>
-					<li class="ms-ContextualMenu-item"><a
-						class="ms-ContextualMenu-link" tabindex="1"
-						href="/Travle-Platform/studentsManagement/studentsManagement.jsp">管理</a></li>
-				</ul>
-			</div>
+<div id="header">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="/Travel-Platform/index.jsp"> <img
+			src="/Travel-Platform/_img/TP-logo.svg" alt="" width="32" height="32"
+			title="TP"> <%="旅游平台"%>
+		</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active"><a class="nav-link"
+					href="/Travel-Platform/index.jsp">首页 <span class="sr-only">(current)</span>
+				</a></li>
+				<li class="nav-item"><a class="nav-link" href="#">目的地</a></li>
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+					role="button" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false">社区</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="#">问答</a>
+                        <a class="dropdown-item" href="#">点评</a>
+						<div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">游记</a> 
+					</div>
+				</li>
+				<li class="nav-item"><a class="nav-link" href="#">去旅行</a></li>
+			</ul>
+			<form class="form-inline my-2 my-lg-0">
+				<input class="form-control mr-sm-2" type="search"
+					placeholder="在想什么……" aria-label="Search">
+				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜索</button>
+			</form>
 		</div>
-		<div class="ms-Grid-col ms-sm6 ms-md8 ms-lg10 ms-Link"
-			id="header-right">
-			<i class="ms-Icon ms-Icon--CoffeeScript" aria-hidden="true"></i>&nbsp;
-			<a href="/Travle-Platform/index.jsp" title="首页" class="">旅游平台</a>
-		</div>
-	</div>
+	</nav>
 </div>

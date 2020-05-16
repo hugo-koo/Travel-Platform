@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <!-- jQuery -->
-<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.1.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
 <!-- site common scripts -->
 <script type="text/javascript"
 	src="/Travel-Platform/_scripts/site-js.js"></script>
@@ -17,7 +17,7 @@
 	src="/Travel-Platform/_scripts/picker.time.js"></script>
 <script type="text/javascript" src="/Travel-Platform/_scripts/legacy.js"></script>
 <!-- logo -->
-<link rel="icon" href="/Travel-Platform/TPlogo.svg">
+<link rel="icon" href="/Travel-Platform/_img/TP-logo.svg">
 <!-- fabric ui style -->
 <link rel="stylesheet" href="/Travel-Platform/_style/site-style.css">
 <link rel="stylesheet"

@@ -5,13 +5,12 @@
 <html>
 
 <head>
-    <%-- 导入站点全局首部--%>
+    <%--导入站点全局首部--%>
     <%@ include file="/site-head.jsp"%>
 </head>
 
 <body>
     <%@ include file="/site-header.jsp"%>
-    <hr>
     <div id="cardWelcome"></div>
     <script type="text/babel">
         const {
