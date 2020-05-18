@@ -16,7 +16,7 @@
 <script type="text/javascript"
 	src="/Travel-Platform/_scripts/picker.time.js"></script>
 <script type="text/javascript" src="/Travel-Platform/_scripts/legacy.js"></script>
-<!-- logo -->
+<!-- icon -->
 <link rel="icon" href="/Travel-Platform/_img/TP-logo.svg">
 <!-- fabric ui style -->
 <link rel="stylesheet" href="/Travel-Platform/_style/site-style.css">
@@ -48,7 +48,7 @@
 <!-- BootstrapCDN-Popper.js -->
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <title>
-	<%
-		out.print(getServletInfo() + "&nbsp;-&nbsp;");
+	<%=
+		getServletInfo().toString() + "&nbsp;-&nbsp;"
 	%>旅游平台
 </title>

@@ -49,17 +49,17 @@
                             />
                             <CardContent>
                                 <Typography gutterBottom variant="h5" component="h2">
-                                    <%out.print("欢迎访问");%>
+                                    <%="欢迎访问"%>
                                   </Typography>
                                 <Typography variant="body2" color="textSecondary" component="p">
-                                    <%out.print("这里是旅游服务平台的测试页面");%>
+                                    <%="这里是旅游服务平台的测试页面"%>
                                   </Typography>
                             </CardContent>
                         </CardActionArea>
                         <CardActions>
                             <a href="<s:url action="action_test"/>">
                                 <Button size="small" color="primary">
-                                    <%out.print("去首页");%>
+                                    <%="去首页"%>
                                 </Button>
                             </a>
                         </CardActions>
