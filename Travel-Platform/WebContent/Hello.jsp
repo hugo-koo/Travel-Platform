@@ -44,7 +44,7 @@
                         <CardActionArea>
                             <CardMedia
                                 className={classes.media}
-                                image="/Travel-Platform/_media/青岛_樱花.png"
+                                image="/Travel-Platform/_img/青岛_樱花.png"
                                 title="Contemplative Reptile"
                             />
                             <CardContent>
