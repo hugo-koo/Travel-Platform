@@ -25,7 +25,7 @@ Travel Platform JSP project
 | 开发工具   | Eclipse IDE 2016+               |
 | 数据库工具 | MySQL 5.6+                      |
 
-# 1. 系统需求分析
+# 2. 系统需求分析
 
 ## 1. 业务需求分析
 
