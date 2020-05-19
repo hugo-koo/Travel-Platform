@@ -4588,8 +4588,8 @@ CREATE TABLE `t_scenery` (
   `scenery_pid` int unsigned DEFAULT NULL COMMENT '父景点id',
   `scenery_author` int unsigned NOT NULL COMMENT '发布者id【用户id】',
   `scenery_region` int unsigned NOT NULL COMMENT '所在地区id*【地区id】',
-  `scenery_ispublish` enum('true','false') NOT NULL DEFAULT 'false' COMMENT '是否发布标识',
-  `sceenry_ischecked` enum('unchecked','pass','nopass') NOT NULL DEFAULT 'unchecked',
+  `scenery_ispublish` enum('true','false') CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT 'false' COMMENT '是否发布标识',
+  `sceenry_ischecked` enum('unchecked','pass','nopass') CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT 'unchecked',
   `scenery_publish_time` datetime NOT NULL COMMENT '最新发布时间',
   `scenery_click` int unsigned NOT NULL DEFAULT '0' COMMENT '景点点击量',
   PRIMARY KEY (`scenery_id`),
@@ -4599,7 +4599,7 @@ CREATE TABLE `t_scenery` (
   CONSTRAINT `fk_scenery_author` FOREIGN KEY (`scenery_author`) REFERENCES `t_user` (`user_id`),
   CONSTRAINT `fk_scenery_pid` FOREIGN KEY (`scenery_pid`) REFERENCES `t_scenery` (`scenery_id`),
   CONSTRAINT `fk_scenery_region` FOREIGN KEY (`scenery_region`) REFERENCES `t_region` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='景点表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='景点表';
 
 /*Data for the table `t_scenery` */
 
@@ -4613,14 +4613,14 @@ DROP TABLE IF EXISTS `t_scenery_content`;
 
 CREATE TABLE `t_scenery_content` (
   `scenery_content_id` int unsigned NOT NULL COMMENT '景点内容id（主键）【景点id】',
-  `scenery_content_name` varchar(45) DEFAULT NULL COMMENT '景点名称',
+  `scenery_content_name` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL COMMENT '景点名称',
   `scenery_content_dtl` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '景点内容信息',
   `scenery_content_location` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '景点地址',
-  `scenery_content_email` varchar(45) DEFAULT NULL COMMENT '景点邮箱',
-  `scenery_content_phone` varchar(20) DEFAULT NULL COMMENT '景点电话',
+  `scenery_content_email` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL COMMENT '景点邮箱',
+  `scenery_content_phone` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL COMMENT '景点电话',
   PRIMARY KEY (`scenery_content_id`),
   CONSTRAINT `fk_scenery_content_id` FOREIGN KEY (`scenery_content_id`) REFERENCES `t_scenery` (`scenery_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='景点内容表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='景点内容表';
 
 /*Data for the table `t_scenery_content` */
 
@@ -4635,14 +4635,14 @@ DROP TABLE IF EXISTS `t_scenery_review`;
 CREATE TABLE `t_scenery_review` (
   `scenery_review_id` int unsigned NOT NULL COMMENT '景点id（主键）【景点id】',
   `user_review_id` int unsigned NOT NULL COMMENT '评分者id（主键）【用户id】',
-  `scenery_review_score` enum('1','2','3','4','5') NOT NULL COMMENT '评分',
+  `scenery_review_score` enum('1','2','3','4','5') CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL COMMENT '评分',
   `scenery_review_dtl` datetime NOT NULL COMMENT '点评内容',
   `scenery_review_time` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '点评时间',
   PRIMARY KEY (`scenery_review_id`,`user_review_id`),
   KEY `fk_user_score_id` (`user_review_id`),
   CONSTRAINT `fk_scenery_score_id` FOREIGN KEY (`scenery_review_id`) REFERENCES `t_scenery` (`scenery_id`),
   CONSTRAINT `fk_user_score_id` FOREIGN KEY (`user_review_id`) REFERENCES `t_user` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='景点点评表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='景点点评表';
 
 /*Data for the table `t_scenery_review` */
 
