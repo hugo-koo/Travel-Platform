@@ -1,4 +1,3 @@
-
 import java.util.Date;
 
 import org.hibernate.Session;
@@ -19,7 +18,7 @@ class SessionTest {
 
 	@Test
 	void test() {
-		System.out.println("Junit Test");
+		System.out.println("Junit Test: Hibernate Session Test");
 		session = HibernateSessionFactory.getSession();
 		transaction = session.beginTransaction();
 		Note note = new Note();
@@ -39,6 +38,5 @@ class SessionTest {
 	@After
 	void after() {
 		 HibernateSessionFactory.closeSession();
-	}
-	
+	}	
 }
