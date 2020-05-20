@@ -12,7 +12,7 @@ MySQL - 8.0.19 : Database - d_travel_platform
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
--- CREATE DATABASE /*!32312 IF NOT EXISTS*/`d_travel_platform` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`d_travel_platform` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */ ;
 
 USE `d_travel_platform`;
 
@@ -32,6 +32,10 @@ CREATE TABLE `t_activity_arrangement` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `t_activity_arrangement` */
+
+LOCK TABLES `t_activity_arrangement` WRITE;
+
+UNLOCK TABLES;
 
 /*Table structure for table `t_answer` */
 
@@ -53,6 +57,10 @@ CREATE TABLE `t_answer` (
 
 /*Data for the table `t_answer` */
 
+LOCK TABLES `t_answer` WRITE;
+
+UNLOCK TABLES;
+
 /*Table structure for table `t_answer_dtl` */
 
 DROP TABLE IF EXISTS `t_answer_dtl`;
@@ -65,6 +73,10 @@ CREATE TABLE `t_answer_dtl` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Created By 古学懂';
 
 /*Data for the table `t_answer_dtl` */
+
+LOCK TABLES `t_answer_dtl` WRITE;
+
+UNLOCK TABLES;
 
 /*Table structure for table `t_arrangement_content` */
 
@@ -83,6 +95,10 @@ CREATE TABLE `t_arrangement_content` (
 
 /*Data for the table `t_arrangement_content` */
 
+LOCK TABLES `t_arrangement_content` WRITE;
+
+UNLOCK TABLES;
+
 /*Table structure for table `t_cost_content` */
 
 DROP TABLE IF EXISTS `t_cost_content`;
@@ -98,6 +114,10 @@ CREATE TABLE `t_cost_content` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `t_cost_content` */
+
+LOCK TABLES `t_cost_content` WRITE;
+
+UNLOCK TABLES;
 
 /*Table structure for table `t_favourites` */
 
@@ -122,6 +142,10 @@ CREATE TABLE `t_favourites` (
 
 /*Data for the table `t_favourites` */
 
+LOCK TABLES `t_favourites` WRITE;
+
+UNLOCK TABLES;
+
 /*Table structure for table `t_footprint` */
 
 DROP TABLE IF EXISTS `t_footprint`;
@@ -141,6 +165,10 @@ CREATE TABLE `t_footprint` (
 
 /*Data for the table `t_footprint` */
 
+LOCK TABLES `t_footprint` WRITE;
+
+UNLOCK TABLES;
+
 /*Table structure for table `t_footprint_dtl` */
 
 DROP TABLE IF EXISTS `t_footprint_dtl`;
@@ -154,6 +182,10 @@ CREATE TABLE `t_footprint_dtl` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Created By 古学懂';
 
 /*Data for the table `t_footprint_dtl` */
+
+LOCK TABLES `t_footprint_dtl` WRITE;
+
+UNLOCK TABLES;
 
 /*Table structure for table `t_graphic_introduction` */
 
@@ -169,6 +201,10 @@ CREATE TABLE `t_graphic_introduction` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `t_graphic_introduction` */
+
+LOCK TABLES `t_graphic_introduction` WRITE;
+
+UNLOCK TABLES;
 
 /*Table structure for table `t_note` */
 
@@ -186,9 +222,11 @@ CREATE TABLE `t_note` (
   UNIQUE KEY `note_id` (`note_id`),
   KEY `author` (`note_author`),
   CONSTRAINT `t_note_ibfk_1` FOREIGN KEY (`note_author`) REFERENCES `t_user` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1018 DEFAULT CHARSET=utf8 COMMENT='Created By 古学懂';
+) ENGINE=InnoDB AUTO_INCREMENT=1019 DEFAULT CHARSET=utf8 COMMENT='Created By 古学懂';
 
 /*Data for the table `t_note` */
+
+LOCK TABLES `t_note` WRITE;
 
 insert  into `t_note`(`note_id`,`note_author`,`note_permission`,`note_post_date`,`favorite_count`,`like_count`,`comment_count`) values 
 (1003,1000,'private','2020-05-08 10:38:00',0,0,0),
@@ -205,7 +243,10 @@ insert  into `t_note`(`note_id`,`note_author`,`note_permission`,`note_post_date`
 (1014,1000,'private','2020-05-11 08:37:48',0,0,0),
 (1015,1000,'private','2020-05-13 14:49:18',0,0,0),
 (1016,1000,'private','2020-05-13 14:52:55',0,0,0),
-(1017,1000,'private','2020-05-13 19:17:44',0,0,0);
+(1017,1000,'private','2020-05-13 19:17:44',0,0,0),
+(1018,1000,'private','2020-05-15 10:15:07',0,0,0);
+
+UNLOCK TABLES;
 
 /*Table structure for table `t_note_comment` */
 
@@ -226,6 +267,10 @@ CREATE TABLE `t_note_comment` (
 
 /*Data for the table `t_note_comment` */
 
+LOCK TABLES `t_note_comment` WRITE;
+
+UNLOCK TABLES;
+
 /*Table structure for table `t_note_dtl` */
 
 DROP TABLE IF EXISTS `t_note_dtl`;
@@ -239,6 +284,8 @@ CREATE TABLE `t_note_dtl` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Created By 古学懂';
 
 /*Data for the table `t_note_dtl` */
+
+LOCK TABLES `t_note_dtl` WRITE;
 
 insert  into `t_note_dtl`(`note_id`,`note_header`,`note_content`) values 
 (1004,'Test',NULL),
@@ -254,7 +301,10 @@ insert  into `t_note_dtl`(`note_id`,`note_header`,`note_content`) values
 (1014,'Test',NULL),
 (1015,'Test',NULL),
 (1016,'Test',NULL),
-(1017,'Test',NULL);
+(1017,'Test',NULL),
+(1018,'Test',NULL);
+
+UNLOCK TABLES;
 
 /*Table structure for table `t_note_related_region` */
 
@@ -273,6 +323,10 @@ CREATE TABLE `t_note_related_region` (
 
 /*Data for the table `t_note_related_region` */
 
+LOCK TABLES `t_note_related_region` WRITE;
+
+UNLOCK TABLES;
+
 /*Table structure for table `t_produce` */
 
 DROP TABLE IF EXISTS `t_produce`;
@@ -289,6 +343,10 @@ CREATE TABLE `t_produce` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `t_produce` */
+
+LOCK TABLES `t_produce` WRITE;
+
+UNLOCK TABLES;
 
 /*Table structure for table `t_produce_cost` */
 
@@ -307,6 +365,10 @@ CREATE TABLE `t_produce_cost` (
 
 /*Data for the table `t_produce_cost` */
 
+LOCK TABLES `t_produce_cost` WRITE;
+
+UNLOCK TABLES;
+
 /*Table structure for table `t_produce_status` */
 
 DROP TABLE IF EXISTS `t_produce_status`;
@@ -319,6 +381,10 @@ CREATE TABLE `t_produce_status` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `t_produce_status` */
+
+LOCK TABLES `t_produce_status` WRITE;
+
+UNLOCK TABLES;
 
 /*Table structure for table `t_region` */
 
@@ -337,6 +403,8 @@ CREATE TABLE `t_region` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4170 DEFAULT CHARSET=utf8 COMMENT='全球地区库，采集自腾讯QQ国内+国际版.ADD.JENA.20141221';
 
 /*Data for the table `t_region` */
+
+LOCK TABLES `t_region` WRITE;
 
 insert  into `t_region`(`id`,`pid`,`path`,`level`,`name`,`name_en`,`name_pinyin`,`code`) values 
 (1,0,',1,',1,'亚洲','Asia','yazhou',NULL),
@@ -4509,6 +4577,8 @@ insert  into `t_region`(`id`,`pid`,`path`,`level`,`name`,`name_en`,`name_pinyin`
 (4168,374,',2,237,374,4168,',4,'伊利','Ely','yili','ELY'),
 (4169,374,',2,237,374,4169,',4,'约克','York','yueke','YOR');
 
+UNLOCK TABLES;
+
 /*Table structure for table `t_scenery` */
 
 DROP TABLE IF EXISTS `t_scenery`;
@@ -4518,8 +4588,8 @@ CREATE TABLE `t_scenery` (
   `scenery_pid` int unsigned DEFAULT NULL COMMENT '父景点id',
   `scenery_author` int unsigned NOT NULL COMMENT '发布者id【用户id】',
   `scenery_region` int unsigned NOT NULL COMMENT '所在地区id*【地区id】',
-  `scenery_ispublish` enum('true','false') NOT NULL DEFAULT 'false' COMMENT '是否发布标识',
-  `sceenry_ischecked` enum('unchecked','pass','nopass') NOT NULL DEFAULT 'unchecked',
+  `scenery_ispublish` enum('true','false') CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT 'false' COMMENT '是否发布标识',
+  `sceenry_ischecked` enum('unchecked','pass','nopass') CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT 'unchecked',
   `scenery_publish_time` datetime NOT NULL COMMENT '最新发布时间',
   `scenery_click` int unsigned NOT NULL DEFAULT '0' COMMENT '景点点击量',
   PRIMARY KEY (`scenery_id`),
@@ -4529,9 +4599,13 @@ CREATE TABLE `t_scenery` (
   CONSTRAINT `fk_scenery_author` FOREIGN KEY (`scenery_author`) REFERENCES `t_user` (`user_id`),
   CONSTRAINT `fk_scenery_pid` FOREIGN KEY (`scenery_pid`) REFERENCES `t_scenery` (`scenery_id`),
   CONSTRAINT `fk_scenery_region` FOREIGN KEY (`scenery_region`) REFERENCES `t_region` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='景点表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='景点表';
 
 /*Data for the table `t_scenery` */
+
+LOCK TABLES `t_scenery` WRITE;
+
+UNLOCK TABLES;
 
 /*Table structure for table `t_scenery_content` */
 
@@ -4539,16 +4613,20 @@ DROP TABLE IF EXISTS `t_scenery_content`;
 
 CREATE TABLE `t_scenery_content` (
   `scenery_content_id` int unsigned NOT NULL COMMENT '景点内容id（主键）【景点id】',
-  `scenery_content_name` varchar(45) DEFAULT NULL COMMENT '景点名称',
+  `scenery_content_name` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL COMMENT '景点名称',
   `scenery_content_dtl` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '景点内容信息',
   `scenery_content_location` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '景点地址',
-  `scenery_content_email` varchar(45) DEFAULT NULL COMMENT '景点邮箱',
-  `scenery_content_phone` varchar(20) DEFAULT NULL COMMENT '景点电话',
+  `scenery_content_email` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL COMMENT '景点邮箱',
+  `scenery_content_phone` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL COMMENT '景点电话',
   PRIMARY KEY (`scenery_content_id`),
   CONSTRAINT `fk_scenery_content_id` FOREIGN KEY (`scenery_content_id`) REFERENCES `t_scenery` (`scenery_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='景点内容表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='景点内容表';
 
 /*Data for the table `t_scenery_content` */
+
+LOCK TABLES `t_scenery_content` WRITE;
+
+UNLOCK TABLES;
 
 /*Table structure for table `t_scenery_review` */
 
@@ -4557,16 +4635,20 @@ DROP TABLE IF EXISTS `t_scenery_review`;
 CREATE TABLE `t_scenery_review` (
   `scenery_review_id` int unsigned NOT NULL COMMENT '景点id（主键）【景点id】',
   `user_review_id` int unsigned NOT NULL COMMENT '评分者id（主键）【用户id】',
-  `scenery_review_score` enum('1','2','3','4','5') NOT NULL COMMENT '评分',
+  `scenery_review_score` enum('1','2','3','4','5') CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL COMMENT '评分',
   `scenery_review_dtl` datetime NOT NULL COMMENT '点评内容',
   `scenery_review_time` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '点评时间',
   PRIMARY KEY (`scenery_review_id`,`user_review_id`),
   KEY `fk_user_score_id` (`user_review_id`),
   CONSTRAINT `fk_scenery_score_id` FOREIGN KEY (`scenery_review_id`) REFERENCES `t_scenery` (`scenery_id`),
   CONSTRAINT `fk_user_score_id` FOREIGN KEY (`user_review_id`) REFERENCES `t_user` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='景点点评表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='景点点评表';
 
 /*Data for the table `t_scenery_review` */
+
+LOCK TABLES `t_scenery_review` WRITE;
+
+UNLOCK TABLES;
 
 /*Table structure for table `t_topic` */
 
@@ -4583,6 +4665,10 @@ CREATE TABLE `t_topic` (
 
 /*Data for the table `t_topic` */
 
+LOCK TABLES `t_topic` WRITE;
+
+UNLOCK TABLES;
+
 /*Table structure for table `t_topic_dtl` */
 
 DROP TABLE IF EXISTS `t_topic_dtl`;
@@ -4597,6 +4683,10 @@ CREATE TABLE `t_topic_dtl` (
 
 /*Data for the table `t_topic_dtl` */
 
+LOCK TABLES `t_topic_dtl` WRITE;
+
+UNLOCK TABLES;
+
 /*Table structure for table `t_user` */
 
 DROP TABLE IF EXISTS `t_user`;
@@ -4608,8 +4698,12 @@ CREATE TABLE `t_user` (
 
 /*Data for the table `t_user` */
 
+LOCK TABLES `t_user` WRITE;
+
 insert  into `t_user`(`user_id`) values 
 (1000);
+
+UNLOCK TABLES;
 
 /*Table structure for table `t_vote` */
 
@@ -4628,6 +4722,10 @@ CREATE TABLE `t_vote` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Created By 古学懂';
 
 /*Data for the table `t_vote` */
+
+LOCK TABLES `t_vote` WRITE;
+
+UNLOCK TABLES;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
