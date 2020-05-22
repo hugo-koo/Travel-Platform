@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <!-- jQuery -->
 <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
-<!-- site common scripts -->
+<!-- Site common scripts -->
 <script type="text/javascript"
 	src="/Travel-Platform/_scripts/site-js.js"></script>
-<!-- fabric ui -->
+<!-- Fabric UI -->
 <script type="text/javascript"
 	src="/Travel-Platform/_scripts/fabric.min.js"></script>
 <script type="text/javascript" src="/Travel-Platform/_scripts/picker.js"></script>
@@ -16,14 +16,14 @@
 <script type="text/javascript"
 	src="/Travel-Platform/_scripts/picker.time.js"></script>
 <script type="text/javascript" src="/Travel-Platform/_scripts/legacy.js"></script>
-<!-- icon -->
+<!-- Icon -->
 <link rel="icon" href="/Travel-Platform/_img/TP-logo.svg">
-<!-- fabric ui style -->
+<!-- Fabric UI style -->
 <link rel="stylesheet" href="/Travel-Platform/_style/site-style.css">
 <link rel="stylesheet"
 	href="/Travel-Platform/_style/fabric.components.min.css">
 <link rel="stylesheet" href="/Travel-Platform/_style/fabric.min.css">
-<!-- material ui cdn -->
+<!-- Material UI cdn -->
 <meta name="viewport"
 	content="minimum-scale=1, initial-scale=1, width=device-width" />
 <script src="https://unpkg.com/react@latest/umd/react.development.js"
@@ -49,6 +49,6 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <title>
 	<%=
-		getServletInfo().toString() + "&nbsp;-&nbsp;"
+		getServletInfo().toString()+"&nbsp;-&nbsp;"
 	%>旅游平台
 </title>
