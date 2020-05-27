@@ -13,7 +13,6 @@
 
 	<context:component-scan
 		base-package="cn.edu.bitzh.tp" />
-	<!-- <context:component-scan base-package="dao" /> -->
 	<context:property-placeholder
 		location="classpath:db.properties" />
 	<bean id="dataSource"
@@ -38,4 +37,9 @@
 		<!-- </list> -->
 		<!-- </property> -->
 	</bean>
+
+<!-- 	<bean id="note" class="cn.edu.bitzh.tp.model.Note"></bean> -->
+<!-- 	<bean id="noteDtl" class="cn.edu.bitzh.tp.model.NoteDtl"> -->
+<!--         <property name="note" ref="note"></property> -->
+<!--     </bean> -->
 </beans>

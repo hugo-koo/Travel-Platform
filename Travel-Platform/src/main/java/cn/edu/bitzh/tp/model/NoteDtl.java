@@ -12,6 +12,7 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.util.Key;
 
@@ -37,6 +38,7 @@ public class NoteDtl {
 	private String noteContent;
 	@OneToOne(optional = false, fetch = FetchType.LAZY)
 	@PrimaryKeyJoinColumn
+//	@Autowired
 	private Note note;
 
 	public Note getNote() {

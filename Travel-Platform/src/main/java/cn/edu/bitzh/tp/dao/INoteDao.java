@@ -8,6 +8,12 @@ import cn.edu.bitzh.tp.model.Note;
 * @author 古学懂_Victor
 */
 public interface INoteDao {
+	/* Used for list all notes */
+	public static final int ALL = 0;
+	/* Used for query by author */
+	public static final int AUTHOR = 1;
+	public static final int DATE = 2;
+	
 	/**
 	 * 插入游记
 	 * @author 古学懂_Victor
@@ -25,8 +31,8 @@ public interface INoteDao {
 	/**
 	 * 根据类型获取游记列表
 	 * @author 古学懂_Victor
-	 * @param type
-	 * @param value
+	 * @param type 
+	 * @param value 
 	 * @return 
 	 */
 	List<Note> listNotesBy(int type, Object value);
@@ -36,5 +42,5 @@ public interface INoteDao {
 	 * @param id
 	 * @return
 	 */
-	Note getNoteById(int id); 
+	Note getNoteById(int id);
 }

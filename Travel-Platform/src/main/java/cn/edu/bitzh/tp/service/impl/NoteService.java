@@ -11,13 +11,13 @@ import cn.edu.bitzh.tp.model.Note;
 import cn.edu.bitzh.tp.service.INoteService;
 
 /**
-* @author 古学懂_Victor
-*/
+ * @author 古学懂_Victor
+ */
 @Service
-public class NoteService implements INoteService{
+public class NoteService implements INoteService {
 	@Autowired
-	INoteDao nd=new NoteDao();
-	
+	INoteDao nd;
+
 	@Override
 	public Note getNoteById(int id) {
 		return nd.getNoteById(id);
@@ -41,6 +41,11 @@ public class NoteService implements INoteService{
 	@Override
 	public List<Note> listNotesBy(int type, Object value) {
 		return nd.listNotesBy(type, value);
+	}
+
+	@Override
+	public List<Note> listAllNotes() {
+		return nd.listNotesBy(ALL, null);
 	}
 
 }
