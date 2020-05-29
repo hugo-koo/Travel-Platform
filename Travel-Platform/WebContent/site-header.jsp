@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<div id="header">
+<!DOCTYPE html>
+<div id="header" class="container">
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<a class="navbar-brand" href="/Travel-Platform/index.jsp"> <img
 			src="/Travel-Platform/_img/TP-logo.svg" alt="" width="32" height="32"
@@ -34,7 +35,7 @@
 			<form class="form-inline my-2 my-lg-0">
 				<input class="form-control mr-sm-2" type="search"
 					placeholder="在想什么……" aria-label="Search">
-				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜索</button>
+				<button class="btn btn-outline-primary my-2 my-sm-0" type="submit">搜索</button>
 			</form>
 		</div>
 	</nav>
