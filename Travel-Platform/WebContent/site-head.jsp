@@ -10,14 +10,7 @@
 <script type="text/javascript"
 	src="/Travel-Platform/_scripts/site-js.js"></script>
 <!-- Fabric UI -->
-<script type="text/javascript"
-	src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.2.0/js/fabric.min.js"></script>
-<script type="text/javascript" src="/Travel-Platform/_scripts/picker.js"></script>
-<script type="text/javascript"
-	src="/Travel-Platform/_scripts/picker.date.js"></script>
-<script type="text/javascript"
-	src="/Travel-Platform/_scripts/picker.time.js"></script>
-<script type="text/javascript" src="/Travel-Platform/_scripts/legacy.js"></script>
+
 <!-- Icon -->
 <link rel="icon" href="/Travel-Platform/_img/TP-logo.svg">
 <!-- Fabric UI style -->
