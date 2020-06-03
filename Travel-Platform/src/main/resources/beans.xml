@@ -29,6 +29,7 @@
 			<list>
 				<value>cn.edu.bitzh.tp.model.Note</value>
 				<value>cn.edu.bitzh.tp.model.NoteDtl</value>
+				<value>cn.edu.bitzh.tp.model.Region</value>
 			</list>
 		</property>
 		<!-- <property name="annotatedPackages"> -->
