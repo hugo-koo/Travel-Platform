@@ -25,22 +25,11 @@
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
-		<property name="annotatedClasses">
+		<property name="packagesToScan">
 			<list>
-				<value>cn.edu.bitzh.tp.model.Note</value>
-				<value>cn.edu.bitzh.tp.model.NoteDtl</value>
-				<value>cn.edu.bitzh.tp.model.Region</value>
+				<value>cn.edu.bitzh.tp.model</value>
 			</list>
 		</property>
-		<!-- <property name="annotatedPackages"> -->
-		<!-- <list> -->
-		<!-- <value>cn.edu.bitzh.tp.model</value> -->
-		<!-- </list> -->
-		<!-- </property> -->
 	</bean>
-
-<!-- 	<bean id="note" class="cn.edu.bitzh.tp.model.Note"></bean> -->
-<!-- 	<bean id="noteDtl" class="cn.edu.bitzh.tp.model.NoteDtl"> -->
-<!--         <property name="note" ref="note"></property> -->
-<!--     </bean> -->
+	
 </beans>
