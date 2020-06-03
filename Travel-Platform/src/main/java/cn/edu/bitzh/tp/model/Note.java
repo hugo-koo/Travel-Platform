@@ -2,7 +2,6 @@ package cn.edu.bitzh.tp.model;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,15 +12,13 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
-import org.springframework.stereotype.Component;
-
-@Entity
-@Table(name = "t_note")
 /**
  * 游记
  * @author 古学懂_Victor
  * @date 2020年5月8日
  */
+@Entity
+@Table(name = "t_note")
 public class Note {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
