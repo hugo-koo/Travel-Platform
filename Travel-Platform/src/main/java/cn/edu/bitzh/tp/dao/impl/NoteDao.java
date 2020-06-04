@@ -23,7 +23,7 @@ public class NoteDao implements INoteDao {
 	SessionFactory sessionFactory;
 
 	@Override
-	public List<Note> listNotesBy(int type, Object value) {
+	public List<Note> listBy(int type, Object value) {
 		List<Note> notes;
 		Query<Note> q;
 		String typeStr = "";
@@ -61,7 +61,7 @@ public class NoteDao implements INoteDao {
 	}
 
 	@Override
-	public Note getNoteById(int id) {
+	public Note get(int id) {
 		try {
 			session = sessionFactory.openSession();
 			Note note = session.get(Note.class, id);
@@ -75,7 +75,7 @@ public class NoteDao implements INoteDao {
 	}
 
 	@Override
-	public boolean updateNote(Note note) {
+	public boolean update(Note note) {
 		try {
 			session = sessionFactory.openSession();
 			Note noteT = session.get(Note.class, note.getNoteId());
@@ -92,7 +92,7 @@ public class NoteDao implements INoteDao {
 	}
 
 	@Override
-	public int insertNote(Note note) {
+	public int insert(Note note) {
 		try {
 			session = sessionFactory.openSession();
 			transaction = session.beginTransaction();
@@ -110,9 +110,9 @@ public class NoteDao implements INoteDao {
 	}
 
 	@Override
-	public int deleteNote(int id) {
+	public boolean delete(int id) {
 		// TODO Auto-generated method stub
-		return 0;
+		return false;
 	}
 
 }
