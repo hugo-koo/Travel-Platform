@@ -27,7 +27,7 @@ class SpringSessionTest {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("beans.xml");
 		INoteService noteService = (NoteService) ctx.getBean("noteService");
 		Note note = null;
-		note = noteService.getNoteById(1011);
+		note = noteService.get(1011);
 		System.out.println(note.getNoteDtl().getNoteHeader());
 	}
 
@@ -44,7 +44,7 @@ class SpringSessionTest {
 		note.setNoteDtl(noteDtl);
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("beans.xml");
 		INoteService noteService = (NoteService) ctx.getBean("noteService");
-		System.out.println(noteService.insertNote(note));
+		System.out.println(noteService.insert(note));
 	}
 
 	@After
