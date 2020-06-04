@@ -19,33 +19,38 @@ public class NoteService implements INoteService {
 	INoteDao nd;
 
 	@Override
-	public Note getNoteById(int id) {
-		return nd.getNoteById(id);
+	public Note get(int id) {
+		return nd.get(id);
 	}
 
 	@Override
-	public int insertNote(Note note) {
-		return nd.insertNote(note);
+	public int insert(Note note) {
+		return nd.insert(note);
 	}
 
 	@Override
-	public int deleteNote(int id) {
-		return nd.deleteNote(id);
+	public boolean delete(int id) {
+		return nd.delete(id);
 	}
 
 	@Override
-	public boolean updateNote(Note note) {
-		return nd.updateNote(note);
+	public boolean update(Note note) {
+		return nd.update(note);
 	}
 
 	@Override
-	public List<Note> listNotesBy(int type, Object value) {
-		return nd.listNotesBy(type, value);
+	public List<Note> listBy(int type, Object value) {
+		return nd.listBy(type, value);
 	}
 
 	@Override
 	public List<Note> listAllNotes() {
-		return nd.listNotesBy(ALL, null);
+		return nd.listBy(ALL, null);
+	}
+
+	@Override
+	public List<Note> list() {
+		return nd.listBy(ALL, null);
 	}
 
 }

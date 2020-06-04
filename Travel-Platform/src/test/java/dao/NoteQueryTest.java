@@ -28,7 +28,7 @@ class NoteQueryTest {
 		System.out.println("JUnit Test: Note query author");
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("beans.xml");
 		INoteService noteService = (NoteService) ctx.getBean("noteService");
-		List<Note> notes = noteService.listNotesBy(INoteService.AUTHOR, 1000);
+		List<Note> notes = noteService.listBy(INoteService.AUTHOR, 1000);
 		System.out.println(notes.get(0).getNoteDtl().getNoteHeader());
 	}
 
