@@ -20,37 +20,37 @@ public class NoteService implements INoteService {
 
 	@Override
 	public Note get(int id) {
-		return nd.getNoteById(id);
+		return nd.get(id);
 	}
 
 	@Override
 	public int insert(Note note) {
-		return nd.insertNote(note);
+		return nd.insert(note);
 	}
 
 	@Override
 	public boolean delete(int id) {
-		return nd.deleteNote(id);
+		return nd.delete(id);
 	}
 
 	@Override
 	public boolean update(Note note) {
-		return nd.updateNote(note);
+		return nd.update(note);
 	}
 
 	@Override
 	public List<Note> listBy(int type, Object value) {
-		return nd.listNotesBy(type, value);
+		return nd.listBy(type, value);
 	}
 
 	@Override
 	public List<Note> listAllNotes() {
-		return nd.listNotesBy(ALL, null);
+		return nd.listBy(ALL, null);
 	}
 
 	@Override
 	public List<Note> list() {
-		return nd.listNotesBy(ALL, null);
+		return nd.listBy(ALL, null);
 	}
 
 }

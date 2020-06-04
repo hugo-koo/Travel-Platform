@@ -8,9 +8,9 @@ import cn.edu.bitzh.tp.model.Note;
 * @author 古学懂_Victor
 */
 public interface INoteService extends IBaseService<Note> {
-	/* Used for list all notes */
+	/** Used for list all notes */
 	public static final int ALL = 0;
-	/* Used for query by author */
+	/** Used for query by author */
 	public static final int AUTHOR = 1;
 	public static final int DATE = 2;
 	/**
