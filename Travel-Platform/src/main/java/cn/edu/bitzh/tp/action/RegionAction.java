@@ -14,6 +14,7 @@ import cn.edu.bitzh.tp.service.impl.RegionService;
 
 /**
  * @author 古学懂_Victor
+ * @date 2020年
  */
 public class RegionAction extends ActionSupport {
 
@@ -26,7 +27,7 @@ public class RegionAction extends ActionSupport {
 	private Region region;
 	private List<Region> regions;
 	/**
-	 * type可以取值"listContineins", "listChildren"
+	 * type可以取值"listContineins", "listChildren"或不设置
 	 */
 	private String type = "";
 	/**
@@ -36,7 +37,7 @@ public class RegionAction extends ActionSupport {
 	/**
 	 * 若type为空, 需要提供id
 	 */
-	private int id = 1;
+	private int id = 0;
 
 	public RegionAction() {
 		System.out.println("RA");
@@ -56,6 +57,14 @@ public class RegionAction extends ActionSupport {
 		}
 		System.out.println("ParamEx " + this.type);
 		return Action.SUCCESS;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getType() {
