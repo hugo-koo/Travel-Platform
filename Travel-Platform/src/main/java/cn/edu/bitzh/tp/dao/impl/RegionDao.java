@@ -23,7 +23,7 @@ public class RegionDao implements IRegionDao {
 	SessionFactory sessionFactory;
 	
 	@Override
-	public Region getRegionById(int id) {
+	public Region get(int id) {
 		try {
 			session = sessionFactory.openSession();
 			Region region = session.get(Region.class, id);
@@ -51,6 +51,26 @@ public class RegionDao implements IRegionDao {
 		} finally {
 			sessionFactory.close();
 		}
+	}
+
+	@Override
+	public int insert(Region t) {
+		return 0;
+	}
+
+	@Override
+	public boolean update(Region t) {
+		return false;
+	}
+
+	@Override
+	public boolean delete(int id) {
+		return false;
+	}
+
+	@Override
+	public List<Region> list() {
+		return null;
 	}
 
 }

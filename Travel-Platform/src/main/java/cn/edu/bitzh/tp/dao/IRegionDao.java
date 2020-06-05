@@ -8,14 +8,14 @@ import cn.edu.bitzh.tp.model.Region;
  * 
 * @author 古学懂_Victor
 */
-public interface IRegionDao {
+public interface IRegionDao extends IBaseDao<Region> {
 	/**
 	 * 根据id返回地区
 	 * @author 古学懂_Victor
 	 * @param id
 	 * @return
 	 */
-	Region getRegionById(int id);
+	Region get(int id);
 	/**
 	 * 根据父id列出子地区列表
 	 * @author 古学懂_Victor
