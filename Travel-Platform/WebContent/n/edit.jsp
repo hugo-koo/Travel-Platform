@@ -68,6 +68,10 @@
         var regionId = 0;
         //从大洲列表开始初始化
         $(function () {
+            //清除子列表
+            for(var rank=2;$("#region-" + rank).length > 0;rank++){
+                $("#region-" + rank).remove();
+            }
             $.ajax({
                 type: "post",
                 url: "/Travel-Platform/region.action",
@@ -86,13 +90,16 @@
                 }
             });
         });
-        //各级子地区列表
+        //获取各级子地区列表
         var regionChange = function (rank) {
             rank += 1;
             console.log(rank);
-            // if (rank >= 5) return;
+            //获取父级地区ID
             var pid = $("#region-" + (rank - 1) + "").val();
-            if ($("#region-" + rank).length > 0) $("#region-" + rank).remove();
+            //清除子列表
+            for(;$("#region-" + rank).length > 0;rank++){
+                $("#region-" + rank).remove();
+            }
             $("#region-list").append("<select class=\"form-control my-2\" id=\"region-" + rank + "\" name=\"region-" + rank + "\" onchange=\"regionChange(" + rank + ")\"></select>");
             $("#region-" + rank).append("<option selected=\"selected\" value=\"\">请选择...</option>");
             $.ajax({
