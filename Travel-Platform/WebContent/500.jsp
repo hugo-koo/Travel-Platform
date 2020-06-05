@@ -132,8 +132,10 @@
 				</div>
 				<div class="row justify-content-center">
 					<a href="/Travel-Platform">
-						<button type="button" class="btn btn-primary">去首页</button>
+						<button type="button" class="btn btn-primary mx-2">去首页</button>
 					</a>
+					<button type="button" class="btn btn-light mx-2"
+						onclick="window.location.reload();">刷新</button>
 				</div>
 			</div>
 		</div>
