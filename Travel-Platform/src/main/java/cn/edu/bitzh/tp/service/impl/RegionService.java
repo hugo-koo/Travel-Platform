@@ -19,7 +19,7 @@ public class RegionService implements IRegionService {
 
 	@Override
 	public Region get(int id) {
-		return rd.getRegionById(id);
+		return rd.get(id);
 	}
 
 	@Override
