@@ -27,7 +27,7 @@ public class RegionAction extends ActionSupport {
 	private Region region;
 	private List<Region> regions;
 	/**
-	 * type可以取值"listContineins", "listChildren"或不设置
+	 * type可以取值"listContinents", "listChildren"或不设置
 	 */
 	private String type = "";
 	/**
@@ -48,8 +48,8 @@ public class RegionAction extends ActionSupport {
 	 * 
 	 */
 	public String execute() {
-		if (type.equals("listContineins")) {
-			regions = rs.listContineins();
+		if (type.equals("listContinents")) {
+			regions = rs.listContinents();
 		} else if (type.equals("listChildren")) {
 			regions = rs.listChildRegions(pid);
 		} else if (type.equals("")) {
@@ -92,7 +92,7 @@ public class RegionAction extends ActionSupport {
 	}
 
 	public void listContineins() {
-		this.regions = rs.listContineins();
+		this.regions = rs.listContinents();
 	}
 
 	public int getPid() {

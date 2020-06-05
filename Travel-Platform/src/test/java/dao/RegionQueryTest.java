@@ -36,7 +36,7 @@ class RegionQueryTest {
 		List<Region> regions;
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("beans.xml");
 		IRegionService rs=(RegionService)ctx.getBean("regionService");
-		regions = rs.listContineins();
+		regions = rs.listContinents();
 		Iterator<Region> it=regions.iterator();
 		while(it.hasNext()) {
 			System.out.println(it.next());
