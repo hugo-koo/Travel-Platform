@@ -1,15 +1,11 @@
 package cn.edu.bitzh.tp.action;
 
 import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.opensymphony.xwork2.Action;
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import cn.edu.bitzh.tp.model.Region;
@@ -18,6 +14,7 @@ import cn.edu.bitzh.tp.service.impl.RegionService;
 
 /**
  * @author 古学懂_Victor
+ * @date 2020年
  */
 public class RegionAction extends ActionSupport {
 
@@ -30,7 +27,7 @@ public class RegionAction extends ActionSupport {
 	private Region region;
 	private List<Region> regions;
 	/**
-	 * type可以取值"listContineins", "listChildren"
+	 * type可以取值"listContinents", "listChildren"或不设置
 	 */
 	private String type = "";
 	/**
@@ -40,7 +37,7 @@ public class RegionAction extends ActionSupport {
 	/**
 	 * 若type为空, 需要提供id
 	 */
-	private int id = 1;
+	private int id = 0;
 
 	public RegionAction() {
 		System.out.println("RA");
@@ -51,8 +48,8 @@ public class RegionAction extends ActionSupport {
 	 * 
 	 */
 	public String execute() {
-		if (type.equals("listContineins")) {
-			regions = rs.listContineins();
+		if (type.equals("listContinents")) {
+			regions = rs.listContinents();
 		} else if (type.equals("listChildren")) {
 			regions = rs.listChildRegions(pid);
 		} else if (type.equals("")) {
@@ -60,6 +57,14 @@ public class RegionAction extends ActionSupport {
 		}
 		System.out.println("ParamEx " + this.type);
 		return Action.SUCCESS;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getType() {
@@ -87,7 +92,7 @@ public class RegionAction extends ActionSupport {
 	}
 
 	public void listContineins() {
-		this.regions = rs.listContineins();
+		this.regions = rs.listContinents();
 	}
 
 	public int getPid() {

@@ -28,7 +28,7 @@ public class RegionService implements IRegionService {
 	}
 
 	@Override
-	public List<Region> listContineins() {
+	public List<Region> listContinents() {
 		return rd.listChildRegions(0);
 	}
 

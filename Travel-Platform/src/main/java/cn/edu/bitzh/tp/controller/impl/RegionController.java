@@ -25,7 +25,7 @@ public class RegionController implements IRegionController {
 	@ResponseBody
 	@Override
 	public List<Region> listContineins() {
-		return rs.listContineins();
+		return rs.listContinents();
 	}
 	
 	@RequestMapping(value = "listChildRegions", method = RequestMethod.POST)
