@@ -69,8 +69,8 @@
         //从大洲列表开始初始化
         $(function () {
             //清除子列表
-            for(var rank=2;$("#region-" + rank).length > 0;rank++){
-                $("#region-" + rank).remove();
+            for(var i=2;i<=5;i++){
+            	if($("#region-" + i).length > 0) $("#region-" + i).remove();
             }
             $.ajax({
                 type: "post",
@@ -81,8 +81,7 @@
                 success: function (data) {
                     console.log(data.regions[1].name);
                     for (var i = 0; i < data.regions.length; i++) {
-                        $('#region-1').append(
-                            "<option value='" + data.regions[i].id + "' >" + data.regions[i].name + "</option>");
+                        $('#region-1').append("<option value='" + data.regions[i].id + "' >" + data.regions[i].name + "</option>");
                     }
                 },
                 error: function () {
@@ -97,8 +96,8 @@
             //获取父级地区ID
             var pid = $("#region-" + (rank - 1) + "").val();
             //清除子列表
-            for(;$("#region-" + rank).length > 0;rank++){
-                $("#region-" + rank).remove();
+            for(var i = rank; i <= 5; i++){
+                if($("#region-" + i).length > 0) $("#region-" + i).remove();
             }
             $("#region-list").append("<select class=\"form-control my-2\" id=\"region-" + rank + "\" name=\"region-" + rank + "\" onchange=\"regionChange(" + rank + ")\"></select>");
             $("#region-" + rank).append("<option selected=\"selected\" value=\"\">请选择...</option>");
@@ -113,6 +112,7 @@
                     if (data.regions <= 0) {
                         $("#region-" + (rank) + "").remove();
                         regionId = pid;
+                        console.log(regionId);
                         return;
                     }
                     console.log(data.regions[1].name);
