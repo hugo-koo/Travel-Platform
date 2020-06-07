@@ -19,7 +19,9 @@ public interface INoteDao extends IBaseDao<Note>{
 	 * @author 古学懂_Victor
 	 * @return 游记主键
 	 */
+	@Override
 	int insert(Note note);
+	@Override
 	boolean delete(int id);
 	/**
 	 * 更新游记
@@ -27,6 +29,7 @@ public interface INoteDao extends IBaseDao<Note>{
 	 * @param note
 	 * @return boolean 成功与否
 	 */
+	@Override
 	boolean update(Note note);
 	/**
 	 * 根据类型获取游记列表
@@ -42,5 +45,11 @@ public interface INoteDao extends IBaseDao<Note>{
 	 * @param id
 	 * @return
 	 */
+	@Override
 	Note get(int id);
+	@Override
+	default List<Note> list() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
