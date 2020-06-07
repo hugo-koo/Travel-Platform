@@ -50,7 +50,7 @@ public class NoteService implements INoteService {
 
 	@Override
 	public List<Note> list() {
-		return nd.listBy(ALL, null);
+		return nd.list();
 	}
 
 }
