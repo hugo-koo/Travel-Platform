@@ -40,8 +40,7 @@ public class RegionAction extends ActionSupport {
 	private int id = 0;
 
 	public RegionAction() {
-		System.out.println("RA");
-		System.out.println("Param " + this.type);
+		System.out.println("RegionAction");
 	}
 
 	/**
@@ -55,7 +54,7 @@ public class RegionAction extends ActionSupport {
 		} else if (type.equals("")) {
 			region = rs.get(id);
 		}
-		System.out.println("ParamEx " + this.type);
+		System.out.println("Execute " + this.type);
 		return Action.SUCCESS;
 	}
 
