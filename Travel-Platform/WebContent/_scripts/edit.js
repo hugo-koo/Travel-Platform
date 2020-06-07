@@ -23,7 +23,6 @@ var regionInit = function() {
 			"type" : "listContinents"
 		},
 		success : function(data) {
-			console.log(data.regions[1].name);
 			for (var i = 0; i < data.regions.length; i++) {
 				$('#region-1').append(
 						"<option value='" + data.regions[i].id + "' >"
@@ -48,12 +47,6 @@ var regionChange = function(rank) {
 		if ($("#region-" + i).length > 0)
 			$("#region-" + i).remove();
 	}
-	$("#region-list").append(
-			"<select class=\"form-control my-2\" id=\"region-" + rank
-					+ "\" name=\"region-" + rank
-					+ "\" onchange=\"regionChange(" + rank + ")\"></select>");
-	$("#region-" + rank).append(
-			"<option selected=\"selected\" value=\"-1\">请选择...</option>");
 	$.ajax({
 		type : "post",
 		url : "/Travel-Platform/region.action",
@@ -63,13 +56,18 @@ var regionChange = function(rank) {
 		},
 		success : function(data) {
 			if (data.regions <= 0) {
-				$("#region-" + rank).remove();
 				regionId = pId;
 				$("#region-name").text(pName);
 				console.log(regionId);
 				return;
 			}
 			console.log(pName);
+			$("#region-list").append(
+					"<select class=\"form-control my-2\" id=\"region-" + rank
+							+ "\" name=\"region-" + rank
+							+ "\" onchange=\"regionChange(" + rank + ")\"></select>");
+			$("#region-" + rank).append(
+					"<option selected=\"selected\" value=\"-1\">请选择...</option>");
 			for (var i = 0; i < data.regions.length; i++) {
 				$('#region-' + rank).append(
 						"<option value='" + data.regions[i].id + "' >"
