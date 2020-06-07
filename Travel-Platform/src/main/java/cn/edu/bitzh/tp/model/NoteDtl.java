@@ -12,16 +12,17 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.util.Key;
 
-@Table
-@Entity(name = "t_note_dtl")
 /**
  *  游记内容
  * @author 古学懂_Victor
  * @date 2020年5月5日
  */
+@Table
+@Entity(name = "t_note_dtl")
 public class NoteDtl {
 	@Id
 	@GenericGenerator(name = "fk", 
@@ -37,6 +38,7 @@ public class NoteDtl {
 	private String noteContent;
 	@OneToOne(optional = false, fetch = FetchType.LAZY)
 	@PrimaryKeyJoinColumn
+//	@Autowired
 	private Note note;
 
 	public Note getNote() {
