@@ -15,8 +15,8 @@ body {
 }
 
 #footer {
-    background-color: #F0EDE5;
-    color: #0f4c81;
+	background-color: #F0EDE5;
+	color: #0f4c81;
 }
 
 #header-right {
@@ -109,4 +109,10 @@ div[data-role="editor-toolbar"] {
 	color: #fff;
 	text-align: center;
 	font-size: 30px;
+}
+
+#goto-top {
+	position: fixed;
+	bottom: 100px;
+	right: 0;
 }
