@@ -2,11 +2,14 @@ package cn.edu.bitzh.tp.action;
 
 import java.util.List;
 
+import org.apache.struts2.convention.annotation.AllowedMethods;
+import org.apache.struts2.json.annotations.JSON;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.interceptor.annotations.Allowed;
 
 import cn.edu.bitzh.tp.model.Region;
 import cn.edu.bitzh.tp.service.IRegionService;
@@ -58,6 +61,44 @@ public class RegionAction extends ActionSupport {
 		return Action.SUCCESS;
 	}
 
+	/**
+	 * 获取大洲列表
+	 * @author 古学懂_Victor
+	 * @date 2020年
+	 * @return
+	 */
+	public String listContinents() {
+		System.out.println("listContinents");
+		this.regions = rs.listContinents();
+		return ActionSupport.SUCCESS;
+	}
+	
+	/**
+	 * 获取子地区列表，需要提供父级地区id
+	 * @author 古学懂_Victor
+	 * @date 2020年
+	 * @return 
+	 * @see IRegionService
+	 */
+	public String listChildren() {
+		System.out.println("listChildren");
+		this.regions = rs.listChildRegions(this.pid);
+		return ActionSupport.SUCCESS;
+	}
+	
+	/**
+	 * 根据id获取地区
+	 * @author 古学懂_Victor
+	 * @date 2020年
+	 * @return
+	 */
+	public String get() {
+		System.out.println("getRegion");
+		this.region = rs.get(this.id);
+		return ActionSupport.SUCCESS;
+	}
+
+	@JSON(serialize = false)
 	public int getId() {
 		return id;
 	}
@@ -66,6 +107,7 @@ public class RegionAction extends ActionSupport {
 		this.id = id;
 	}
 
+	@JSON(serialize = false)
 	public String getType() {
 		return type;
 	}
@@ -90,10 +132,7 @@ public class RegionAction extends ActionSupport {
 		this.regions = regions;
 	}
 
-	public void listContineins() {
-		this.regions = rs.listContinents();
-	}
-
+	@JSON(serialize = false)
 	public int getPid() {
 		return pid;
 	}

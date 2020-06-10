@@ -18,10 +18,8 @@ var regionInit = function() {
 	}
 	$.ajax({
 		type : "post",
-		url : "/Travel-Platform/region.action",
-		data : {
-			"type" : "listContinents"
-		},
+		url : "/Travel-Platform/region_listContinents.action",
+		data : {},
 		success : function(data) {
 			for (var i = 0; i < data.regions.length; i++) {
 				$('#region-1').append(
@@ -49,9 +47,8 @@ var regionChange = function(rank) {
 	}
 	$.ajax({
 		type : "post",
-		url : "/Travel-Platform/region.action",
+		url : "/Travel-Platform/region_listChildren.action",
 		data : {
-			"type" : "listChildren",
 			"pid" : pId
 		},
 		success : function(data) {

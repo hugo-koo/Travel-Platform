@@ -15,9 +15,11 @@
 	</package>
 	<package name="json-region" namespace="/"
 		extends="json-default">
-		<action name="region"
-			class="cn.edu.bitzh.tp.action.RegionAction">
+		<action name="region_*"
+			class="cn.edu.bitzh.tp.action.RegionAction"
+			method="{1}">
 			<result type="json" />
+			<allowed-methods>listChildren, listContinents, get</allowed-methods>
 		</action>
 	</package>
 </struts>
