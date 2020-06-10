@@ -12,7 +12,7 @@ MySQL - 8.0.19 : Database - d_travel_platform
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-CREATE DATABASE /*!32312 IF NOT EXISTS*/`d_travel_platform` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`d_travel_platform` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 
 USE `d_travel_platform`;
 
@@ -286,65 +286,6 @@ LOCK TABLES `t_note` WRITE;
 
 insert  into `t_note`(`note_id`,`note_author`,`note_permission`,`note_post_date`,`favorite_count`,`like_count`,`comment_count`) values 
 (1004,1000,'private','2020-05-08 10:46:14',0,0,0),
-(1005,1000,'private','2020-05-08 13:15:12',0,0,0),
-(1006,1000,'private','2020-05-10 22:24:30',0,0,0),
-(1007,1000,'private','2020-05-10 22:28:13',0,0,0),
-(1008,1000,'private','2020-05-10 22:50:48',0,0,0),
-(1009,1000,'private','2020-05-10 22:51:08',0,0,0),
-(1010,1000,'private','2020-05-10 23:04:48',0,0,0),
-(1011,1000,'private','2020-05-11 08:10:29',0,0,0),
-(1012,1000,'private','2020-05-11 08:27:28',0,0,0),
-(1013,1000,'private','2020-05-11 08:33:32',0,0,0),
-(1014,1000,'private','2020-05-11 08:37:48',0,0,0),
-(1015,1000,'private','2020-05-13 14:49:18',0,0,0),
-(1016,1000,'private','2020-05-13 14:52:55',0,0,0),
-(1017,1000,'private','2020-05-13 19:17:44',0,0,0),
-(1018,1000,'private','2020-05-15 10:15:07',0,0,0),
-(1019,1000,'private','2020-05-19 16:04:53',0,0,0),
-(1020,1000,'private','2020-05-19 16:05:14',0,0,0),
-(1021,1000,'private','2020-05-19 16:21:13',0,0,0),
-(1022,1000,'private','2020-05-19 16:26:29',0,0,0),
-(1023,1000,'private','2020-05-19 16:41:07',0,0,0),
-(1024,1000,'private','2020-05-23 21:21:06',0,0,0),
-(1025,1000,'private','2020-05-23 21:23:20',0,0,0),
-(1026,1000,'private','2020-05-23 21:27:42',0,0,0),
-(1027,1000,'private','2020-05-23 21:30:59',0,0,0),
-(1028,1000,'private','2020-05-23 21:39:04',0,0,0),
-(1029,1000,'private','2020-05-23 21:44:04',0,0,0),
-(1030,1000,'private','2020-05-23 21:46:54',0,0,0),
-(1031,1000,'private','2020-05-23 21:47:48',0,0,0),
-(1033,1000,'private','2020-05-23 21:50:45',0,0,0),
-(1034,1000,'private','2020-05-23 21:57:31',0,0,0),
-(1035,1000,'private','2020-05-23 23:51:07',0,0,0),
-(1036,1000,'private','2020-05-23 23:53:24',0,0,0),
-(1037,1000,'private','2020-05-24 21:32:15',0,0,0),
-(1038,1000,'private','2020-05-25 08:38:12',0,0,0),
-(1039,1000,'private','2020-05-25 11:33:33',0,0,0),
-(1040,1000,'private','2020-05-25 11:33:55',0,0,0),
-(1041,1000,'private','2020-05-26 17:49:03',0,0,0),
-(1042,1000,'private','2020-05-26 18:17:49',0,0,0),
-(1043,1000,'private','2020-05-26 18:20:27',0,0,0),
-(1044,1000,'private','2020-05-26 18:26:27',0,0,0),
-(1045,1000,'private','2020-05-26 18:28:02',0,0,0),
-(1046,1000,'private','2020-05-26 18:33:38',0,0,0),
-(1047,1000,'private','2020-05-26 18:34:22',0,0,0),
-(1048,1000,'private','2020-05-26 18:57:40',0,0,0),
-(1049,1000,'private','2020-05-26 19:25:19',0,0,0),
-(1050,1000,'private','2020-05-26 19:36:12',0,0,0),
-(1052,1000,'private','2020-05-26 23:54:28',0,0,0),
-(1054,1000,'private','2020-05-27 00:17:34',0,0,0),
-(1055,1000,'private','2020-05-27 00:17:47',0,0,0),
-(1057,1000,'private','2020-05-27 00:25:22',0,0,0),
-(1058,1000,'private','2020-05-27 00:25:41',0,0,0),
-(1059,1000,'private','2020-05-27 00:26:37',0,0,0),
-(1060,1000,'private','2020-05-27 00:27:02',0,0,0),
-(1061,1000,'private','2020-05-27 00:28:08',0,0,0),
-(1062,1000,'private','2020-05-27 00:30:20',0,0,0),
-(1063,1000,'private','2020-05-27 00:44:26',0,0,0),
-(1064,1000,'private','2020-05-27 00:57:43',0,0,0),
-(1070,1000,'private','2020-05-27 01:04:39',0,0,0),
-(1071,1000,'private','2020-06-03 13:42:05',0,0,0),
-(1072,1000,'private','2020-06-03 18:00:43',0,0,0);
 
 UNLOCK TABLES;
 
@@ -379,6 +320,7 @@ CREATE TABLE `t_note_dtl` (
   `note_id` int unsigned NOT NULL,
   `note_header` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `note_content` text CHARACTER SET utf8 COLLATE utf8_bin,
+  `note_toppic` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   PRIMARY KEY (`note_id`),
   CONSTRAINT `t_note_dtl_ibfk_1` FOREIGN KEY (`note_id`) REFERENCES `t_note` (`note_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Created By 古学懂';
@@ -387,67 +329,8 @@ CREATE TABLE `t_note_dtl` (
 
 LOCK TABLES `t_note_dtl` WRITE;
 
-insert  into `t_note_dtl`(`note_id`,`note_header`,`note_content`) values 
-(1004,'Test',NULL),
-(1005,'Test',NULL),
-(1006,'Test',NULL),
-(1007,'Test',NULL),
-(1008,'Test',NULL),
-(1009,'Test',NULL),
-(1010,'Test',NULL),
-(1011,'Test',NULL),
-(1012,'Test',NULL),
-(1013,'Test',NULL),
-(1014,'Test',NULL),
-(1015,'Test',NULL),
-(1016,'Test',NULL),
-(1017,'Test',NULL),
-(1018,'Test',NULL),
-(1019,'Test',NULL),
-(1020,'Test',NULL),
-(1021,'Test',NULL),
-(1022,'Test',NULL),
-(1023,'Test',NULL),
-(1024,'Test',NULL),
-(1025,'Test',NULL),
-(1026,'Test',NULL),
-(1027,'Test',NULL),
-(1028,'Test',NULL),
-(1029,'Test',NULL),
-(1030,'Test',NULL),
-(1031,'Test',NULL),
-(1033,'Test',NULL),
-(1034,'Test',NULL),
-(1035,'Test',NULL),
-(1036,'Test',NULL),
-(1037,'Test',NULL),
-(1038,'Test',NULL),
-(1039,'Test',NULL),
-(1040,'Test',NULL),
-(1041,'Test',NULL),
-(1042,'Test',NULL),
-(1043,'Test',NULL),
-(1044,'Test',NULL),
-(1045,'Test',NULL),
-(1046,'Test',NULL),
-(1047,'Test',NULL),
-(1048,'Test',NULL),
-(1049,'Test',NULL),
-(1050,'Test',NULL),
-(1052,'Test',NULL),
-(1054,'Test',NULL),
-(1055,'Test',NULL),
-(1057,'Test',NULL),
-(1058,'Test',NULL),
-(1059,'Test',NULL),
-(1060,'Test',NULL),
-(1061,'Test',NULL),
-(1062,'Test',NULL),
-(1063,'Test',NULL),
-(1064,'Test',NULL),
-(1070,'Test',NULL),
-(1071,'Test',NULL),
-(1072,'Test',NULL);
+insert  into `t_note_dtl`(`note_id`,`note_header`,`note_content`,`note_toppic`) values 
+(1004,'Test',NULL,NULL),
 
 UNLOCK TABLES;
 
@@ -545,13 +428,14 @@ CREATE TABLE `t_region` (
   `name_pinyin` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '中文拼音',
   `code` varchar(50) DEFAULT NULL COMMENT '代码',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4170 DEFAULT CHARSET=utf8 COMMENT='全球地区库，采集自腾讯QQ国内+国际版.ADD.JENA.20141221';
+) ENGINE=InnoDB AUTO_INCREMENT=4171 DEFAULT CHARSET=utf8 COMMENT='全球地区库，采集自腾讯QQ国内+国际版.ADD.JENA.20141221';
 
 /*Data for the table `t_region` */
 
 LOCK TABLES `t_region` WRITE;
 
 insert  into `t_region`(`id`,`pid`,`path`,`level`,`name`,`name_en`,`name_pinyin`,`code`) values 
+(0,NULL,',',0,'全球','Global','quanqiu',NULL),
 (1,0,',1,',1,'亚洲','Asia','yazhou',NULL),
 (2,0,',2,',1,'欧洲','Europe','ouzhou',NULL),
 (3,0,',3,',1,'非洲','Africa','feizhou',NULL),
