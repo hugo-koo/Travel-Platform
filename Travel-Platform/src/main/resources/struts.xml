@@ -20,4 +20,14 @@
 			<result type="json" />
 		</action>
 	</package>
+	
+	<package name="produce_request" namespace="/" extends="json-default">
+		<action name="produce_request" class="cn.edu.bitzh.tp.action.ProduceRequestAction">
+			<result name="success">/index.jsp</result>
+	
+		</action>
+	
+	</package>
+	
+	
 </struts>
