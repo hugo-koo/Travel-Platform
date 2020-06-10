@@ -22,8 +22,8 @@ public class RegionAction extends ActionSupport {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	ApplicationContext applicationContext = new ClassPathXmlApplicationContext("beans.xml");
-	IRegionService rs = (RegionService) applicationContext.getBean("regionService");
+	private ApplicationContext applicationContext = new ClassPathXmlApplicationContext("beans.xml");
+	private IRegionService rs = (RegionService) applicationContext.getBean("regionService");
 	private Region region;
 	private List<Region> regions;
 	/**
@@ -51,7 +51,7 @@ public class RegionAction extends ActionSupport {
 			regions = rs.listContinents();
 		} else if (type.equals("listChildren")) {
 			regions = rs.listChildRegions(pid);
-		} else if (type.equals("")) {
+		} else {
 			region = rs.get(id);
 		}
 		System.out.println("Execute " + this.type);
