@@ -2,7 +2,6 @@ package cn.edu.bitzh.tp.model;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,13 +12,13 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
-@Entity
-@Table(name = "t_note")
 /**
  * 游记
  * @author 古学懂_Victor
  * @date 2020年5月8日
  */
+@Entity
+@Table(name = "t_note")
 public class Note {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,7 +27,7 @@ public class Note {
 	@Column(name = "note_author")
 	private int noteAuthor;
 	@Column(name = "note_permission")
-	private int notePermission;
+	private String notePermission;
 	@Column(name = "note_post_date")
 	private Date notePostDate;
 	@Column(name = "favorite_count")
@@ -43,7 +42,7 @@ public class Note {
 	private int likeCount;
 	@Column(name = "comment_count")
 	private int commentCount;
-	@OneToOne(fetch = FetchType.LAZY, optional = false, mappedBy = "note")
+	@OneToOne(fetch = FetchType.EAGER, optional = false, mappedBy = "note")
 	@PrimaryKeyJoinColumn
 	private NoteDtl noteDtl;
 	public NoteDtl getNoteDtl() {
@@ -53,12 +52,11 @@ public class Note {
 		this.noteDtl = noteDtl;
 	}
 	/**
-	 * 1: private, 2: public
 	 * @author 古学懂_Victor
 	 * @date 2020年5月8日
-	 * @param note_permission
+	 * @param notePermission 1: private, 2: public
 	 */
-	public void setNotePermission(int notePermission) {
+	public void setNotePermission(String notePermission) {
 		this.notePermission = notePermission;
 	}
 	public int getNoteId() {
@@ -91,7 +89,7 @@ public class Note {
 	public void setCommentCount(int commentCount) {
 		this.commentCount = commentCount;
 	}
-	public int getNotePermission() {
+	public String getNotePermission() {
 		return notePermission;
 	}
 }

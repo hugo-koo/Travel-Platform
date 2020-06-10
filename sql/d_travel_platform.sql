@@ -12,7 +12,7 @@ MySQL - 8.0.19 : Database - d_travel_platform
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-CREATE DATABASE /*!32312 IF NOT EXISTS*/`d_travel_platform` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */ ;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`d_travel_platform` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */;
 
 USE `d_travel_platform`;
 
@@ -51,8 +51,7 @@ CREATE TABLE `t_answer` (
   PRIMARY KEY (`answer_id`,`answer_topic`,`answer_author`),
   KEY `answer_topic` (`answer_topic`),
   KEY `answer_creator` (`answer_author`),
-  CONSTRAINT `t_answer_ibfk_1` FOREIGN KEY (`answer_topic`) REFERENCES `t_topic` (`topic_id`),
-  CONSTRAINT `t_answer_ibfk_2` FOREIGN KEY (`answer_author`) REFERENCES `t_user` (`user_id`)
+  CONSTRAINT `t_answer_ibfk_1` FOREIGN KEY (`answer_topic`) REFERENCES `t_topic` (`topic_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Created By 古学懂';
 
 /*Data for the table `t_answer` */
@@ -99,6 +98,24 @@ LOCK TABLES `t_arrangement_content` WRITE;
 
 UNLOCK TABLES;
 
+/*Table structure for table `t_background_administrator` */
+
+DROP TABLE IF EXISTS `t_background_administrator`;
+
+CREATE TABLE `t_background_administrator` (
+  `administrator_id` int unsigned NOT NULL,
+  `administrator_name` varchar(45) NOT NULL,
+  `administrator_password` varchar(45) NOT NULL,
+  PRIMARY KEY (`administrator_id`),
+  UNIQUE KEY `administrator_id_UNIQUE` (`administrator_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `t_background_administrator` */
+
+LOCK TABLES `t_background_administrator` WRITE;
+
+UNLOCK TABLES;
+
 /*Table structure for table `t_cost_content` */
 
 DROP TABLE IF EXISTS `t_cost_content`;
@@ -119,6 +136,45 @@ LOCK TABLES `t_cost_content` WRITE;
 
 UNLOCK TABLES;
 
+/*Table structure for table `t_event` */
+
+DROP TABLE IF EXISTS `t_event`;
+
+CREATE TABLE `t_event` (
+  `administrator_id` int unsigned DEFAULT NULL,
+  `event _id` int unsigned NOT NULL,
+  `event_describe` varchar(45) NOT NULL,
+  `event_state` varchar(45) NOT NULL,
+  PRIMARY KEY (`event _id`),
+  UNIQUE KEY `event _id_UNIQUE` (`event _id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `t_event` */
+
+LOCK TABLES `t_event` WRITE;
+
+UNLOCK TABLES;
+
+/*Table structure for table `t_favorite_scenery` */
+
+DROP TABLE IF EXISTS `t_favorite_scenery`;
+
+CREATE TABLE `t_favorite_scenery` (
+  `user_id` int unsigned NOT NULL,
+  `favorite_scenery` int unsigned NOT NULL,
+  PRIMARY KEY (`user_id`),
+  UNIQUE KEY `user_id_UNIQUE` (`user_id`),
+  KEY `favorite_scenery` (`favorite_scenery`),
+  CONSTRAINT `t_favorite_scenery_ibfk_1` FOREIGN KEY (`favorite_scenery`) REFERENCES `t_scenery` (`scenery_id`),
+  CONSTRAINT `t_favorite_scenery_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `t_user` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `t_favorite_scenery` */
+
+LOCK TABLES `t_favorite_scenery` WRITE;
+
+UNLOCK TABLES;
+
 /*Table structure for table `t_favourites` */
 
 DROP TABLE IF EXISTS `t_favourites`;
@@ -134,10 +190,10 @@ CREATE TABLE `t_favourites` (
   KEY `favorites_topic` (`favorites_topic`),
   KEY `favorites_answer` (`favorites_answer`),
   KEY `favorites_note` (`favorites_note`),
-  CONSTRAINT `t_favourites_ibfk_1` FOREIGN KEY (`favorites_ownner`) REFERENCES `t_user` (`user_id`),
   CONSTRAINT `t_favourites_ibfk_2` FOREIGN KEY (`favorites_topic`) REFERENCES `t_topic` (`topic_id`),
   CONSTRAINT `t_favourites_ibfk_3` FOREIGN KEY (`favorites_answer`) REFERENCES `t_answer` (`answer_id`),
-  CONSTRAINT `t_favourites_ibfk_4` FOREIGN KEY (`favorites_note`) REFERENCES `t_note` (`note_id`)
+  CONSTRAINT `t_favourites_ibfk_4` FOREIGN KEY (`favorites_note`) REFERENCES `t_note` (`note_id`),
+  CONSTRAINT `t_favourites_ibfk_5` FOREIGN KEY (`favorites_ownner`) REFERENCES `t_user` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Created By 古学懂';
 
 /*Data for the table `t_favourites` */
@@ -159,8 +215,8 @@ CREATE TABLE `t_footprint` (
   PRIMARY KEY (`footprint_id`),
   KEY `footprint_ownner` (`footprint_ownner`),
   KEY `region_id` (`region_id`),
-  CONSTRAINT `t_footprint_ibfk_1` FOREIGN KEY (`footprint_ownner`) REFERENCES `t_user` (`user_id`),
-  CONSTRAINT `t_footprint_ibfk_2` FOREIGN KEY (`region_id`) REFERENCES `t_region` (`id`)
+  CONSTRAINT `t_footprint_ibfk_2` FOREIGN KEY (`region_id`) REFERENCES `t_region` (`id`),
+  CONSTRAINT `t_footprint_ibfk_3` FOREIGN KEY (`footprint_ownner`) REFERENCES `t_user` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Created By 古学懂';
 
 /*Data for the table `t_footprint` */
@@ -218,18 +274,17 @@ CREATE TABLE `t_note` (
   `favorite_count` int unsigned NOT NULL DEFAULT '0',
   `like_count` int unsigned NOT NULL DEFAULT '0',
   `comment_count` int unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`note_id`,`note_author`),
+  PRIMARY KEY (`note_id`),
   UNIQUE KEY `note_id` (`note_id`),
-  KEY `author` (`note_author`),
+  KEY `note_author` (`note_author`),
   CONSTRAINT `t_note_ibfk_1` FOREIGN KEY (`note_author`) REFERENCES `t_user` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1019 DEFAULT CHARSET=utf8 COMMENT='Created By 古学懂';
+) ENGINE=InnoDB AUTO_INCREMENT=1073 DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Created By 古学懂';
 
 /*Data for the table `t_note` */
 
 LOCK TABLES `t_note` WRITE;
 
 insert  into `t_note`(`note_id`,`note_author`,`note_permission`,`note_post_date`,`favorite_count`,`like_count`,`comment_count`) values 
-(1003,1000,'private','2020-05-08 10:38:00',0,0,0),
 (1004,1000,'private','2020-05-08 10:46:14',0,0,0),
 (1005,1000,'private','2020-05-08 13:15:12',0,0,0),
 (1006,1000,'private','2020-05-10 22:24:30',0,0,0),
@@ -244,7 +299,52 @@ insert  into `t_note`(`note_id`,`note_author`,`note_permission`,`note_post_date`
 (1015,1000,'private','2020-05-13 14:49:18',0,0,0),
 (1016,1000,'private','2020-05-13 14:52:55',0,0,0),
 (1017,1000,'private','2020-05-13 19:17:44',0,0,0),
-(1018,1000,'private','2020-05-15 10:15:07',0,0,0);
+(1018,1000,'private','2020-05-15 10:15:07',0,0,0),
+(1019,1000,'private','2020-05-19 16:04:53',0,0,0),
+(1020,1000,'private','2020-05-19 16:05:14',0,0,0),
+(1021,1000,'private','2020-05-19 16:21:13',0,0,0),
+(1022,1000,'private','2020-05-19 16:26:29',0,0,0),
+(1023,1000,'private','2020-05-19 16:41:07',0,0,0),
+(1024,1000,'private','2020-05-23 21:21:06',0,0,0),
+(1025,1000,'private','2020-05-23 21:23:20',0,0,0),
+(1026,1000,'private','2020-05-23 21:27:42',0,0,0),
+(1027,1000,'private','2020-05-23 21:30:59',0,0,0),
+(1028,1000,'private','2020-05-23 21:39:04',0,0,0),
+(1029,1000,'private','2020-05-23 21:44:04',0,0,0),
+(1030,1000,'private','2020-05-23 21:46:54',0,0,0),
+(1031,1000,'private','2020-05-23 21:47:48',0,0,0),
+(1033,1000,'private','2020-05-23 21:50:45',0,0,0),
+(1034,1000,'private','2020-05-23 21:57:31',0,0,0),
+(1035,1000,'private','2020-05-23 23:51:07',0,0,0),
+(1036,1000,'private','2020-05-23 23:53:24',0,0,0),
+(1037,1000,'private','2020-05-24 21:32:15',0,0,0),
+(1038,1000,'private','2020-05-25 08:38:12',0,0,0),
+(1039,1000,'private','2020-05-25 11:33:33',0,0,0),
+(1040,1000,'private','2020-05-25 11:33:55',0,0,0),
+(1041,1000,'private','2020-05-26 17:49:03',0,0,0),
+(1042,1000,'private','2020-05-26 18:17:49',0,0,0),
+(1043,1000,'private','2020-05-26 18:20:27',0,0,0),
+(1044,1000,'private','2020-05-26 18:26:27',0,0,0),
+(1045,1000,'private','2020-05-26 18:28:02',0,0,0),
+(1046,1000,'private','2020-05-26 18:33:38',0,0,0),
+(1047,1000,'private','2020-05-26 18:34:22',0,0,0),
+(1048,1000,'private','2020-05-26 18:57:40',0,0,0),
+(1049,1000,'private','2020-05-26 19:25:19',0,0,0),
+(1050,1000,'private','2020-05-26 19:36:12',0,0,0),
+(1052,1000,'private','2020-05-26 23:54:28',0,0,0),
+(1054,1000,'private','2020-05-27 00:17:34',0,0,0),
+(1055,1000,'private','2020-05-27 00:17:47',0,0,0),
+(1057,1000,'private','2020-05-27 00:25:22',0,0,0),
+(1058,1000,'private','2020-05-27 00:25:41',0,0,0),
+(1059,1000,'private','2020-05-27 00:26:37',0,0,0),
+(1060,1000,'private','2020-05-27 00:27:02',0,0,0),
+(1061,1000,'private','2020-05-27 00:28:08',0,0,0),
+(1062,1000,'private','2020-05-27 00:30:20',0,0,0),
+(1063,1000,'private','2020-05-27 00:44:26',0,0,0),
+(1064,1000,'private','2020-05-27 00:57:43',0,0,0),
+(1070,1000,'private','2020-05-27 01:04:39',0,0,0),
+(1071,1000,'private','2020-06-03 13:42:05',0,0,0),
+(1072,1000,'private','2020-06-03 18:00:43',0,0,0);
 
 UNLOCK TABLES;
 
@@ -302,7 +402,52 @@ insert  into `t_note_dtl`(`note_id`,`note_header`,`note_content`) values
 (1015,'Test',NULL),
 (1016,'Test',NULL),
 (1017,'Test',NULL),
-(1018,'Test',NULL);
+(1018,'Test',NULL),
+(1019,'Test',NULL),
+(1020,'Test',NULL),
+(1021,'Test',NULL),
+(1022,'Test',NULL),
+(1023,'Test',NULL),
+(1024,'Test',NULL),
+(1025,'Test',NULL),
+(1026,'Test',NULL),
+(1027,'Test',NULL),
+(1028,'Test',NULL),
+(1029,'Test',NULL),
+(1030,'Test',NULL),
+(1031,'Test',NULL),
+(1033,'Test',NULL),
+(1034,'Test',NULL),
+(1035,'Test',NULL),
+(1036,'Test',NULL),
+(1037,'Test',NULL),
+(1038,'Test',NULL),
+(1039,'Test',NULL),
+(1040,'Test',NULL),
+(1041,'Test',NULL),
+(1042,'Test',NULL),
+(1043,'Test',NULL),
+(1044,'Test',NULL),
+(1045,'Test',NULL),
+(1046,'Test',NULL),
+(1047,'Test',NULL),
+(1048,'Test',NULL),
+(1049,'Test',NULL),
+(1050,'Test',NULL),
+(1052,'Test',NULL),
+(1054,'Test',NULL),
+(1055,'Test',NULL),
+(1057,'Test',NULL),
+(1058,'Test',NULL),
+(1059,'Test',NULL),
+(1060,'Test',NULL),
+(1061,'Test',NULL),
+(1062,'Test',NULL),
+(1063,'Test',NULL),
+(1064,'Test',NULL),
+(1070,'Test',NULL),
+(1071,'Test',NULL),
+(1072,'Test',NULL);
 
 UNLOCK TABLES;
 
@@ -4596,9 +4741,9 @@ CREATE TABLE `t_scenery` (
   KEY `fk_scenery_pid` (`scenery_pid`),
   KEY `fk_scenery_author` (`scenery_author`),
   KEY `fk_scenery_region` (`scenery_region`),
-  CONSTRAINT `fk_scenery_author` FOREIGN KEY (`scenery_author`) REFERENCES `t_user` (`user_id`),
   CONSTRAINT `fk_scenery_pid` FOREIGN KEY (`scenery_pid`) REFERENCES `t_scenery` (`scenery_id`),
-  CONSTRAINT `fk_scenery_region` FOREIGN KEY (`scenery_region`) REFERENCES `t_region` (`id`)
+  CONSTRAINT `fk_scenery_region` FOREIGN KEY (`scenery_region`) REFERENCES `t_region` (`id`),
+  CONSTRAINT `t_scenery_ibfk_1` FOREIGN KEY (`scenery_author`) REFERENCES `t_user` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='景点表';
 
 /*Data for the table `t_scenery` */
@@ -4640,8 +4785,8 @@ CREATE TABLE `t_scenery_review` (
   `scenery_review_time` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '点评时间',
   PRIMARY KEY (`scenery_review_id`,`user_review_id`),
   KEY `fk_user_score_id` (`user_review_id`),
-  CONSTRAINT `fk_scenery_score_id` FOREIGN KEY (`scenery_review_id`) REFERENCES `t_scenery` (`scenery_id`),
-  CONSTRAINT `fk_user_score_id` FOREIGN KEY (`user_review_id`) REFERENCES `t_user` (`user_id`)
+  CONSTRAINT `fk_scenery_review` FOREIGN KEY (`user_review_id`) REFERENCES `t_user` (`user_id`),
+  CONSTRAINT `fk_scenery_score_id` FOREIGN KEY (`scenery_review_id`) REFERENCES `t_scenery` (`scenery_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='景点点评表';
 
 /*Data for the table `t_scenery_review` */
@@ -4687,21 +4832,82 @@ LOCK TABLES `t_topic_dtl` WRITE;
 
 UNLOCK TABLES;
 
+/*Table structure for table `t_trader_apply` */
+
+DROP TABLE IF EXISTS `t_trader_apply`;
+
+CREATE TABLE `t_trader_apply` (
+  `t_trader_id` int unsigned NOT NULL AUTO_INCREMENT,
+  `t_trader_username` varchar(100) DEFAULT NULL,
+  `t_trader_company` varchar(255) DEFAULT NULL COMMENT '公司',
+  `t_trader_phone` varchar(255) DEFAULT NULL COMMENT '电话',
+  `t_trader_status` tinyint DEFAULT '0' COMMENT '状态(0正常/1禁言/2待审核)',
+  PRIMARY KEY (`t_trader_id`),
+  UNIQUE KEY `t_trader_id_UNIQUE` (`t_trader_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+/*Data for the table `t_trader_apply` */
+
+LOCK TABLES `t_trader_apply` WRITE;
+
+UNLOCK TABLES;
+
 /*Table structure for table `t_user` */
 
 DROP TABLE IF EXISTS `t_user`;
 
 CREATE TABLE `t_user` (
   `user_id` int unsigned NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1001 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  `user_name` varchar(50) NOT NULL,
+  `user_password` varchar(50) NOT NULL,
+  `user_emile` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  PRIMARY KEY (`user_id`),
+  UNIQUE KEY `user_id_UNIQUE` (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1001 DEFAULT CHARSET=utf8;
 
 /*Data for the table `t_user` */
 
 LOCK TABLES `t_user` WRITE;
 
-insert  into `t_user`(`user_id`) values 
-(1000);
+insert  into `t_user`(`user_id`,`user_name`,`user_password`,`user_emile`) values 
+(1000,'Victor_Koo','123456',NULL);
+
+UNLOCK TABLES;
+
+/*Table structure for table `t_user_info` */
+
+DROP TABLE IF EXISTS `t_user_info`;
+
+CREATE TABLE `t_user_info` (
+  `user_id` int unsigned NOT NULL,
+  `user_birth` date DEFAULT NULL,
+  `user_sex` enum('male','female','unknown','other') CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `user_intro` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`user_id`),
+  UNIQUE KEY `user_id_UNIQUE` (`user_id`),
+  CONSTRAINT `t_user_info_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `t_user` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `t_user_info` */
+
+LOCK TABLES `t_user_info` WRITE;
+
+UNLOCK TABLES;
+
+/*Table structure for table `t_user_permissions` */
+
+DROP TABLE IF EXISTS `t_user_permissions`;
+
+CREATE TABLE `t_user_permissions` (
+  `user_id` int unsigned NOT NULL,
+  `t_user_permissionscol` int unsigned NOT NULL,
+  PRIMARY KEY (`user_id`),
+  UNIQUE KEY `user_id_UNIQUE` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `t_user_permissions` */
+
+LOCK TABLES `t_user_permissions` WRITE;
 
 UNLOCK TABLES;
 
@@ -4717,8 +4923,8 @@ CREATE TABLE `t_vote` (
   PRIMARY KEY (`vote_id`),
   KEY `voter` (`voter`),
   KEY `vote_answer` (`vote_answer`),
-  CONSTRAINT `t_vote_ibfk_1` FOREIGN KEY (`voter`) REFERENCES `t_user` (`user_id`),
-  CONSTRAINT `t_vote_ibfk_2` FOREIGN KEY (`vote_answer`) REFERENCES `t_answer` (`answer_id`)
+  CONSTRAINT `t_vote_ibfk_2` FOREIGN KEY (`vote_answer`) REFERENCES `t_answer` (`answer_id`),
+  CONSTRAINT `t_vote_ibfk_3` FOREIGN KEY (`voter`) REFERENCES `t_user` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Created By 古学懂';
 
 /*Data for the table `t_vote` */
