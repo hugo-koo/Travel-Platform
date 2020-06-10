@@ -32,5 +32,6 @@ public interface IRegionService {
 	 * @return List 子地区列表
 	 * @see IRegionDao
 	 */
-	List<Region> listContineins();
+	List<Region> listContinents();
+	
 }

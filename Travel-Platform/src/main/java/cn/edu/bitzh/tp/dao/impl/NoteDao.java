@@ -115,4 +115,10 @@ public class NoteDao implements INoteDao {
 		return false;
 	}
 
+	@Override
+	public List<Note> list() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

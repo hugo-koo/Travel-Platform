@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<div id="header" class="container-fluid">
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<div id="header" class="">
+	<nav class="navbar navbar-expand-lg navbar-light">
 		<a class="navbar-brand" href="/Travel-Platform/index.jsp"> <img
 			src="/Travel-Platform/_img/TP-logo.svg" alt="" width="32" height="32"
 			title="TP"> <%="旅游平台"%>

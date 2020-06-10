@@ -16,8 +16,8 @@ src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
 	crossorigin="anonymous"></script>
 <%--导入站点全局首部--%>
 <%-- <%@ include file="/site-head.jsp"%> --%>
-<script type="text/javascript"
-	src="/Travel-Platform/_scripts/site-js.js"></script>
+<%-- <script type="text/javascript" --%>
+<%-- 	src="/Travel-Platform/_scripts/site-js.js"></script> --%>
 <link rel="stylesheet" href="/Travel-Platform/_style/site-style.css">
 <link
 	href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css"

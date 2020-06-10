@@ -9,7 +9,7 @@
 <!-- Site common scripts -->
 <script type="text/javascript"
 	src="/Travel-Platform/_scripts/site-js.js"></script>
-<!-- Fabric UI -->
+<!-- Fluent UI -->
 
 <!-- Icon -->
 <link rel="icon" href="/Travel-Platform/_img/TP-logo.svg">
@@ -31,11 +31,14 @@
 <script src="https://unpkg.com/babel-standalone@latest/babel.min.js"
 	crossorigin="anonymous"></script>
 <!-- Fonts to support Material Design -->
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+<!-- 中国境内不可用！ -->
+<!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" /> -->
 <!-- Icons to support Material Design -->
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+<!-- 中国境内不可用！ -->
+<!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" /> -->
+<!-- 思源黑体 -->
+<!-- 中国境内不可用！ -->
+<!-- <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet"> -->
 <!-- BootstrapCDN-CSS -->
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
