@@ -13,7 +13,7 @@ public class ProduceRequestServiceImpl implements ProduceRequestService {
 		
 		
 		System.out.println("ProduceRequestService start\n");
-		
+		produceRequestDao.save();
 		
 		return false;
 		
