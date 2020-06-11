@@ -9,11 +9,11 @@
 			<result type="redirect" name="success">
 				<param name="location">/index.jsp</param>
 			</result>
-			<!-- 重点！Struts2.5使用通配符调用方法时，内部会验证是否允许访问该方法 -->
+			<!-- 重点！Struts2.5使用通配符调用方法时，内部会验证是否允许访问该方法 ，注：可使用正则表达式-->
 			<allowed-methods>test</allowed-methods>
 		</action>
 	</package>
-	<package name="json-region" namespace="/"
+	<package name="json-api" namespace="/"
 		extends="json-default">
 		<action name="region_*"
 			class="cn.edu.bitzh.tp.action.RegionAction"
@@ -21,5 +21,11 @@
 			<result type="json" />
 			<allowed-methods>listChildren, listContinents, get</allowed-methods>
 		</action>
+		      <action name="note_*"
+            class="cn.edu.bitzh.tp.action.NoteAction"
+            method="{1}">
+            <result type="json" />
+            <allowed-methods>get, insert</allowed-methods>
+        </action>
 	</package>
 </struts>
