@@ -2,10 +2,12 @@ package cn.edu.bitzh.tp.service;
 
 import java.util.List;
 
+import cn.edu.bitzh.tp.dao.INoteDao;
 import cn.edu.bitzh.tp.model.Note;
 
 /**
 * @author 古学懂_Victor
+* @see INoteDao
 */
 public interface INoteService extends IBaseService<Note> {
 	/** Used for list all notes */
