@@ -1,7 +1,8 @@
 package cn.edu.bitzh.tp.model;
 
 import java.util.Date;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,6 +16,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Cascade;
 
 /**
  * 游记
@@ -44,22 +47,19 @@ public class Note {
 	@OneToOne(fetch = FetchType.EAGER, optional = false, mappedBy = "note")
 	@PrimaryKeyJoinColumn
 	private NoteDtl noteDtl;
-	// 定义该Note实体所有关联的Region实体
-	@ManyToMany(targetEntity = Region.class)
+	@ManyToMany(targetEntity = Region.class, fetch = FetchType.EAGER)
+	// 使用hibernate注解级联
+	@Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
 	// 映射连接表，指定连接表t_note_region
-	@JoinTable(name = "t_note_region",
-			// 映射连接表中名为note_id的外键列，该列参照当前实体对应表的note_id主键列
-			joinColumns = @JoinColumn(referencedColumnName = "note_id", name = "note_id"),
-			// 映射连接表中名为region_id的外键列，该列参照当前实体的关联实体对应标的region_id主键列
-			inverseJoinColumns = @JoinColumn(referencedColumnName = "region_id", name = "region_id")
-    )
-	private List<Region> regions;
+	@JoinTable(name = "t_note_region", joinColumns = @JoinColumn(name = "note_id"), inverseJoinColumns = @JoinColumn(name = "region_id"))
+	//饿汉模式
+	private Set<Region> regions = new HashSet<Region>();
 
-	public List<Region> getRegions() {
+	public Set<Region> getRegions() {
 		return regions;
 	}
 
-	public void setRegions(List<Region> regions) {
+	public void setRegions(Set<Region> regions) {
 		this.regions = regions;
 	}
 
