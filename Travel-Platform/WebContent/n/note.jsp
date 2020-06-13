@@ -75,7 +75,7 @@
 								<h5 class="card-title"><%="标题"%></h5>
 								<p class="card-text"><%="摘要"%></p>
 								<p class="card-text">
-									<small class="text-muted"><%="发布于 "%></small>
+									<small class="text-muted"><%="发布于... 点赞... 评论... 浏览..."%></small>
 								</p>
 							</div>
 						</div>
@@ -93,7 +93,7 @@
 								<h5 class="card-title"><%="标题"%></h5>
 								<p class="card-text"><%="摘要"%></p>
 								<p class="card-text">
-									<small class="text-muted"><%="发布于 "%></small>
+									<small class="text-muted"><%="发布于... 点赞... 评论... 浏览..."%></small>
 								</p>
 							</div>
 						</div>
