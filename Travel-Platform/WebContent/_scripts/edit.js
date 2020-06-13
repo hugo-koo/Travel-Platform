@@ -47,38 +47,38 @@ var regionChange = function(rank) {
 	}
 	regionId = pId;
 	$.ajax({
-				type : "post",
-				url : "/Travel-Platform/region_listChildren.action",
-				data : {
-					"pid" : pId
-				},
-				success : function(data) {
-					// 如果子列表不存在，即最终级地区
-					if (data.regions <= 0) {
-						regionId = pId;
-						$("#region-name").text(pName);
-						console.log(regionId);
-						return;
-					}
-					console.log(pName);
-					$("#region-list").append(
-							"<select class=\"form-control my-2\" id=\"region-"
-									+ rank + "\" name=\"region-" + rank
-									+ "\" onchange=\"regionChange(" + rank
-									+ ")\"></select>");
-					$("#region-" + rank)
-							.append(
-									"<option selected=\"selected\" value=\"-1\">请选择...</option>");
-					for (var i = 0; i < data.regions.length; i++) {
-						$('#region-' + rank).append(
-								"<option value='" + data.regions[i].id + "' >"
-										+ data.regions[i].name + "</option>");
-					}
-				},
-				error : function() {
-					alert("加载地区失败");
-				}
-			});
+		type : "post",
+		url : "/Travel-Platform/region_listChildren.action",
+		data : {
+			"pid" : pId
+		},
+		success : function(data) {
+			// 如果子列表不存在，即最终级地区
+			if (data.regions <= 0) {
+				regionId = pId;
+				$("#region-name").text(pName);
+				console.log(regionId);
+				return;
+			}
+			console.log(pName);
+			$("#region-list").append(
+				"<select class=\"form-control my-2\" id=\"region-"
+					+ rank + "\" name=\"region-" + rank
+					+ "\" onchange=\"regionChange(" + rank
+					+ ")\"></select>");
+			$("#region-" + rank)
+				.append(
+					"<option selected=\"selected\" value=\"-1\">请选择...</option>");
+			for (var i = 0; i < data.regions.length; i++) {
+				$('#region-' + rank).append(
+					"<option value='" + data.regions[i].id + "' >"
+						+ data.regions[i].name + "</option>");
+			}
+		},
+		error : function() {
+			alert("加载地区失败");
+		}
+	});
 }
 var post = function() {
 	// 将地区id值注入表单
