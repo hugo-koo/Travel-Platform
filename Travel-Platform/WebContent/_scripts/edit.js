@@ -46,8 +46,7 @@ var regionChange = function(rank) {
 			$("#region-" + i).remove();
 	}
 	regionId = pId;
-	$
-			.ajax({
+	$.ajax({
 				type : "post",
 				url : "/Travel-Platform/region_listChildren.action",
 				data : {
@@ -84,6 +83,8 @@ var regionChange = function(rank) {
 var post = function() {
 	// 将地区id值注入表单
 	$("#regionId").val(regionId);
+	//将内容注入表单
+	$("#noteContent").val(getNoteHtml());
 	console.log($("#regionId").val());
 	$.ajax({
 		type : "POST",
@@ -97,4 +98,7 @@ var post = function() {
 			alert("发布失败！");
 		}
 	});
+}
+var saveDraft = function(){
+	alert("功能未完善");
 }

@@ -37,7 +37,7 @@
 			<div class="col-6 col-lg-8">
 				<form class="form-horizontal container" id="note">
 					<div class="form-group row">
-						<input type="text" class="form-control" id="note-header"
+						<input type="text" class="form-control" id="noteHeader" name="note.noteDtl.noteHeader"
 							placeholder="游记标题">
 					</div>
 					<div class="form-row row">
