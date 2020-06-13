@@ -67,9 +67,9 @@
 				<ul class="nav nav-tabs" id="mainTab" role="tablist">
 					<li class="nav-item" role="presentation"><a
 						class="nav-link active" id="hotlist-tab" data-toggle="tab"
-						href="#hotlist" role="tab">Home</a></li>
+						href="#hotlist" role="tab">热门游记</a></li>
 					<li class="nav-item" role="presentation"><a class="nav-link"
-						id="latest-tab" data-toggle="tab" href="#latest" role="tab">Profile</a>
+						id="latest-tab" data-toggle="tab" href="#latest" role="tab">最新推荐</a>
 					</li>
 				</ul>
 				<br>
@@ -137,11 +137,12 @@
 				<ul class="nav nav-pills mb-3" id="scondaryTab" role="tablist">
 					<li class="nav-item" role="presentation"><a
 						class="nav-link active" id="hotscenery-tab" data-toggle="tab"
-						href="#hotscenery" role="tab">Home</a></li>
+						href="#hotscenery" role="tab">产品推荐</a></li>
 					<li class="nav-item" role="presentation"><a class="nav-link"
 						id="hotscenery-tab" data-toggle="tab" href="#hotscenery"
-						role="tab">Profile</a></li>
+						role="tab">热门景点</a></li>
 				</ul>
+				<br>
 				<div class="tab-content" id="scondaryTabContent">
 					<div class="tab-pane fade show active" id="hotscenery"
 						role="tabpanel">...</div>
