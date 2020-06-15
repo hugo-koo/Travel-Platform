@@ -22,7 +22,7 @@
 		<action name="note_*" class="cn.edu.bitzh.tp.action.NoteAction"
 			method="{1}">
 			<result type="json" />
-			<allowed-methods>get, insert</allowed-methods>
+			<allowed-methods>get, insert, listLatestNotes, listHotestNotes</allowed-methods>
 		</action>
 	</package>
 </struts>

@@ -110,6 +110,16 @@
 								</div>
 							</div>
 						</div>
+						<hr>
+						<nav aria-label="Page navigation example">
+							<ul class="pagination">
+								<li class="page-item"><a class="page-link" href="javascript:void(0)">上一页</a></li>
+								<li class="page-item"><a class="page-link" href="javascript:void(0)">1</a></li>
+								<li class="page-item"><a class="page-link" href="javascript:void(0)">2</a></li>
+								<li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
+								<li class="page-item"><a class="page-link" href="javascript:void(0)">下一页</a></li>
+							</ul>
+						</nav>
 					</div>
 					<div class="tab-pane fade" id="latest" role="tabpanel">
 						<div class="card mb-3" style="max-width: 715px;">
@@ -129,6 +139,16 @@
 								</div>
 							</div>
 						</div>
+						<hr>
+						<nav aria-label="Page navigation example">
+							<ul class="pagination">
+								<li class="page-item"><a class="page-link" href="javascript:void(0)">上一页</a></li>
+								<li class="page-item"><a class="page-link" href="javascript:void(0)">1</a></li>
+								<li class="page-item"><a class="page-link" href="javascript:void(0)">2</a></li>
+								<li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
+								<li class="page-item"><a class="page-link" href="javascript:void(0)">下一页</a></li>
+							</ul>
+						</nav>
 					</div>
 				</div>
 			</div>

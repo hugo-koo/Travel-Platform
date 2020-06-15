@@ -81,6 +81,7 @@ var regionChange = function(rank) {
 	});
 }
 var post = function() {
+	$("#post-spinner").css("display", "inline-block");
 	// 将地区id值注入表单
 	$("#regionId").val(regionId);
 	//将内容注入表单
@@ -92,9 +93,11 @@ var post = function() {
 		url : "/Travel-Platform/note_insert.action",
 		data : $('#note').serialize(),
 		success : function(data) {
+			$("#post-spinner").css("display", "none");
 			console.log(data);
 		},
 		error : function() {
+			$("#post-spinner").css("display", "none");
 			alert("发布失败！");
 		}
 	});
