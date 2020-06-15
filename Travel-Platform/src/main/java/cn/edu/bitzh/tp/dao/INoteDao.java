@@ -60,4 +60,7 @@ public interface INoteDao extends IBaseDao<Note> {
 	default List<Note> list() {
 		return listBy(INoteDao.ALL, null);
 	}
+
+	List<Note> listHotestNotes();
+
 }

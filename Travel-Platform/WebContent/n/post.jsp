@@ -59,6 +59,14 @@
 			</div>
 		</div>
 	</div>
+	<button id="like-button" type="button" class="btn btn-light float-left"
+        onclick="like()">
+        <img alt="like" src="/Travel-Platform/_img/like.svg">
+    </button>
+    <button id="favourites-button" type="button" class="btn btn-light float-left"
+        onclick="favourites()">
+        <img alt="like" src="/Travel-Platform/_img/favourites.svg">
+    </button>
 	<footer>
 		<%@ include file="/site-footer.jsp"%>
 	</footer>

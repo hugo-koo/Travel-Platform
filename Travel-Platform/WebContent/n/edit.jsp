@@ -17,9 +17,8 @@
 	</header>
 	<div class="container-fluid">
 		<div class="row align-items-start">
-			<img src="<%="/Travel-Platform/_img/page_bg.jpg"%>"
-				class="img-fluid" alt="头图"> <input type="file"
-				class="inner-text" name="toppic"
+			<img src="<%="/Travel-Platform/_img/page_bg.jpg"%>" class="img-fluid"
+				alt="头图"> <input type="file" class="inner-text" name="toppic"
 				accept="image/jpeg,.JPEG,image/png,image/gif" id=""
 				style="z-index: 11; opacity: 0;">
 			<div class="inner-text" style="">
@@ -36,25 +35,34 @@
 		<div class="row">
 			<div class="col-sm-1"></div>
 			<div class="col-6 col-lg-8">
-				<form class="form-horizontal container">
+				<form class="form-horizontal container" id="note">
 					<div class="form-group row">
-						<input type="text" class="form-control" id="note-header"
-							placeholder="游记标题">
+						<input type="text"
+							style="height: calc(2em + .75rem + 2px); font-size: 2rem; color: #0f4c81;"
+							class="form-control" id="noteHeader"
+							name="note.noteDtl.noteHeader" placeholder="游记标题">
 					</div>
 					<div class="form-row row">
 						<div class="form-group col-sm-8">
-							<button type="submit" class="btn btn-primary">保存至草稿</button>
-							<button type="button" class="btn" onclick="">发布</button>
+							<button type="button" class="btn btn-primary"
+								onclick="saveDraft()">保存至草稿</button>
+							<button type="button" class="btn" onclick="post()">发布</button>
+							<div class="spinner-border text-info" id="post-spinner"
+								role="status" style="display: none;">
+								<span class="sr-only">Loading...</span>
+							</div>
 						</div>
 						<div class="form-group col-sm-4">
-							<select id="permission" class="form-control">
+							<select id="permission" class="form-control"
+								name="note.notePermission">
 								<option selected value="public">公开</option>
 								<option value="private">私享</option>
 							</select>
 						</div>
 					</div>
-					<input type="hidden" name="content" value="" id="input-content" />
-					<input type="hidden" name="region" value="" id="input-region" />
+					<input type="hidden" name="note.noteDtl.noteContent" value=""
+						id="noteContent" /> <input type="hidden" name="regionId"
+						value="0" id="regionId" />
 				</form>
 				<iframe class="border-0" id="editorFrame" title="Editor"
 					width="100%" style="height: 750px"
@@ -83,6 +91,9 @@
 	<footer>
 		<%@ include file="/site-footer.jsp"%>
 	</footer>
+	<script type="text/javascript">
+		
+	</script>
 </body>
 
 </html>

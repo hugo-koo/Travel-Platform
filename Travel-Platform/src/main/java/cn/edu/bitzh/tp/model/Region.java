@@ -1,9 +1,11 @@
 package cn.edu.bitzh.tp.model;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Cascade;
 
 /**
  * 地区模型
@@ -38,18 +42,16 @@ public class Region {
 	String namePinyin;
 	@Column(name = "code")
 	String code;
-	@ManyToMany(targetEntity = Note.class)
-	// 映射连接表，指定连接表t_note_region
-	@JoinTable(name = "t_note_region",
-			joinColumns = @JoinColumn(referencedColumnName = "region_id", name = "region_id"),
-			inverseJoinColumns = @JoinColumn(referencedColumnName = "note_id", name = "note_id"))
-	private List<Note> notes;
+	@ManyToMany(targetEntity = Note.class, fetch = FetchType.EAGER)
+	@Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+	@JoinTable(name = "t_note_region", joinColumns = @JoinColumn(name = "region_id"), inverseJoinColumns = @JoinColumn(name = "note_id"))
+	private Set<Note> notes = new HashSet<Note>();
 
-	public List<Note> getNotes() {
+	public Set<Note> getNotes() {
 		return notes;
 	}
 
-	public void setNotes(List<Note> notes) {
+	public void setNotes(Set<Note> notes) {
 		this.notes = notes;
 	}
 
