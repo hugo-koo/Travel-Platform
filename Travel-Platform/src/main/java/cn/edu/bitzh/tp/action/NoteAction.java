@@ -32,9 +32,9 @@ public class NoteAction extends ActionSupport {
 	private int noteId = 1000;
 	private int regionId = 0;
 	/** 页码 */
-	private int page = 0;
+	private int page = 1;
 	/** 页总数 */
-	private int totalPages = 0;
+	private int totalPages = 1;
 	/** 每页项数 */
 	private int itemsPerPage = 5;
 
