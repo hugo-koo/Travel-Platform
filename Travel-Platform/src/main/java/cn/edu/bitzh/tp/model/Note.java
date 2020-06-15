@@ -48,7 +48,7 @@ public class Note {
 	@PrimaryKeyJoinColumn
 	private NoteDtl noteDtl;
 	@ManyToMany(targetEntity = Region.class, fetch = FetchType.EAGER)
-	// 使用hibernate注解级联
+	// 使用hibernate注解级联保存与更新
 	@Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
 	// 映射连接表，指定连接表t_note_region
 	@JoinTable(name = "t_note_region", joinColumns = @JoinColumn(name = "note_id"), inverseJoinColumns = @JoinColumn(name = "region_id"))
