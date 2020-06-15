@@ -31,7 +31,7 @@ public class NoteDao implements INoteDao {
 			switch (type) {
 			case ALL:
 				session = sessionFactory.openSession();
-				q = session.createQuery("select n from Note n");
+				q = session.createQuery("select n from Note n order by notePostDate desc");
 				notes = q.list();
 				if (notes.isEmpty())
 					return null;
@@ -79,7 +79,7 @@ public class NoteDao implements INoteDao {
 		try {
 			session = sessionFactory.openSession();
 			Note noteT = session.get(Note.class, note.getNoteId());
-			
+
 			session.update(noteT);
 			transaction.commit();
 			return true;
@@ -119,6 +119,25 @@ public class NoteDao implements INoteDao {
 	public List<Note> list() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<Note> listHotestNotes() {
+		List<Note> notes;
+		Query<Note> q;
+		try {
+			session = sessionFactory.openSession();
+			q = session.createQuery("select n from Note n order by (likeCount + favoutiteCount + commentCount) desc");
+			notes = q.list();
+			if (notes.isEmpty())
+				return null;
+			return notes;
+		} catch (Exception x) {
+			x.printStackTrace();
+			return null;
+		} finally {
+			sessionFactory.close();
+		}
 	}
 
 }
