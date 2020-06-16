@@ -1,5 +1,6 @@
 package cn.edu.bitzh.tp.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -97,6 +98,8 @@ public class Note {
 	}
 
 	public Date getNotePostDate() {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		sdf.format(this.notePostDate);
 		return notePostDate;
 	}
 
