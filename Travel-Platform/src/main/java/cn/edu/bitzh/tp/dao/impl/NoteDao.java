@@ -31,7 +31,7 @@ public class NoteDao implements INoteDao {
 			switch (type) {
 			case ALL:
 				session = sessionFactory.openSession();
-				q = session.createQuery("select n from Note n order by notePostDate desc");
+				q = session.createQuery("select n from Note n where n.notePermission like 'public' order by notePostDate desc");
 				notes = q.list();
 				if (notes.isEmpty())
 					return null;
@@ -127,7 +127,7 @@ public class NoteDao implements INoteDao {
 		Query<Note> q;
 		try {
 			session = sessionFactory.openSession();
-			q = session.createQuery("select n from Note n order by (likeCount + favoutiteCount + commentCount) desc");
+			q = session.createQuery("select n from Note n where n.notePermission like 'public' order by (likeCount + favoriteCount + commentCount) desc");
 			notes = q.list();
 			if (notes.isEmpty())
 				return null;
