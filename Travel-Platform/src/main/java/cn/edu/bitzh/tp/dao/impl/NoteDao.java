@@ -79,7 +79,6 @@ public class NoteDao implements INoteDao {
 		try {
 			session = sessionFactory.openSession();
 			Note noteT = session.get(Note.class, note.getNoteId());
-
 			session.update(noteT);
 			transaction.commit();
 			return true;

@@ -24,15 +24,20 @@
 			<result type="json" />
 			<allowed-methods>get, insert, listLatestNotes, listHotestNotes</allowed-methods>
 		</action>
+        <action name="scenery_*" class="cn.edu.bitzh.tp.action.SceneryAction" method="{1}">
+			<result type="redirect" name="success">
+				<param name="location">/scenery/info2.jsp</param>
+			</result>
+			<allowed-methods>getSceneryDtl, getSceneryList, publishScenery</allowed-methods>
+		</action>
 	</package>
 	
-	<package name="produce_request" namespace="/" extends="json-default">
+<!-- 	<package name="produce_request" namespace="/" extends="json-default">
 		<action name="produce_request" class="cn.edu.bitzh.tp.action.ProduceRequestAction">
 			<result name="success">/index.jsp</result>
 	
 		</action>
 	
-	</package>
-	
+	</package> -->
 	
 </struts>

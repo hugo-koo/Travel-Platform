@@ -56,4 +56,5 @@ public class NoteService implements INoteService {
 	public List<Note> listHotestNotes(){
 		return nd.listHotestNotes();
 	}
+
 }

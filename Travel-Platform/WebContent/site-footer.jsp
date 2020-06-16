@@ -23,7 +23,7 @@
 					<a class="nav-link active" href="#">首页</a>
 				</dd>
 				<dd class="nav-item">
-					<a class="nav-link" href="#">目的地</a>
+					<a class="nav-link" href="/Travel-Platform/scenery/scenery.jsp">目的地</a>
 				</dd>
 				<dd>
 					<a class="nav-link" href="#">去旅行</a>

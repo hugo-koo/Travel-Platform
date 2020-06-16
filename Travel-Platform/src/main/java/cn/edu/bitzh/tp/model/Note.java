@@ -19,6 +19,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+
 import org.apache.struts2.json.annotations.JSON;
 import org.hibernate.annotations.Cascade;
 

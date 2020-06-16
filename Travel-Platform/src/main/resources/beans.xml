@@ -30,24 +30,6 @@
 				<value>cn.edu.bitzh.tp.model</value>
 			</list>
 		</property>
-		<property name="hibernateProperties">
-			<props>
-				<prop key="hibernate.show_sql">true</prop>
-				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
-                <prop key="hibernate.hbm2ddl.auto">update</prop>
-			</props>
-		</property>
-	</bean>	
-	<!--Dao层  -->
-	<bean id="ProduceRequestDao" class="cn.edu.bitzh.tp.dao.impl.ProduceRequestDaoImpl">
-		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
-	<!--Service层  -->
-	<bean id="ProduceRequestService" class="cn.edu.bitzh.tp.service.impl.ProduceRequestServiceImpl">
-		<property name="ProduceRequestDao" ref="ProduceRequestDao"></property>
-	</bean>
-	<!--Action层  -->
-	<bean id="ProduceRequestAction" class="cn.edu.bitzh.tp.action.ProduceRequestAction">
-		<property name="ProduceRequestService" ref="ProduceRequestService"></property>
-  </bean>
+	
 </beans>
