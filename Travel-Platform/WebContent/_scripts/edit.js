@@ -86,6 +86,9 @@ var post = function() {
 	$("#regionId").val(regionId);
 	//将内容注入表单
 	$("#noteContent").val(getNoteHtml());
+	if($("#noteHeader").text()==null){
+		$("#noteHeader").text('未命名游记');
+	}
 	console.log($("#regionId").val());
 	$.ajax({
 		type : "POST",

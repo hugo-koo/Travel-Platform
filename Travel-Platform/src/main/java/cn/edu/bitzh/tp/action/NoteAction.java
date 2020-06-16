@@ -66,7 +66,8 @@ public class NoteAction extends ActionSupport {
 	}
 
 	/**
-	 * 获取最新游记并分页
+	 * 获取最新的公开游记并分页
+	 * 
 	 * @author 古学懂_Victor
 	 * @date 2020年
 	 * @return
@@ -78,17 +79,20 @@ public class NoteAction extends ActionSupport {
 		} else {
 			totalPages = this.notes.size() / itemsPerPage;
 		}
-		if (page == totalPages - 1) {
+		if (page == totalPages) {
 			/** 最后一页 */
-			this.notes = this.notes.subList(itemsPerPage * page, this.notes.size());
+			System.out.println(itemsPerPage * (page - 1));
+			System.out.println(this.notes.size());
+			this.notes = this.notes.subList(itemsPerPage * (page - 1), this.notes.size());
 		} else {
-			this.notes = this.notes.subList(itemsPerPage * page, itemsPerPage * (page + 1));
+			this.notes = this.notes.subList(itemsPerPage * (page - 1), itemsPerPage * page);
 		}
 		return ActionSupport.SUCCESS;
 	}
 
 	/**
-	 * 获取最热游记并分页
+	 * 获取最热的公开游记并分页
+	 * 
 	 * @author 古学懂_Victor
 	 * @date 2020年6月15日 下午3:08:29
 	 * @return
@@ -100,11 +104,11 @@ public class NoteAction extends ActionSupport {
 		} else {
 			totalPages = this.notes.size() / itemsPerPage;
 		}
-		if (page == totalPages - 1) {
+		if (page == totalPages) {
 			/** 最后一页 */
-			this.notes = this.notes.subList(itemsPerPage * page, this.notes.size());
+			this.notes = this.notes.subList(itemsPerPage * (page - 1), this.notes.size());
 		} else {
-			this.notes = this.notes.subList(itemsPerPage * page, itemsPerPage * (page + 1));
+			this.notes = this.notes.subList(itemsPerPage * (page - 1), itemsPerPage * page);
 		}
 		return ActionSupport.SUCCESS;
 	}
