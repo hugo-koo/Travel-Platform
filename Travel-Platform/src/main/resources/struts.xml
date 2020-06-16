@@ -4,8 +4,8 @@
 "http://struts.apache.org/dtds/struts-2.5.dtd">
 <struts>
 	<package name="default" namespace="/" extends="struts-default">
-        <action name="action_*" class="cn.edu.bitzh.tp.action.ActionTest"
-            method="{1}">
+		<action name="action_*"
+			class="cn.edu.bitzh.tp.action.ActionTest" method="{1}">
 			<result type="redirect" name="success">
 				<param name="location">/index.jsp</param>
 			</result>
@@ -13,4 +13,20 @@
 			<allowed-methods>test</allowed-methods>
 		</action>
 	</package>
+	<package name="json-region" namespace="/"
+		extends="json-default">
+		<action name="region_*"
+			class="cn.edu.bitzh.tp.action.RegionAction"
+			method="{1}">
+			<result type="json" />
+			<allowed-methods>listChildren, listContinents, get</allowed-methods>
+		</action>
+		<action name="scenery_*" class="cn.edu.bitzh.tp.action.SceneryAction" method="{1}">
+			<result type="redirect" name="success">
+				<param name="location">/scenery/info2.jsp</param>
+			</result>
+			<allowed-methods>getSceneryDtl, getSceneryList, publishScenery</allowed-methods>
+		</action>
+	</package>
+	
 </struts>

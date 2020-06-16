@@ -1,18 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" info="Hello"%>
+	pageEncoding="UTF-8" info="Hello"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html>
 <html>
 
 <head>
-    <%--导入站点全局首部--%>
-    <%@ include file="/site-head.jsp"%>
+<%--导入站点全局首部--%>
+<%@ include file="/site-head.jsp"%>
 </head>
 
 <body>
-    <%@ include file="/site-header.jsp"%>
-    <div id="cardWelcome"></div>
-    <script type="text/babel">
+	<header>
+		<%@ include file="/site-header.jsp"%>
+	</header>
+	<div id="cardWelcome"></div>
+	<script type="text/babel">
         const {
             Grid,
             makeStyles,
@@ -45,21 +47,21 @@
                             <CardMedia
                                 className={classes.media}
                                 image="/Travel-Platform/_img/青岛_樱花.png"
-                                title="Contemplative Reptile"
+                                title="欢迎卡片"
                             />
                             <CardContent>
                                 <Typography gutterBottom variant="h5" component="h2">
-                                    <%out.print("欢迎访问");%>
+                                    <%="欢迎访问"%>
                                   </Typography>
                                 <Typography variant="body2" color="textSecondary" component="p">
-                                    <%out.print("这里是旅游服务平台的测试页面");%>
+                                    <%="这里是旅游服务平台的测试页面"%>
                                   </Typography>
                             </CardContent>
                         </CardActionArea>
                         <CardActions>
                             <a href="<s:url action="action_test"/>">
                                 <Button size="small" color="primary">
-                                    <%out.print("去首页");%>
+                                    <%="去首页"%>
                                 </Button>
                             </a>
                         </CardActions>
@@ -70,6 +72,9 @@
 
         ReactDOM.render(<MediaCard />, document.querySelector('#cardWelcome'));
     </script>
+	<footer>
+		<%@ include file="/site-footer.jsp"%>
+	</footer>
 </body>
 
 </html>
