@@ -30,6 +30,12 @@
 				<value>cn.edu.bitzh.tp.model</value>
 			</list>
 		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+			</props>
+		</property>
 	</bean>
-	
 </beans>
