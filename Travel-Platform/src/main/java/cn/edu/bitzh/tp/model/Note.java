@@ -1,5 +1,6 @@
 package cn.edu.bitzh.tp.model;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
@@ -18,6 +19,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import org.apache.struts2.json.annotations.JSON;
 import org.hibernate.annotations.Cascade;
 
 /**
@@ -55,7 +57,9 @@ public class Note {
 	@JoinTable(name = "t_note_region", joinColumns = @JoinColumn(name = "note_id"), inverseJoinColumns = @JoinColumn(name = "region_id"))
 	//饿汉模式
 	private Set<Region> regions = new HashSet<Region>();
-
+	//格式化后的日期字符串
+	private String postDateStr = "";
+	
 	public Set<Region> getRegions() {
 		return regions;
 	}
@@ -97,13 +101,14 @@ public class Note {
 		this.noteAuthor = noteAuthor;
 	}
 
+	@JSON(serialize = false)
 	public Date getNotePostDate() {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-		sdf.format(this.notePostDate);
 		return notePostDate;
 	}
 
 	public void setNotePostDate(Date notePostDate) {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		this.setPostDateStr(sdf.format(notePostDate));
 		this.notePostDate = notePostDate;
 	}
 
@@ -133,6 +138,28 @@ public class Note {
 
 	public void setFavoriteCount(int favoriteCount) {
 		this.favoriteCount = favoriteCount;
+	}
+
+	/**
+	 * @return the formated postDateStr
+	 */
+	public String getPostDateStr() {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		this.postDateStr = sdf.format(this.notePostDate);
+		return this.postDateStr;
+	}
+
+	/**
+	 * @param postDateStr the postDateStr to set
+	 */
+	public void setPostDateStr(String postDateStr) {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		try {
+			this.notePostDate = sdf.parse(postDateStr);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		this.postDateStr = postDateStr;
 	}
 
 }
