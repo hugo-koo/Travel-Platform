@@ -63,4 +63,5 @@ public interface INoteService extends IBaseService<Note> {
 	Note get(int id);
 
 	List<Note> listHotestNotes();
+
 }

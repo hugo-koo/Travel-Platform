@@ -7,6 +7,7 @@
 <head>
 <%--导入站点全局首部--%>
 <%@ include file="/site-head.jsp"%>
+<script type="text/javascript" src="/Travel-Platform/_scripts/index.js"></script>
 </head>
 
 <body>
@@ -61,7 +62,7 @@
 			</div>
 		</div>
 		<hr>
-		<div class="row">
+		<div class="row" id="mainBlock">
 			<div class="col-sm-1"></div>
 			<div class="col-6 col-lg-8">
 				<ul class="nav nav-tabs" id="mainTab" role="tablist">
@@ -74,85 +75,20 @@
 				</ul>
 				<br>
 				<div class="tab-content" id="mainTabContent">
+					<div class="text-center">
+						<div class="spinner-grow text-primary" role="status"
+							id="note-loding" style="display: none;">
+							<span class="sr-only">载入中...</span>
+						</div>
+					</div>
+					<!-- 热门 -->
 					<div class="tab-pane fade show active" id="hotlist" role="tabpanel">
-						<div class="card mb-3" style="max-width: 715px;">
-							<div class="row no-gutters">
-								<div class="col-md-4">
-									<img src="/Travel-Platform/_img/Test_1.jpg" class="card-img"
-										alt="<%="首图"%>">
-								</div>
-								<div class="col-md-8">
-									<div class="card-body">
-										<h5 class="card-title"><%="标题"%></h5>
-										<p class="card-text"><%="摘要"%></p>
-										<p class="card-text">
-											<small class="text-muted"><%="发布于... 点赞... 评论... 浏览..."%></small>
-										</p>
-									</div>
-								</div>
-							</div>
-						</div>
-						<hr>
-						<div class="card mb-3" style="max-width: 715px;">
-							<div class="row no-gutters">
-								<div class="col-md-4">
-									<img src="/Travel-Platform/_img/Test_1.jpg" class="card-img"
-										alt="<%="首图"%>">
-								</div>
-								<div class="col-md-8">
-									<div class="card-body">
-										<h5 class="card-title"><%="标题"%></h5>
-										<p class="card-text"><%="摘要"%></p>
-										<p class="card-text">
-											<small class="text-muted"><%="发布于... 点赞... 评论... 浏览..."%></small>
-										</p>
-									</div>
-								</div>
-							</div>
-						</div>
-						<hr>
-						<nav aria-label="Page navigation example">
-							<ul class="pagination">
-								<li class="page-item"><a class="page-link" href="javascript:void(0)">上一页</a></li>
-								<li class="page-item"><a class="page-link" href="javascript:void(0)">1</a></li>
-								<li class="page-item"><a class="page-link" href="javascript:void(0)">2</a></li>
-								<li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
-								<li class="page-item"><a class="page-link" href="javascript:void(0)">下一页</a></li>
-							</ul>
-						</nav>
 					</div>
-					<div class="tab-pane fade" id="latest" role="tabpanel">
-						<div class="card mb-3" style="max-width: 715px;">
-							<div class="row no-gutters">
-								<div class="col-md-4">
-									<img src="/Travel-Platform/_img/Test_1.jpg" class="card-img"
-										alt="<%="首图"%>">
-								</div>
-								<div class="col-md-8">
-									<div class="card-body">
-										<h5 class="card-title"><%="标题"%></h5>
-										<p class="card-text"><%="摘要"%></p>
-										<p class="card-text">
-											<small class="text-muted"><%="发布于... 点赞... 评论... 浏览..."%></small>
-										</p>
-									</div>
-								</div>
-							</div>
-						</div>
-						<hr>
-						<nav aria-label="Page navigation example">
-							<ul class="pagination">
-								<li class="page-item"><a class="page-link" href="javascript:void(0)">上一页</a></li>
-								<li class="page-item"><a class="page-link" href="javascript:void(0)">1</a></li>
-								<li class="page-item"><a class="page-link" href="javascript:void(0)">2</a></li>
-								<li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
-								<li class="page-item"><a class="page-link" href="javascript:void(0)">下一页</a></li>
-							</ul>
-						</nav>
-					</div>
+					<!-- 最新 -->
+					<div class="tab-pane fade" id="latest" role="tabpanel"></div>
+					<div id="paginav"></div>
 				</div>
 			</div>
-
 			<div class="col-3 col-lg-3" id="cards-flows">
 				<ul class="nav nav-pills mb-3" id="scondaryTab" role="tablist">
 					<li class="nav-item" role="presentation"><a

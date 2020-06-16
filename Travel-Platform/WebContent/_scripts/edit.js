@@ -66,9 +66,7 @@ var regionChange = function(rank) {
 					+ rank + "\" name=\"region-" + rank
 					+ "\" onchange=\"regionChange(" + rank
 					+ ")\"></select>");
-			$("#region-" + rank)
-				.append(
-					"<option selected=\"selected\" value=\"-1\">请选择...</option>");
+			$("#region-" + rank).append("<option selected=\"selected\" value=\"-1\">请选择...</option>");
 			for (var i = 0; i < data.regions.length; i++) {
 				$('#region-' + rank).append(
 					"<option value='" + data.regions[i].id + "' >"
@@ -86,6 +84,9 @@ var post = function() {
 	$("#regionId").val(regionId);
 	//将内容注入表单
 	$("#noteContent").val(getNoteHtml());
+	if($("#noteHeader").text()==null){
+		$("#noteHeader").text('未命名游记');
+	}
 	console.log($("#regionId").val());
 	$.ajax({
 		type : "POST",
