@@ -32,12 +32,19 @@
 		</action>
 	</package>
 	
-<!-- 	<package name="produce_request" namespace="/" extends="json-default">
+	<package name="produce_request" namespace="/" extends="json-default">
 		<action name="produce_request" class="cn.edu.bitzh.tp.action.ProduceRequestAction">
 			<result name="success">/index.jsp</result>
-	
+			<result name="error">/test.jsp</result>
+			<result name="input">/ProduceRequestFromVo.jsp</result>
 		</action>
 	
-	</package> -->
+	</package>
+	<package name="produce_show" namespace="/" extends="json-default">
+		<action name="produce_show" class="cn.edu.bitzh.tp.action.ProduceShowAction">
+			<result name="success">/ProduceMessageVo.jsp</result>
+			<result name="error">/test.jsp</result>
+		</action>
+	</package>
 	
 </struts>
