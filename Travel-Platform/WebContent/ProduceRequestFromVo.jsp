@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" import="java.util.*,com.opensymphony.xwork2.util.*"%>
 
 <%
 	String path = request.getContextPath();
@@ -24,7 +24,10 @@
 
 	}
 </script>
-
+<script>
+		var errorMsg="${requestScope.errorMessage}"; 
+		if(errorMsg!=""){ alert(errorMsg); } 
+</script>
 
 
 
@@ -37,12 +40,18 @@
 </head>
 <body>
 	<%@ include file="/site-header.jsp"%>
+	
+	
 
+	
+	
+	
+	<s:property value="errorMessage"/>
 	<div class="row">
 
 		<div class="col-md-1 col-lg-2 col-xl-3">right</div>
 		<div class="col-md-10 col-lg-8 col-xl-6 border bg-light ">
-
+			
 			<s:form method="post" action="produce_request" namespace="/"
 				enctype="multipart/form-data">
 				<!--基本信息栏  -->
@@ -60,8 +69,8 @@
 					<div class="col-6">
 						<div class="form-group pl-0">
 							<label for="produceTelephone">订票电话：</label> <input type="text"
-								class="form-control" id="produceTelephone"
-								name="produceTelephone"></input>
+								class="form-control" id="produceTelephoneString"
+								name="produceTelephoneString"></input>
 
 						</div>
 					</div>
@@ -76,13 +85,13 @@
 					<div class="col-6">
 						<div class="form-group">
 							<label>价格区间： </label> <input type="text" class="form-control"
-								id="produceMinPrice" name="produceMinPrice" placeholder="min">
+								id="produceMinPriceString" name="produceMinPriceString" placeholder="min">
 						</div>
 					</div>
 					<div class="col-6">
 						<div class="form-group">
 							<label> ￥</label> <input type="text" class="form-control"
-								id="produceMaxPrice" name="produceMaxPrice" placeholder="max">
+								id="produceMaxPriceString" name="produceMaxPriceString" placeholder="max">
 						</div>
 
 
@@ -95,7 +104,6 @@
 
 							<label for="sel1"> 旅行天数:</label> <select class="form-control"
 								id="produceCostDay" name="produceCostDay" onchange="addDay()">
-								<option>0</option>
 								<option>1</option>
 								<option>2</option>
 								<option>3</option>
@@ -233,7 +241,7 @@
 					<div class="col-6" id="">
 						<h5>图文介绍</h5>
 						<input type="file" id="graphicIntroduction"
-							name="graphicIntroduction" multiple="multiple">
+							name="graphicIntroductionFile" multiple="multiple">
 
 
 					</div>
@@ -246,7 +254,7 @@
 					</div>
 				</div>
 
-
+				
 
 
 

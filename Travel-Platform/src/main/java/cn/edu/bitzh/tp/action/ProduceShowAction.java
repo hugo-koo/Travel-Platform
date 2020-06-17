@@ -1,5 +1,15 @@
 package cn.edu.bitzh.tp.action;
 
+/**
+ * @author 周锦涛
+ * @date 2020年
+ * 
+ * 单个产品展示
+*/
+
+
+
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,50 +30,55 @@ import cn.edu.bitzh.tp.service.ProduceRequestService;
 
 public class ProduceShowAction extends ActionSupport{
 
-	private Produce produce;
-	private CostContent costContent;
-	private List<GraphicIntroduction> graphicIntroductions;
+	private Produce produce;//产品基本信息实体类
+	private CostContent costContent;//产品费用内容实体类
+	private List<GraphicIntroduction> graphicIntroductions;//产品图实体类
 	private List<CostContent> costContents;
 	private ProduceCost produceCost;
 	private GraphicIntroduction graphicIntroduction;
 	private String prouceId;//页面传来产品编号
 	private ProduceRequestService produceRequestService;//产品显示service
-	
+	private List<GraphicIntroduction> advertisingMap;
 	
 	public String execute(){
 		
-		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("beans.xml");
-		produceRequestService = (ProduceRequestService) applicationContext.getBean("ProduceRequestService");
+		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("beans.xml");//读取配置文件
+		produceRequestService = (ProduceRequestService) applicationContext.getBean("ProduceRequestService");//注入ProduceRequestService
 		
 		
 		HttpServletRequest request = ServletActionContext.getRequest();
 		HttpSession session = ServletActionContext.getRequest().getSession();
 		
 		//String test="test";
-		session.setAttribute("test", "test");
-		session.setAttribute("demo_num", 3);
-		session.setAttribute("carousel_num", 3);
+		//session.setAttribute("test", "test");
+		
 		//session.setAttribute(name, value);
 		System.out.println("ProduceShowAction Start");
 		
-		
-		graphicIntroductions = new ArrayList<GraphicIntroduction>();
+		//实例化实体类对象
+		graphicIntroductions = new ArrayList<GraphicIntroduction>();//
 		produce=new Produce();
 		produceCost =new ProduceCost();
 		costContent=new CostContent();
 		costContents=new ArrayList<CostContent>();
+		advertisingMap = new ArrayList<GraphicIntroduction>();
+		
+		
+		//经url传入产品id为
 		prouceId="1";
 		
+		//执行产品信息查找
+		boolean flag=produceRequestService.find(prouceId, produce, produceCost, costContents, graphicIntroductions,advertisingMap);
 		
-		boolean flag=produceRequestService.find(prouceId, produce, produceCost, costContents, graphicIntroductions);
 		
-		
-		if(!flag) {
+		if(!flag) {//查找失败
 		
 		  System.out.println("查找失败\n");
 		  return ERROR;
 		}
 		//System.out.println("url is"+graphicIntroductions.get(0).getGraphicIntroductionContent()+"\n");
+		
+		
 		
 		if(graphicIntroductions.size()>0) {
 			System.out.println("ProduceShowAction +graphicIntroduction is"+graphicIntroductions.get(0).getGraphicIntroductionContent());
@@ -75,19 +90,36 @@ public class ProduceShowAction extends ActionSupport{
 		
 		
 		
-		for(int i=0;i<graphicIntroductions.size();i++) {
+		for(int i=0;i<graphicIntroductions.size();i++) {//将产品图文详情url保存到session
 			
 			session.setAttribute("graphicIntroductionContent"+i, graphicIntroductions.get(i).getGraphicIntroductionContent());
 			
 		}
+		
+		for(int i=0;i<advertisingMap.size();i++) {//将宣传图url保存到session
 			
+			session.setAttribute("advertisingMapContent"+i, advertisingMap.get(i).getGraphicIntroductionContent());
 			
+		}
+			
+		//将产品费用信息保存到session
+		session.setAttribute("mealsCost",costContents.get(0).getMealsCost());
+		session.setAttribute("accommodationFee", costContents.get(0).getAccommodationFee());
+		session.setAttribute("landmarkTicket",costContents.get(0).getLandmarkTicket());
+		session.setAttribute("carFare",costContents.get(0).getCarFare());
+		session.setAttribute("guideFee",costContents.get(0).getGuideFee());
 		
-		produce.getProduceMinPrice();
+		
+		//保存图文详情及宣传图数量到session
+		session.setAttribute("demo_num", advertisingMap.size() );
+		session.setAttribute("carousel_num", graphicIntroductions.size());
+		
+		
+		//produce.getProduceMinPrice();
 		
 		
 		
-		
+		//查找成功
 		return SUCCESS;
 		
 		
