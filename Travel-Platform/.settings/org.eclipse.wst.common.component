@@ -15,11 +15,8 @@
                                 
         
         
-        <property name="context-root" value="Travel-Platform"/>
-                                
-        
-        
         <property name="java-output-path" value="/Travel-Platform/build/classes"/>
+        <property name="context-root" value="Travel-Platform"/>
                             
     
     

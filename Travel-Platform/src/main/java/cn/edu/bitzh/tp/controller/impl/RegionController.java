@@ -35,5 +35,4 @@ public class RegionController implements IRegionController {
 		return rs.listChildRegions(pid);
 	}
 
-
 }
