@@ -24,20 +24,40 @@
 			<result type="json" />
 			<allowed-methods>get, insert, listLatestNotes, listHotestNotes</allowed-methods>
 		</action>
-        <action name="scenery_*" class="cn.edu.bitzh.tp.action.SceneryAction" method="{1}">
-			<result type="redirect" name="success">
-				<param name="location">/scenery/info2.jsp</param>
-			</result>
-			<allowed-methods>getSceneryDtl, getSceneryList, publishScenery</allowed-methods>
-		</action>
 	</package>
 	
-<!-- 	<package name="produce_request" namespace="/" extends="json-default">
-		<action name="produce_request" class="cn.edu.bitzh.tp.action.ProduceRequestAction">
-			<result name="success">/index.jsp</result>
-	
+	<package name="struts_tag" extends="struts-default" namespace="/">
+		<action name="scenerypublish_*" class="cn.edu.bitzh.tp.action.SceneryAction" method="{1}">
+			<result name="success">/scenery/publishsuccess.jsp</result>
+			<allowed-methods>publishScenery</allowed-methods>
 		</action>
-	
-	</package> -->
-	
+		<action name="scenerydtl_*" class="cn.edu.bitzh.tp.action.SceneryAction" method="{1}">
+			<result name="success">/scenery/info.jsp</result>
+			<allowed-methods>getSceneryDtl</allowed-methods>
+		</action>
+		<action name="scenerylist_*" class="cn.edu.bitzh.tp.action.SceneryAction" method="{1}">
+			<result name="success">/scenery/scenery.jsp</result>
+			<allowed-methods>getSceneryList, getSceneryByRegion</allowed-methods>
+		</action>
+	</package>
+
+	<package name="produce_request" namespace="/"
+		extends="json-default">
+		<action name="produce_request"
+			class="cn.edu.bitzh.tp.action.ProduceRequestAction">
+			<result name="success">/index.jsp</result>
+			<result name="error">/test.jsp</result>
+			<result name="input">/ProduceRequestFromVo.jsp</result>
+		</action>
+
+	</package>
+	<package name="produce_show" namespace="/"
+		extends="json-default">
+		<action name="produce_show"
+			class="cn.edu.bitzh.tp.action.ProduceShowAction">
+			<result name="success">/ProduceMessageVo.jsp</result>
+			<result name="error">/test.jsp</result>
+		</action>
+	</package>
+
 </struts>

@@ -19,7 +19,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
-
 import org.apache.struts2.json.annotations.JSON;
 import org.hibernate.annotations.Cascade;
 
@@ -40,6 +39,7 @@ public class Note {
 	private int noteAuthor;
 	@Column(name = "note_permission")
 	private String notePermission;
+//	@Temporal(TemporalType.DATE)
 	@Column(name = "note_post_date")
 	private Date notePostDate;
 	@Column(name = "favorite_count")
@@ -48,6 +48,12 @@ public class Note {
 	private int likeCount;
 	@Column(name = "comment_count")
 	private int commentCount;
+	@Column(name = "travel_date")
+	private Date travelDate;
+	@Column(name = "end_date")
+	private Date endDate;
+	@Column(name = "applicable")
+	private String applicable;
 	@OneToOne(fetch = FetchType.EAGER, optional = false, mappedBy = "note")
 	@PrimaryKeyJoinColumn
 	private NoteDtl noteDtl;
@@ -59,6 +65,7 @@ public class Note {
 	//饿汉模式
 	private Set<Region> regions = new HashSet<Region>();
 	//格式化后的日期字符串
+	
 	private String postDateStr = "";
 	
 	public Set<Region> getRegions() {
@@ -161,6 +168,48 @@ public class Note {
 			e.printStackTrace();
 		}
 		this.postDateStr = postDateStr;
+	}
+
+	/**
+	 * @return the travelDate
+	 */
+	public Date getTravelDate() {
+		return travelDate;
+	}
+
+	/**
+	 * @param travelDate the travelDate to set
+	 */
+	public void setTravelDate(Date travelDate) {
+		this.travelDate = travelDate;
+	}
+
+	/**
+	 * @return the endDate
+	 */
+	public Date getEndDate() {
+		return endDate;
+	}
+
+	/**
+	 * @param endDate the endDate to set
+	 */
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
+
+	/**
+	 * @return the applicable
+	 */
+	public String getApplicable() {
+		return applicable;
+	}
+
+	/**
+	 * @param applicable the applicable to set
+	 */
+	public void setApplicable(String applicable) {
+		this.applicable = applicable;
 	}
 
 }

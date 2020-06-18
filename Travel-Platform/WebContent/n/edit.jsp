@@ -9,6 +9,13 @@
 <%--导入站点全局首部--%>
 <%@ include file="/site-head.jsp"%>
 <script type="text/javascript" src="/Travel-Platform/_scripts/edit.js"></script>
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker3.min.css"
+	rel="stylesheet">
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.zh-CN.min.js"></script>
 </head>
 
 <body>
@@ -32,10 +39,11 @@
 			</div>
 		</div>
 		<hr>
-		<div class="row">
-			<div class="col-sm-1"></div>
-			<div class="col-6 col-lg-8">
-				<form class="form-horizontal container" id="note">
+
+		<form class="form-horizontal container" id="note">
+			<div class="row">
+				<div class="col-sm-1"></div>
+				<div class="col-6 col-lg-8">
 					<div class="form-group row">
 						<input type="text"
 							style="height: calc(2em + .75rem + 2px); font-size: 2rem; color: #0f4c81;"
@@ -51,6 +59,9 @@
 								role="status" style="display: none;">
 								<span class="sr-only">Loading...</span>
 							</div>
+							<div id="post-success" style="display: none;">
+								<img alt="success" src="/Travel-Platform/_img/success.svg">
+							</div>
 						</div>
 						<div class="form-group col-sm-4">
 							<select id="permission" class="form-control"
@@ -63,30 +74,60 @@
 					<input type="hidden" name="note.noteDtl.noteContent" value=""
 						id="noteContent" /> <input type="hidden" name="regionId"
 						value="0" id="regionId" />
-				</form>
-				<iframe class="border-0" id="editorFrame" title="Editor"
-					width="100%" style="height: 750px"
-					src="/Travel-Platform/n/editor.jsp?Type=note"> </iframe>
-			</div>
-			<div class="col-3 col-sm-3" id="cards-flows">
-				<div class="card text-white bg-info mb-3" style="max-width: 18rem;">
-					<div class="card-header">
-						<%="选择地区"%>
+					<iframe class="border-0" id="editorFrame" title="Editor"
+						width="100%" style="height: 750px"
+						src="/Travel-Platform/n/editor.jsp?Type=note"> </iframe>
+				</div>
+				<div class="col-3 col-sm-3" id="cards-flows">
+					<div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+						<div class="card-header">
+							<%="选择地区"%>
+						</div>
+						<div class="card-body" id="region-list">
+							<h5 class="card-title" id="region-name">地区</h5>
+							<select class="form-control my-2" id="region-1" name="region-1"
+								onchange="regionChange(1)">
+								<option selected="selected" value="-1">请选择...</option>
+							</select>
+						</div>
+						<script type="text/javascript">
+							//从大洲列表开始初始化
+							regionInit();
+						</script>
 					</div>
-					<div class="card-body" id="region-list">
-						<h5 class="card-title" id="region-name">地区</h5>
-						<select class="form-control my-2" id="region-1" name="region-1"
-							onchange="regionChange(1)">
-							<option selected="selected" value="-1">请选择...</option>
-						</select>
+					<div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+						<div class="card-header">开始时间</div>
+						<div class="card-body" id="">
+							<h5 class="card-title" id=""></h5>
+							<input id="date" type="text" name="note.travelDate"
+								class="form-control" />
+							<script type="text/javascript">
+
+							</script>
+						</div>
 					</div>
-					<script type="text/javascript">
-						//从大洲列表开始初始化
-						regionInit();
-					</script>
+					<div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+						<div class="card-header">结束时间</div>
+						<div class="card-body" id="">
+							<h5 class="card-title" id=""></h5>
+							<input id="endDate" type="text" name="note.endDate"
+								class="form-control" />
+							<script type="text/javascript">
+
+							</script>
+						</div>
+					</div>
+					<div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+						<div class="card-header">适宜人群</div>
+						<div class="card-body" id="">
+							<h5 class="card-title" id=""></h5>
+							<input id="applicable" type="text" name="applicable"
+								class="form-control" />
+						</div>
+					</div>
 				</div>
 			</div>
-		</div>
+		</form>
 	</div>
 	<footer>
 		<%@ include file="/site-footer.jsp"%>

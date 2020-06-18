@@ -19,7 +19,7 @@
 					href="/Travel-Platform/index.jsp">首页 <span class="sr-only">(current)</span>
 				</a></li>
 				<li class="nav-item"><a class="nav-link"
-					href="/Travel-Platform/scenery/scenery.jsp">目的地</a></li>
+					href="/Travel-Platform/scenerylist_getSceneryList.action">目的地</a></li>
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 					role="button" data-toggle="dropdown" aria-haspopup="true"

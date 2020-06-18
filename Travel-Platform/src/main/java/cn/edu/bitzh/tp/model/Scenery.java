@@ -87,16 +87,16 @@ public class Scenery {
 	public void setScenery_ispulish(String scenery_ispulish) {
 		this.scenery_ispublish = scenery_ispulish;
 	}
-	public String getScenery_ischeck() {
+	public String getScenery_ischecked() {
 		return scenery_ischecked;
 	}
-	public void setScenery_ischeck(String scenery_ischecked) {
+	public void setScenery_ischecked(String scenery_ischecked) {
 		this.scenery_ischecked = scenery_ischecked;
 	}
-	public Date getScenery_pulish_time() {
+	public Date getScenery_publish_time() {
 		return scenery_publish_time;
 	}
-	public void setScenery_pulish_time(Date scenery_pulish_time) {
+	public void setScenery_publish_time(Date scenery_pulish_time) {
 		this.scenery_publish_time = scenery_pulish_time;
 	}
 	public int getScenery_click() {
