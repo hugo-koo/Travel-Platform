@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <div id="header" class="">
 	<nav class="navbar navbar-expand-lg navbar-light">
-		<a class="navbar-brand" href="/Travel-Platform/index.jsp"> <img
+		<a class="navbar-brand" href="/Travel-Platform"> <img
 			src="/Travel-Platform/_img/TP-logo.svg" alt="" width="32" height="32"
 			title="TP"> <%="旅游平台"%>
 		</a>
@@ -16,7 +16,7 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item active"><a class="nav-link"
-					href="/Travel-Platform/index.jsp">首页 <span class="sr-only">(current)</span>
+					href="/Travel-Platform">首页 <span class="sr-only">(current)</span>
 				</a></li>
 				<li class="nav-item"><a class="nav-link"
 					href="/Travel-Platform/scenerylist_getSceneryList.action">目的地</a></li>
