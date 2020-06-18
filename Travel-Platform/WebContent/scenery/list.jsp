@@ -31,7 +31,7 @@
 			left: 250px;
 			top: 22px;
 			width: 200px;
-			font-size: 14px
+			font-size: 14px;
 		}
 		.name{
 			font-size: 24px;
