@@ -2,6 +2,9 @@
 	pageEncoding="UTF-8" info="游记"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html>
+<%
+	String noteId = request.getParameter("noteId");
+%>
 <html>
 
 <head>
@@ -40,7 +43,7 @@
 						class="card-img-top" alt="<%="目的地"%>">
 					<div class="card-body">
 						<h5 class="card-title"><%="目的地"%></h5>
-						<p class="card-text"><%="描述" %></p>
+						<p class="card-text"><%="描述"%></p>
 						<a href="#" class="btn btn-primary">Go</a>
 					</div>
 				</div>
@@ -60,13 +63,13 @@
 		</div>
 	</div>
 	<button id="like-button" type="button" class="btn btn-light float-left"
-        onclick="like()">
-        <img alt="like" src="/Travel-Platform/_img/like.svg">
-    </button>
-    <button id="favourites-button" type="button" class="btn btn-light float-left"
-        onclick="favourites()">
-        <img alt="like" src="/Travel-Platform/_img/favourites.svg">
-    </button>
+		onclick="like()">
+		<img alt="like" src="/Travel-Platform/_img/like.svg">
+	</button>
+	<button id="favourites-button" type="button"
+		class="btn btn-light float-left" onclick="favourites()">
+		<img alt="like" src="/Travel-Platform/_img/favourites.svg">
+	</button>
 	<footer>
 		<%@ include file="/site-footer.jsp"%>
 	</footer>

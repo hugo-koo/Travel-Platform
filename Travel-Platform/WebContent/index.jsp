@@ -107,6 +107,12 @@
 			</div>
 		</div>
 	</div>
+	<a href="/Travel-Platform/n/edit.jsp">
+		<button id="create-button" type="button"
+			class="btn btn-light float-left" onclick="javascript: void(0)">
+			<img alt="Create Note" src="/Travel-Platform/_img/create.svg">创建游记
+		</button>
+	</a>
 	<footer>
 		<%@ include file="/site-footer.jsp"%>
 	</footer>

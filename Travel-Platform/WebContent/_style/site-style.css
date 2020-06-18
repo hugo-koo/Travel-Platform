@@ -131,3 +131,10 @@ div[data-role="editor-toolbar"] {
     left: 0;
     z-index: 20;
 }
+
+#create-button {
+    position: fixed;
+    top: 330px;
+    left: 0;
+    z-index: 20;
+}
