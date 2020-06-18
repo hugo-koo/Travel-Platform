@@ -99,7 +99,7 @@ public class SceneryAction extends ActionSupport {
 	private Region region;
 	private List<Scenery> scenerys;
 	private List<Review> reviews;
-	
+
 	public Scenery getScenery() {
 		return scenery;
 	}
