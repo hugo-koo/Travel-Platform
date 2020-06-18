@@ -24,7 +24,7 @@ import cn.edu.bitzh.tp.service.impl.RegionService;
 public class NoteAction extends ActionSupport {
 	private static final long serialVersionUID = 1L;
 	private ApplicationContext applicationContext = new ClassPathXmlApplicationContext("beans.xml");
-	private INoteService ns = (NoteService) applicationContext.getBean("noteService");;
+	private INoteService ns = (NoteService) applicationContext.getBean("noteService");
 	private ApplicationContext applicationContext2 = new ClassPathXmlApplicationContext("beans.xml");
 	private IRegionService rs = (RegionService) applicationContext2.getBean("regionService");
 	private Note note;
