@@ -1,9 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" info="游记"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
+<%@page import="cn.edu.bitzh.tp.service.INoteService"%>
+<%@page import="cn.edu.bitzh.tp.service.impl.NoteService"%>
+<%@page import="org.springframework.context.ApplicationContext"%>
+<%@page
+	import="org.springframework.context.support.ClassPathXmlApplicationContext"%>
+<%@page import="cn.edu.bitzh.tp.model.Note"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <!DOCTYPE html>
 <%
 	String noteId = request.getParameter("noteId");
+	System.out.println(noteId);
+	ApplicationContext applicationContext = new ClassPathXmlApplicationContext("beans.xml");
+	INoteService ns = (NoteService) applicationContext.getBean("noteService");
+	Note note = ns.get(Integer.parseInt(noteId));
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 %>
 <html>
 
@@ -28,11 +40,11 @@
 				<div class="jumbotron jumbotron-fluid"
 					style="background-color: <%="#F0EDE5"%>;">
 					<div class="container">
-						<h1 class="display-4"><%="游记标题"%></h1>
+						<h1 class="display-4"><%=note.getNoteDtl().getNoteHeader()%></h1>
 						<p class="lead"></p>
 						<hr class="my-4">
 						<div id="note-content">
-							<%="游记内容"%>
+							<%=note.getNoteDtl().getNoteContent()%>
 						</div>
 					</div>
 				</div>
@@ -48,15 +60,33 @@
 					</div>
 				</div>
 				<hr>
+				<!-- 				<div class="card text-white bg-info mb-3" style="max-width: 18rem;"> -->
+				<%-- 					<div class="card-header"><%="景点"%></div> --%>
+				<!-- 					<div class="card-body"> -->
+				<!-- 						<h5 class="card-title">景点1</h5> -->
+				<!-- 						<p class="card-text">描述</p> -->
+				<!-- 					</div> -->
+				<!-- 					<div class="card-body"> -->
+				<!-- 						<h5 class="card-title">景点2</h5> -->
+				<!-- 						<p class="card-text">描述</p> -->
+				<!-- 					</div> -->
+				<!-- 				</div> -->
 				<div class="card text-white bg-info mb-3" style="max-width: 18rem;">
-					<div class="card-header"><%="景点"%></div>
-					<div class="card-body">
-						<h5 class="card-title">景点1</h5>
-						<p class="card-text">描述</p>
+					<div class="card-header">开始时间</div>
+					<div class="card-body" id="">
+						<h5 class="card-title" id=""><%=sdf.format(note.getTravelDate()) %></h5>
 					</div>
-					<div class="card-body">
-						<h5 class="card-title">景点2</h5>
-						<p class="card-text">描述</p>
+				</div>
+				<div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+					<div class="card-header">结束时间</div>
+					<div class="card-body" id="">
+						<h5 class="card-title" id=""><%=sdf.format(note.getEndDate()) %></h5>
+					</div>
+				</div>
+				<div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+					<div class="card-header">适宜人群</div>
+					<div class="card-body" id="">
+						<h5 class="card-title" id=""><%=note.getApplicable()%></h5>
 					</div>
 				</div>
 			</div>
