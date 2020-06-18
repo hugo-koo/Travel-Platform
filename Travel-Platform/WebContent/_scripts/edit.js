@@ -47,44 +47,48 @@ var regionChange = function(rank) {
 	}
 	regionId = pId;
 	$.ajax({
-		type : "post",
-		url : "/Travel-Platform/region_listChildren.action",
-		data : {
-			"pid" : pId
-		},
-		success : function(data) {
-			// 如果子列表不存在，即最终级地区
-			if (data.regions <= 0) {
-				regionId = pId;
-				$("#region-name").text(pName);
-				console.log(regionId);
-				return;
-			}
-			console.log(pName);
-			$("#region-list").append(
-				"<select class=\"form-control my-2\" id=\"region-"
-					+ rank + "\" name=\"region-" + rank
-					+ "\" onchange=\"regionChange(" + rank
-					+ ")\"></select>");
-			$("#region-" + rank).append("<option selected=\"selected\" value=\"-1\">请选择...</option>");
-			for (var i = 0; i < data.regions.length; i++) {
-				$('#region-' + rank).append(
-					"<option value='" + data.regions[i].id + "' >"
-						+ data.regions[i].name + "</option>");
-			}
-		},
-		error : function() {
-			alert("加载地区失败");
-		}
-	});
+				type : "post",
+				url : "/Travel-Platform/region_listChildren.action",
+				data : {
+					"pid" : pId
+				},
+				success : function(data) {
+					// 如果子列表不存在，即最终级地区
+					if (data.regions <= 0) {
+						regionId = pId;
+						$("#region-name").text(pName);
+						console.log(regionId);
+						return;
+					}
+					console.log(pName);
+					$("#region-list").append(
+							"<select class=\"form-control my-2\" id=\"region-"
+									+ rank + "\" name=\"region-" + rank
+									+ "\" onchange=\"regionChange(" + rank
+									+ ")\"></select>");
+					$("#region-" + rank)
+							.append(
+									"<option selected=\"selected\" value=\"-1\">请选择...</option>");
+					for (var i = 0; i < data.regions.length; i++) {
+						$('#region-' + rank).append(
+								"<option value='" + data.regions[i].id + "' >"
+										+ data.regions[i].name + "</option>");
+					}
+				},
+				error : function() {
+					alert("加载地区失败");
+				}
+			});
 }
+/** 保存游记 */
 var post = function() {
 	$("#post-spinner").css("display", "inline-block");
+	$("#post-success").css("display", "none");
 	// 将地区id值注入表单
 	$("#regionId").val(regionId);
-	//将内容注入表单
+	// 将内容注入表单
 	$("#noteContent").val(getNoteHtml());
-	if($("#noteHeader").text()==null){
+	if ($("#noteHeader").text() == null) {
 		$("#noteHeader").text('未命名游记');
 	}
 	console.log($("#regionId").val());
@@ -95,7 +99,10 @@ var post = function() {
 		data : $('#note').serialize(),
 		success : function(data) {
 			$("#post-spinner").css("display", "none");
+			$("#post-success").css("display", "inline-block");
 			console.log(data);
+			window.location.href = "/Travel-Platform/n/post.jsp?noteId="
+					+ data.noteId;
 		},
 		error : function() {
 			$("#post-spinner").css("display", "none");
@@ -103,6 +110,31 @@ var post = function() {
 		}
 	});
 }
-var saveDraft = function(){
+var saveDraft = function() {
 	alert("功能未完善");
 }
+
+$(function() {
+	var date = '';
+	$('#date').datepicker({
+		format : "yyyy-mm-dd",
+		maxViewMode : 2,
+		todayBtn : "linked",
+		clearBtn : true,
+		language : "zh-CN"
+	});
+	$("#date").blur(function() {
+		date = $(this).val();
+		console.log("date=" + date);
+	});
+//	$('#endDate').focus(function() {
+		$('#endDate').datepicker({
+			startDate : date,
+			format : "yyyy-mm-dd",
+			maxViewMode : 2,
+			todayBtn : "linked",
+			clearBtn : true,
+			language : "zh-CN"
+		});
+//	});
+});
