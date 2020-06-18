@@ -97,9 +97,10 @@ var pageNav = function (page = 1, total = 1, method = "listHotestNotes") {
     var prev = "";
     var next = "";
     // 添加省略号前缀
-    if (page >= 5) {
+    if (page > 5) {
         items += '<li class="page-item disabled"><a class="page-link" href="javascript: void(0)">...</a></li>';
     }
+    // 页码选项
     for (var i = 1; i <= total; i++) {
         var active = "";
         if (i <= page + 4 && i >= page - 4) {
