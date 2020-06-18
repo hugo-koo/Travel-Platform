@@ -1,13 +1,15 @@
 /**
+ * 古学懂_Victor（原作者）
  * @author 陈君锐
  */
-/*
 var getNoteHtml = function() {
 	var x = document.getElementsByTagName("iframe")[0].contentWindow;
 	var noteHtml = x.document.getElementById("editor").innerHTML;
 	return noteHtml;
 }
 
+// 最终的地区ID
+var regionId = 0;
 // 从大洲列表开始初始化
 var regionInit = function() {
 	// 清除子列表
@@ -53,14 +55,14 @@ var regionChange = function(rank) {
 		success : function(data) {
 			if (data.regions <= 0) {
 				regionId = pId;
-				$("#region-name").text(pName);
+				//$("#region-name").text(pName);
 				console.log(regionId);
 				return;
 			}
 			console.log(pName);
 			$("#region-list").append(
 					"<select class=\"form-control my-2\" id=\"region-" + rank
-							+ "\" name=\"region-" + rank
+							+ "\" name=\"publish_scenery_region_" + rank
 							+ "\" onchange=\"regionChange(" + rank + ")\"></select>");
 			$("#region-" + rank).append(
 					"<option selected=\"selected\" value=\"-1\">请选择...</option>");
@@ -74,24 +76,4 @@ var regionChange = function(rank) {
 			alert("加载地区失败");
 		}
 	});
-}*/
-
-var sceneryDtl = function() {
-	$.ajax({
-		type : "post",
-		url : "/Travel-Platform/scenery_getSceneryDtl.action?scenery.Scenery_id=1",
-		data : {},
-		success : function(data) {
-			$("#sceneryName").append(
-				"<h1 class=\"display-4\">123</h1>"
-			)
-		},
-		error : function() {
-			alert("加载景点失败");
-		}
-	})
-}
-
-var publishscenery = function() {
-	alert("发布测试");
 }

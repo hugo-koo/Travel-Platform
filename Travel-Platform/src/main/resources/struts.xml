@@ -24,11 +24,20 @@
 			<result type="json" />
 			<allowed-methods>get, insert, listLatestNotes, listHotestNotes</allowed-methods>
 		</action>
-        <action name="scenery_*" class="cn.edu.bitzh.tp.action.SceneryAction" method="{1}">
-			<result type="redirect" name="success">
-				<param name="location">/scenery/info2.jsp</param>
-			</result>
-			<allowed-methods>getSceneryDtl, getSceneryList, publishScenery</allowed-methods>
+	</package>
+	
+	<package name="struts_tag" extends="struts-default" namespace="/">
+		<action name="scenerypublish_*" class="cn.edu.bitzh.tp.action.SceneryAction" method="{1}">
+			<result name="success">/scenery/publishsuccess.jsp</result>
+			<allowed-methods>publishScenery</allowed-methods>
+		</action>
+		<action name="scenerydtl_*" class="cn.edu.bitzh.tp.action.SceneryAction" method="{1}">
+			<result name="success">/scenery/info.jsp</result>
+			<allowed-methods>getSceneryDtl</allowed-methods>
+		</action>
+		<action name="scenerylist_*" class="cn.edu.bitzh.tp.action.SceneryAction" method="{1}">
+			<result name="success">/scenery/scenery.jsp</result>
+			<allowed-methods>getSceneryList, getSceneryByRegion</allowed-methods>
 		</action>
 	</package>
 	

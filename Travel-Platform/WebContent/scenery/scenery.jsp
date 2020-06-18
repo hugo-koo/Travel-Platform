@@ -15,7 +15,6 @@
 	height: 200px;
 }
 
-<%-- 列表单元高度S --%>
 .scenery {
 	height: 140px;
 }
@@ -35,7 +34,8 @@
 	left: 250px;
 	top: 22px;
 	width: 200px;
-	font-size: 14px
+	font-size: 14px;
+	text-align: left;
 }
 .name {
 	font-size: 24px;
@@ -58,26 +58,29 @@
 	<div class="container-fluid text-center">
 		<!-- 测试用按钮 -->
 		<a href="/Travel-Platform/scenery/publish.jsp">发布页面</a><br>
-		<a href="/Travel-Platform/scenery_getSceneryDtl.action?scenery.scenery_id=1">后端数据读取测试用</a>
 		<!-- 最新景点S -->
 		<h1 class="display-4">最新景点</h1>
 		<div class="row">
 			<div class="col-2"></div>
 			<div class="col-8">
-				<a href="/Travel-Platform/scenery/info.jsp"
+			<table>
+				<s:iterator value="scenerys" var="scenery">
+				<a href="/Travel-Platform/scenerydtl_getSceneryDtl.action?scenery.scenery_id= ${scenery.scenery_id}"
 					class="list-group-item list-group-item-action">
 					<div class="scenery">
 						<div class="pic">
 							<img src="/Travel-Platform/_img/青岛_樱花.png">
 						</div>
 						<div class="txt">
-							<div class="name">景点名称</div>
+							<div class="name">${scenery.sceneryContent.scenery_content_name}</div>
 							<div class="grade">总体评分:x.x&emsp;x条点评</div>
-							<div class="location">某省某市某区某地点</div>
+							<div class="location">${scenery.sceneryContent.scenery_content_location}</div>
 						</div>
-						<div class="overview">概述</div>
+						<div class="overview"></div>
 					</div>
 				</a>
+				</s:iterator>
+			</table>
 			</div>
 		</div>
 		<!-- 最新景点E --><hr>
