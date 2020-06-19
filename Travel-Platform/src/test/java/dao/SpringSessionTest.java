@@ -14,6 +14,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import cn.edu.bitzh.tp.model.Note;
 import cn.edu.bitzh.tp.model.NoteDtl;
 import cn.edu.bitzh.tp.model.Region;
+import cn.edu.bitzh.tp.model.User;
 import cn.edu.bitzh.tp.service.INoteService;
 import cn.edu.bitzh.tp.service.IRegionService;
 import cn.edu.bitzh.tp.service.impl.NoteService;
@@ -49,12 +50,14 @@ class SpringSessionTest {
 //		noteDtl.setNoteId(1119);
 		Set<Region> regions = new HashSet<Region>();
 		regions.add(regionService.get(265));
-		note.setNoteAuthor(1000);
+		User author = new User();
+		author.setUserId(1001);
+		note.setNoteAuthor(author);
 		note.setNotePermission("private");
 		note.setNotePostDate(new Date());
 		note.setRegions(regions);
 		noteDtl.setNoteHeader("Test 3");
-//		noteDtl.setNote(note);
+		noteDtl.setNote(note);
 		note.setNoteDtl(noteDtl);
 		System.out.println(noteService.insert(note));
 	}
@@ -72,7 +75,9 @@ class SpringSessionTest {
 		noteDtl.setNoteId(1119);
 		Set<Region> regions = new HashSet<Region>();
 		regions.add(regionService.get(265));
-		note.setNoteAuthor(1000);
+		User author = new User();
+		author.setUserId(1001);
+		note.setNoteAuthor(author);
 		note.setNotePermission("private");
 		note.setNotePostDate(new Date());
 		note.setRegions(regions);
