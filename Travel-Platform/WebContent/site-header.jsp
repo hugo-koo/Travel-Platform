@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<div id="header" class="container-fluid">
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<div id="header" class="">
+	<nav class="navbar navbar-expand-lg navbar-light">
 		<a class="navbar-brand" href="/Travel-Platform/index.jsp"> <img
 			src="/Travel-Platform/_img/TP-logo.svg" alt="" width="32" height="32"
 			title="TP"> <%="旅游平台"%>
@@ -18,7 +18,8 @@
 				<li class="nav-item active"><a class="nav-link"
 					href="/Travel-Platform/index.jsp">首页 <span class="sr-only">(current)</span>
 				</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">目的地</a></li>
+				<li class="nav-item"><a class="nav-link"
+					href="/Travel-Platform/scenerylist_getSceneryList.action">目的地</a></li>
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 					role="button" data-toggle="dropdown" aria-haspopup="true"
