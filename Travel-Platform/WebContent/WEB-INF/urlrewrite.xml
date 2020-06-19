@@ -10,4 +10,12 @@
 		<from>^/note/([0-9]+)$</from>
 		<to type="forward">/n/post.jsp?noteId=$1</to>
 	</rule>
+	<rule>
+		<from>^/note/edit$</from>
+		<to type="forward">/n/edit.jsp</to>
+	</rule>
+	<rule>
+		<from>^/note/edit/([0-9]+)$</from>
+		<to type="forward">/n/edit.jsp?noteId=$1</to>
+	</rule>
 </urlrewrite>
