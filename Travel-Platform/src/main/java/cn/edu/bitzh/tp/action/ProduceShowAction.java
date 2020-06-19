@@ -36,10 +36,11 @@ public class ProduceShowAction extends ActionSupport{
 	private List<CostContent> costContents;
 	private ProduceCost produceCost;
 	private GraphicIntroduction graphicIntroduction;
-	private String prouceId;//页面传来产品编号
+	private int produceIdIn;//页面传来产品编号
+	private String produceId;//页面传来产品编号转化string
 	private ProduceRequestService produceRequestService;//产品显示service
 	private List<GraphicIntroduction> advertisingMap;
-	
+	//private int produceId;
 	public String execute(){
 		
 		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("beans.xml");//读取配置文件
@@ -65,10 +66,10 @@ public class ProduceShowAction extends ActionSupport{
 		
 		
 		//经url传入产品id为
-		prouceId="1";
 		
+		produceId=""+produceIdIn;
 		//执行产品信息查找
-		boolean flag=produceRequestService.find(prouceId, produce, produceCost, costContents, graphicIntroductions,advertisingMap);
+		boolean flag=produceRequestService.find(produceId, produce, produceCost, costContents, graphicIntroductions,advertisingMap);
 		
 		
 		if(!flag) {//查找失败
@@ -152,14 +153,31 @@ public class ProduceShowAction extends ActionSupport{
 	
 	
 	
-	public String getProuceId() {
-		return prouceId;
+	
+
+
+	
+
+	public int getProduceIdIn() {
+		return produceIdIn;
 	}
 
 
 
-	public void setProuceId(String prouceId) {
-		this.prouceId = prouceId;
+	public void setProduceIdIn(int produceIdIn) {
+		this.produceIdIn = produceIdIn;
+	}
+
+
+
+	public String getProduceId() {
+		return produceId;
+	}
+
+
+
+	public void setProduceId(String produceId) {
+		this.produceId = produceId;
 	}
 
 
