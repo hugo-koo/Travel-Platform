@@ -20,7 +20,7 @@
 		<div class="row">
 			<dl class="nav flex-column col">
 				<dd class="nav-item">
-					<a class="nav-link active" href="#">首页</a>
+					<a class="nav-link active" href="/Travel-Platform">首页</a>
 				</dd>
 				<dd class="nav-item">
 					<a class="nav-link" href="/Travel-Platform/scenerylist_getSceneryList.action">目的地</a>

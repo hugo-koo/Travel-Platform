@@ -23,7 +23,7 @@ var noteCard = function (
     if (noteHeader == 'null') {
         noteHeader = "未命名游记";
     }
-    return '<div class="card mb-3" style="max-width: 715px;"><div class="row no-gutters"><div class="col-md-4"><img src="/Travel-Platform/_img/Test_1.jpg" class="card-img" alt="首图"></div><div class="col-md-8"><div class="card-body"><a href="/Travel-Platform/n/post.jsp?noteId=' + noteId + '"><h5 class="card-title">' + noteHeader + '</h5></a><p class="card-text">' + summary + '</p><p class="card-text"><small class="text-muted">发布于' + postDate + '  ' + likeIcon + likeCount + ' ' + commentIcon + commentCount + ' ' + favouritesIcon + favoriteCount + ' </small></p></div></div></div></div><hr>'
+    return '<div class="card mb-3" style="max-width: 715px;"><div class="row no-gutters"><div class="col-md-4"><img src="/Travel-Platform/_img/Test_1.jpg" class="card-img" alt="首图"></div><div class="col-md-8"><div class="card-body"><a href="/Travel-Platform/note/' + noteId + '"><h5 class="card-title">' + noteHeader + '</h5></a><p class="card-text">' + summary + '</p><p class="card-text"><small class="text-muted">发布于' + postDate + '  ' + likeIcon + likeCount + ' ' + commentIcon + commentCount + ' ' + favouritesIcon + favoriteCount + ' </small></p></div></div></div></div><hr>'
 }
 /** 生成页面 */
 var createPage = function (page = 1, method = "listHotestNotes") {

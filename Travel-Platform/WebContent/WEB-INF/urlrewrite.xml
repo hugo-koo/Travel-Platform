@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE urlrewrite
-    PUBLIC "-//tuckey.org//DTD UrlRewrite 4.0//EN"
-    "http://www.tuckey.org/res/dtds/urlrewrite4.0.dtd">
+<!DOCTYPE urlrewrite PUBLIC "-//tuckey.org//DTD UrlRewrite 4.0//EN" "http://www.tuckey.org/res/dtds/urlrewrite4.0.dtd">
+<!-- Configuration file for UrlRewriteFilter http://www.tuckey.org/urlrewrite/ -->
 <urlrewrite>
 	<rule>
 		<from>^/index$</from>
 		<to type="forward">/index.jsp</to>
 	</rule>
-<!-- 	<rule> -->
-<!-- 		<from>^/note/([A-Za-z0-9]+)$</from> -->
-<!-- 		<to type="forward">/n/$1.jsp</to> -->
-<!-- 	</rule> -->
+	<rule>
+		<from>^/note/([0-9]+)$</from>
+		<to type="forward">/n/post.jsp?noteId=$1</to>
+	</rule>
+	<rule>
+		<from>^/note/edit$</from>
+		<to type="forward">/n/edit.jsp</to>
+	</rule>
+	<rule>
+		<from>^/note/edit/([0-9]+)$</from>
+		<to type="forward">/n/edit.jsp?noteId=$1</to>
+	</rule>
 </urlrewrite>
