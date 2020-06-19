@@ -13,6 +13,7 @@ import cn.edu.bitzh.tp.dao.impl.NoteDao;
 import cn.edu.bitzh.tp.model.Note;
 import cn.edu.bitzh.tp.model.NoteDtl;
 import cn.edu.bitzh.tp.model.Region;
+import cn.edu.bitzh.tp.model.User;
 import cn.edu.bitzh.tp.service.INoteService;
 import cn.edu.bitzh.tp.service.IRegionService;
 import cn.edu.bitzh.tp.service.impl.NoteService;
@@ -42,7 +43,9 @@ class NoteUpdateTest {
 		
 		Set<Region> regions = new HashSet<Region>();
 		regions.add(regionService.get(265));
-		note.setNoteAuthor(1000);
+		User author = new User();
+		author.setUserId(1001);
+		note.setNoteAuthor(author);
 		note.setNotePermission("private");
 		note.setNotePostDate(new Date());
 		note.setRegions(regions);
