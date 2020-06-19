@@ -3,6 +3,7 @@ package cn.edu.bitzh.tp.action;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.struts2.interceptor.validation.SkipValidation;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -129,6 +130,7 @@ public class SceneryAction extends ActionSupport {
 	 * 展示单个景点详细内容
 	 * @author 陈君锐
 	 */
+	@SkipValidation
 	public String getSceneryDtl() {
 		this.scenery = scenerySrv.getDtl( scenery.getScenery_id() );
 		return ActionSupport.SUCCESS;
@@ -138,6 +140,7 @@ public class SceneryAction extends ActionSupport {
 	 * （按发布时间顺序）地区内展示景点列表
 	 * @author 陈君锐
 	 */
+	@SkipValidation
 	public String getSceneryByRegion() {
 		List<Scenery> scenerylist = scenerySrv.listByRegion( region.getId() );
 		if ( scenerylist != null ){
@@ -153,6 +156,7 @@ public class SceneryAction extends ActionSupport {
 	 * （按发布时间顺序）展示所有景点列表
 	 * @author 陈君锐
 	 */
+	@SkipValidation
 	public String getSceneryList() {
 		List<Scenery> scenerylist = scenerySrv.list();
 		if ( scenerylist != null ){
@@ -181,6 +185,7 @@ public class SceneryAction extends ActionSupport {
 		//====================数据写入S=====================
 		Scenery sceneryinpublish = new Scenery();
 		SceneryContent scenerycontentinpublish = new SceneryContent();
+		System.out.println("进入action");
 		sceneryinpublish.setSceneryContent(scenerycontentinpublish);
 		sceneryinpublish.setScenery_author(1000);
 		sceneryinpublish.setScenery_region(regionId);
@@ -197,6 +202,7 @@ public class SceneryAction extends ActionSupport {
 		sceneryinpublish.setScenery_ispulish("true");
 		sceneryinpublish.setScenery_ischecked("pass");
 		//====================状态写入E=====================
+		System.out.println("进入srv");
 		int id = this.scenerySrv.publishScenery(sceneryinpublish);
 		if (id != 0) {
 			this.sceneryid = id;
