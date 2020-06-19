@@ -21,7 +21,7 @@ public interface INoteDao extends IBaseDao<Note> {
 	 * @return 游记主键
 	 */
 	@Override
-	int insertOrUpdate(Note note);
+	int insert(Note note);
 
 	@Override
 	boolean delete(int id);

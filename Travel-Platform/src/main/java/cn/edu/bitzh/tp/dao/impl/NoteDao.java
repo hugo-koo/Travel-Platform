@@ -78,22 +78,6 @@ public class NoteDao implements INoteDao {
 	public boolean update(Note note) {
 		try {
 			session = sessionFactory.openSession();
-			Note noteT = session.get(Note.class, note.getNoteId());
-			session.update(noteT);
-			transaction.commit();
-			return true;
-		} catch (Exception x) {
-			x.printStackTrace();
-			return false;
-		} finally {
-			sessionFactory.close();
-		}
-	}
-
-	@Override
-	public int insertOrUpdate(Note note) {
-		try {
-			session = sessionFactory.openSession();
 			transaction = session.beginTransaction();
 			Note noteT = session.load(Note.class, note.getNoteId());
 			note.getNoteDtl().setNote(note);
@@ -109,15 +93,32 @@ public class NoteDao implements INoteDao {
 			noteT.setPostDateStr(note.getPostDateStr());
 			noteT.setRegions(note.getRegions());
 			noteT.setTravelDate(note.getTravelDate());
-//			int num = Integer.parseInt(session.save(note).toString());
 			session.saveOrUpdate(noteT);
 			session.clear();
-			session.saveOrUpdate(noteT.getNoteDtl());
+			session.saveOrUpdate(note.getNoteDtl());
 			transaction.commit();
-			return note.getNoteId();
+			return true;
 		} catch (Exception x) {
 			x.printStackTrace();
-			return -1;
+			return false;
+		} finally {
+			sessionFactory.close();
+		}
+	}
+
+	@Override
+	public int insert(Note note) {
+		try {
+			session = sessionFactory.openSession();
+			transaction = session.beginTransaction();
+			note.getNoteDtl().setNote(note);
+			int num = Integer.parseInt(session.save(note).toString());
+			session.save(note.getNoteDtl());
+			transaction.commit();
+			return num;
+		} catch (Exception x) {
+			x.printStackTrace();
+			return 0;
 		} finally {
 			sessionFactory.close();
 		}

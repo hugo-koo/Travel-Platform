@@ -100,8 +100,7 @@ var post = function () {
 			$("#post-spinner").css("display", "none");
 			$("#post-success").css("display", "inline-block");
 			console.log(data);
-			window.location.href = "/Travel-Platform/n/post.jsp?noteId="
-				+ data.noteId;
+			window.location.href = "/Travel-Platform/note/" + data.noteId;
 		},
 		error: function () {
 			$("#post-spinner").css("display", "none");
