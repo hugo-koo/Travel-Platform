@@ -59,5 +59,11 @@
 			<result name="error">/test.jsp</result>
 		</action>
 	</package>
+	<package name="produce_page" namespace="/" extends="json-default">
+		<action name="produce_page" class="cn.edu.bitzh.tp.action.ProducePageAction">
+			<result name="success">/ProducePageVo.jsp</result>
+			<result name="error">/test.jsp</result>
+		</action>
+	</package>
 
 </struts>

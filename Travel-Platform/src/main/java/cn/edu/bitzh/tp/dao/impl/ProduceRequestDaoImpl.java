@@ -12,6 +12,7 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.HibernateTemplate;
@@ -184,6 +185,75 @@ public class ProduceRequestDaoImpl extends HibernateDaoSupport implements Produc
 		}
 
 	}
+	
+	
+	
+	@Override
+	public List<Produce> findByPage(int begin, int pageSize) {
+		// TODO Auto-generated method stub
+		session = sessionFactory.openSession();
+		transaction = session.beginTransaction();
+		
+		Query query = session.createQuery("from Produce");
+		query.setFirstResult(begin);//从什么位置开始，默认为0
+		query.setMaxResults(pageSize);
+		
+		List<Produce> list=query.list();
+		
+		
+		for(int i=0;i<list.size();i++) {
+			System.out.println(list.get(i).getProduceTitle()+"\n");
+		}
+		
+		
+		
+		System.out.println(" ProduceRequestDaoImpl findByPage start \n");
+		//DetachedCriteria criteria=DetachedCriteria.forClass(Produce.class);
+		System.out.println("begin is"+ begin);
+		System.out.println(" pageSize is"+ pageSize);
+		//this.hibernateTemplate.findByCriteria(criteria,1,1);
+		//System.out.println(" list size is"+ list.size());
+		
+		
+		return list;
+	
+	
+	}
+
+	@Override
+	public int countGet() {
+		int countNum=0;
+		System.out.println(" countGet start \n");
+		String hql="select COUNT(*) from Produce";
+		List<Long> list=(List<Long>) this.getHibernateTemplate().find(hql);
+		if(list.size()>0) {
+			return list.get(0).intValue();
+			
+		}
+		
+		System.out.println("list.size is 0");
+		
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	
+	public  List<GraphicIntroduction> findAdvertisingMap(int prduceId) {
+		
+		session = sessionFactory.openSession();
+		transaction = session.beginTransaction();
+		
+		String advertisingMapHql = "from  GraphicIntroduction graphicIntroduction where graphicIntroduction.produceId="
+				+ prduceId +" and graphicIntroduction.graphicType = 0"; 
+		Query<GraphicIntroduction> advertisingMapQuery = session.createQuery(advertisingMapHql);
+		List<GraphicIntroduction> advertisingMapGet = advertisingMapQuery.list();
+		return advertisingMapGet;
+		
+	} ;
+	
+	
+	
+	
 
 	public void test(Produce produce, CostContent costContent) {
 
@@ -203,6 +273,10 @@ public class ProduceRequestDaoImpl extends HibernateDaoSupport implements Produc
 
 	}
 	
+	
+	
+	
+
 	//public void check() {
 		
 	//}

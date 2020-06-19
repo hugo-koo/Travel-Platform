@@ -62,6 +62,9 @@
 		<property name="ProduceRequestService" ref="ProduceRequestService"></property>
     </bean>
 	
+	<bean id="ProducePageAction" class="cn.edu.bitzh.tp.action.ProducePageAction">
+		<property name="ProduceRequestService" ref="ProduceRequestService"></property>
+    </bean>
 	
 	
 </beans>
