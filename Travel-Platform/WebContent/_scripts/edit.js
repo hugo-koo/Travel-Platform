@@ -20,7 +20,7 @@ var regionInit = () => {
 		type: "post",
 		url: "/Travel-Platform/region_listContinents.action",
 		data: {},
-		success: function (data) {
+		success: (data) => {
 			for (var i = 0; i < data.regions.length; i++) {
 				$('#region-1').append(
 					"<option value='" + data.regions[i].id + "' >"
@@ -53,7 +53,7 @@ var regionChange = (rank) => {
 		data: {
 			"pid": pId
 		},
-		success: function (data) {
+		success: (data) => {
 			// 如果子列表不存在，即最终级地区
 			if (data.regions <= 0) {
 				regionId = pId;
@@ -83,24 +83,24 @@ var regionChange = (rank) => {
 
 /** 保存游记 */
 var post = () => {
-	$("#post-spinner").css("display", "inline-block");
-	$("#post-success").css("display", "none");
 	// 将地区id值注入表单
 	$("#regionId").val(regionId);
 	// 将内容注入表单
 	$("#noteContent").val(getNoteHtml());
-	if ($("#noteHeader").text() == null) {
+	if ($("#noteHeader").text() == "") {
 		$("#noteHeader").text('未命名游记');
 	}
 	console.log($("#regionId").val());
-	// 检验数据
-	if (validate())
+	// 校验数据
+	if (validate()){
+		$("#post-spinner").css("display", "inline-block");
+		$("#post-success").css("display", "none");
 		$.ajax({
 			type: "POST",
 			dataType: "json",
 			url: "/Travel-Platform/note_insert.action",
 			data: $('#note').serialize(),
-			success: function (data) {
+			success: (data) => {
 				$("#post-spinner").css("display", "none");
 				$("#post-success").css("display", "inline-block");
 				console.log(data);
@@ -111,35 +111,32 @@ var post = () => {
 				alert("发布失败！");
 			}
 		});
+	}
 }
 
 /**校验器 */
 var validate = () => {
 	var finish = true;
-	if ($("#date").val() == null) {
+	if ($("#date").val() == "") {
 		$("#date").after('<div class="error" id="date-error">--开始时间未填写--</div>');
 		finish = false;
 	}
-	if ($("#endDate").val() == null) {
+	if ($("#endDate").val() == "") {
 		$("#endDate").after('<div class="error" id="end-date-error">--结束时间未填写--</div>');
 		finish = false;
 	}
-	if ($("#noteHeader").val() == null) {
+	if ($("#noteHeader").val() == "") {
 		$("#noteHeader").after('<div class="error" id="header-error">--标题未填写--</div>');
 		finish = false;
 	}
 	return finish;
 }
 
-$("input").focus(() => {
-	$(".error").remove();
-});
-
 var saveDraft = () => {
 	alert("功能未完善");
 }
 
-$(function () {
+$(() => {
 	var date = '';
 	// 开始日期
 	$("#date").datepicker({
@@ -150,7 +147,7 @@ $(function () {
 		language: "zh-CN"
 	}).on(
 		"changeDate",
-		function (e) {
+		(e) => {
 			if (e.date) {
 				$("#endDate").datepicker('setStartDate',
 					new Date(e.date.valueOf()))
@@ -167,7 +164,7 @@ $(function () {
 		language: "zh-CN"
 	}).on(
 		"changeDate",
-		function (e) {
+		(e) => {
 			if (e.date) {
 				$("#startDate").datepicker('setEndDate',
 					new Date(e.date.valueOf()))
@@ -175,4 +172,8 @@ $(function () {
 				$("#startDate").datepicker('setEndDate', new Date());
 			}
 		});
+	
+	$("input").focus(() => {
+		$(".error").remove();
+	});
 });
