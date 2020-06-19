@@ -161,7 +161,7 @@
 								<label>餐食费用：</label>
 							</div>
 							<div class="col-3">
-								<input type="radio" name="mealsCost" value="0" class="mr-3" checked="checked">不包含
+								<input type="radio" name="mealsCost" value="0" class="mr-3" checked/>不包含
 							</div>
 							<div class="col-3">
 								<input type="radio" name="mealsCost" value="1" class="mr-3">全包含
@@ -179,7 +179,7 @@
 							</div>
 							<div class="col-3">
 								<input type="radio" name="accommodationFee" value="0"
-									class="mr-3" checked="checked">补偿房差
+									class="mr-3" checked>补偿房差
 							</div>
 							<div class="col-3">
 								<input type="radio" name="accommodationFee" value="1"
@@ -193,7 +193,7 @@
 								<label>景点门票：</label>
 							</div>
 							<div class="col-3">
-								<input type="radio" name="landmarkTicket" value="0" class="mr-3" checked="checked">只含门票&nbsp;&nbsp;&nbsp;&nbsp;
+								<input type="radio" name="landmarkTicket" value="0" class="mr-3" checked>只含门票&nbsp;&nbsp;&nbsp;&nbsp;
 							</div>
 							<div class="col-3">
 								<input type="radio" name="landmarkTicket" value="1" class="mr-3">含娱乐项目&nbsp;&nbsp;&nbsp;&nbsp;
@@ -207,7 +207,7 @@
 								<label>往来交通：</label>
 							</div>
 							<div class="col-3">
-								<input type="radio" name="carFare" value="0" class="mr-3" checked="checked">不包含&nbsp;&nbsp;&nbsp;&nbsp;
+								<input type="radio" name="carFare" value="0" class="mr-3" checked>不包含&nbsp;&nbsp;&nbsp;&nbsp;
 							</div>
 							<div class="col-3">
 								<input type="radio" name="carFare" value="1" class="mr-3">含往返交通&nbsp;&nbsp;&nbsp;&nbsp;
@@ -223,7 +223,7 @@
 								<label>导游服务：</label>
 							</div>
 							<div class="col-3">
-								<input type="radio" name="guideFee" value="0" class="mr-3"checked="checked">含景点讲解&nbsp;&nbsp;&nbsp;&nbsp;
+								<input type="radio" name="guideFee" value="0" class="mr-3" checked>含景点讲解&nbsp;&nbsp;&nbsp;&nbsp;
 							</div>
 							<div class="col-3">
 								<input type="radio" name="guideFee" value="1" class="mr-3">不含讲解&nbsp;&nbsp;&nbsp;&nbsp;
@@ -309,4 +309,5 @@
 
 
 </body>
+>>>>>>> refs/heads/develop
 </html>

@@ -38,7 +38,7 @@
 						<div>
 							<span class="necessary">*</span><label for="sceneryname">景点名称</label>
 							<input class="form-control col-8" id="publish_scenery_name" name="publish_scenery_name"
-								placeholder="填写景点名称">
+								placeholder="填写景点名称" ></input>
 						</div>
 						<div>
 							<span class="necessary">*</span><label for="scenerydtl">景点内容介绍</label>
@@ -72,15 +72,15 @@
 						<div>
 							<label for="sceneryphone">联系电话</label> <input type="text"
 								class="form-control col-6" id="publish_scenery_phone" name="publish_scenery_phone"
-								placeholder="国内 例：010-12345678 国外 例：(86-010)12345678">
+								placeholder="填写手机号或8位座机短号">
 						</div>
 						<div>
 							<label for="sceneryemail">联系邮箱</label> <input type="text"
 								class="form-control col-6" id="publish_scenery_email" name="publish_scenery_email"
-								placeholder="例：123@abc.com">
+								placeholder="请填写可用的邮箱">
 						</div>
 					<!-- 景点联系信息E --><br>
-					<button type="submit" class="btn btn-primary">提交</button>
+					<button type="submit" class="btn btn-primary" onclick="publish()">提交</button>
 				</s:form>
 				<br>
 			</div>

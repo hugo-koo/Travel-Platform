@@ -74,6 +74,7 @@ public class NoteAction extends ActionSupport {
 	 */
 	public String listLatestNotes() {
 		this.notes = ns.listAllNotes();
+		if(notes == null ) return ActionSupport.ERROR;
 		if (this.notes.size() % itemsPerPage != 0) {
 			totalPages = this.notes.size() / itemsPerPage + 1;
 		} else {
@@ -99,6 +100,7 @@ public class NoteAction extends ActionSupport {
 	 */
 	public String listHotestNotes() {
 		this.notes = ns.listHotestNotes();
+		if(notes == null ) return ActionSupport.ERROR;
 		if (this.notes.size() % itemsPerPage != 0) {
 			totalPages = this.notes.size() / itemsPerPage + 1;
 		} else {
