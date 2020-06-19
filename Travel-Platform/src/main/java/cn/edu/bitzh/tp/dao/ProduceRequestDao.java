@@ -17,5 +17,15 @@ public interface ProduceRequestDao {
 	public boolean find(String produceId, Produce produce, ProduceCost produceCost, List<CostContent> costContent,
 			List<GraphicIntroduction> graphicIntroduction,List<GraphicIntroduction> advertisingMap);
 	
+	//产品分页查询
+	public List<Produce>findByPage(int begin,int pageSize);
+	
+	//返回数据库produce总数
+	public int countGet() ;
+	//返回分页查询产品宣传图
+	public List<GraphicIntroduction> findAdvertisingMap(int produceId) ;
+	
+	
+	
 	
 }
