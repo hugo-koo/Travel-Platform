@@ -126,13 +126,23 @@ public class NoteDao implements INoteDao {
 
 	@Override
 	public boolean delete(int id) {
-		// TODO Auto-generated method stub
-		return false;
+		try {
+			session = sessionFactory.openSession();
+			transaction = session.beginTransaction();
+			Note note = session.load(Note.class, id);
+			session.delete(note);
+			transaction.commit();
+			return true;
+		} catch (Exception x) {
+			x.printStackTrace();
+			return false;
+		} finally {
+			sessionFactory.close();
+		}
 	}
 
 	@Override
 	public List<Note> list() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
