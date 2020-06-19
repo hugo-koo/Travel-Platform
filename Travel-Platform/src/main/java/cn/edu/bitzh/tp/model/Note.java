@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
@@ -35,8 +36,11 @@ public class Note {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "note_id")
 	private int noteId;
-	@Column(name = "note_author")
-	private int noteAuthor;
+//	@Column(name = "note_author")
+//	private int noteAuthor;
+	@ManyToOne(targetEntity = User.class)
+	@JoinColumn(name="note_Author", updatable=false)
+	private User noteAuthor;
 	@Column(name = "note_permission")
 	private String notePermission;
 //	@Temporal(TemporalType.DATE)
@@ -65,7 +69,6 @@ public class Note {
 	//饿汉模式
 	private Set<Region> regions = new HashSet<Region>();
 	//格式化后的日期字符串
-	
 	private String postDateStr = "";
 	
 	public Set<Region> getRegions() {
@@ -99,14 +102,6 @@ public class Note {
 
 	public void setNoteId(int noteId) {
 		this.noteId = noteId;
-	}
-
-	public int getNoteAuthor() {
-		return noteAuthor;
-	}
-
-	public void setNoteAuthor(int noteAuthor) {
-		this.noteAuthor = noteAuthor;
 	}
 
 	@JSON(serialize = false)
@@ -210,6 +205,20 @@ public class Note {
 	 */
 	public void setApplicable(String applicable) {
 		this.applicable = applicable;
+	}
+
+	/**
+	 * @return the noteAuthor
+	 */
+	public User getNoteAuthor() {
+		return noteAuthor;
+	}
+
+	/**
+	 * @param noteAuthor the noteAuthor to set
+	 */
+	public void setNoteAuthor(User noteAuthor) {
+		this.noteAuthor = noteAuthor;
 	}
 
 }

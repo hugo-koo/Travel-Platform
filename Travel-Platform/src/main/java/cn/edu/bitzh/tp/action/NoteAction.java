@@ -12,6 +12,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import cn.edu.bitzh.tp.model.Note;
 import cn.edu.bitzh.tp.model.Region;
+import cn.edu.bitzh.tp.model.User;
 import cn.edu.bitzh.tp.service.INoteService;
 import cn.edu.bitzh.tp.service.IRegionService;
 import cn.edu.bitzh.tp.service.impl.NoteService;
@@ -51,7 +52,9 @@ public class NoteAction extends ActionSupport {
 
 	public String insert() {
 		this.note.setNotePostDate(new Date());
-		this.note.setNoteAuthor(1000);
+		User author = new User();
+		author.setUserId(1001);
+		note.setNoteAuthor(author);
 		Set<Region> regions = new HashSet<Region>();
 		Region region = rs.get(regionId);
 		regions.add(region);
@@ -113,6 +116,11 @@ public class NoteAction extends ActionSupport {
 			this.notes = this.notes.subList(itemsPerPage * (page - 1), itemsPerPage * page);
 		}
 		return ActionSupport.SUCCESS;
+	}
+	
+	public String like() {
+		// TODO Like function
+		return null;
 	}
 
 	public int getRegionId() {
