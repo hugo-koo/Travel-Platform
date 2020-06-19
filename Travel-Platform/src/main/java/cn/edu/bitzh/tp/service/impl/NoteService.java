@@ -25,7 +25,7 @@ public class NoteService implements INoteService {
 
 	@Override
 	public int insert(Note note) {
-		return nd.insert(note);
+		return nd.insertOrUpdate(note);
 	}
 
 	@Override

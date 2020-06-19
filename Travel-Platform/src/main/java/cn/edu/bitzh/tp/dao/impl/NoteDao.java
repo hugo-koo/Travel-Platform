@@ -91,18 +91,33 @@ public class NoteDao implements INoteDao {
 	}
 
 	@Override
-	public int insert(Note note) {
+	public int insertOrUpdate(Note note) {
 		try {
 			session = sessionFactory.openSession();
 			transaction = session.beginTransaction();
+			Note noteT = session.load(Note.class, note.getNoteId());
 			note.getNoteDtl().setNote(note);
-			int num = Integer.parseInt(session.save(note).toString());
-			session.save(note.getNoteDtl());
+			noteT.setNoteDtl(note.getNoteDtl());
+			noteT.setApplicable(note.getApplicable());
+			noteT.setCommentCount(note.getCommentCount());
+			noteT.setEndDate(note.getEndDate());
+			noteT.setFavoriteCount(note.getFavoriteCount());
+			noteT.setLikeCount(note.getLikeCount());
+			noteT.setNoteAuthor(note.getNoteAuthor());
+			noteT.setNotePermission(note.getNotePermission());
+			noteT.setNotePostDate(note.getNotePostDate());
+			noteT.setPostDateStr(note.getPostDateStr());
+			noteT.setRegions(note.getRegions());
+			noteT.setTravelDate(note.getTravelDate());
+//			int num = Integer.parseInt(session.save(note).toString());
+			session.saveOrUpdate(noteT);
+			session.clear();
+			session.saveOrUpdate(noteT.getNoteDtl());
 			transaction.commit();
-			return num;
+			return note.getNoteId();
 		} catch (Exception x) {
 			x.printStackTrace();
-			return 0;
+			return -1;
 		} finally {
 			sessionFactory.close();
 		}

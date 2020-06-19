@@ -8,7 +8,7 @@ import java.util.List;
  * @param <T>
  */
 public interface IBaseDao<T> {
-	public int insert(T t);
+	public int insertOrUpdate(T t);
 
 	public boolean update(T t);
 
