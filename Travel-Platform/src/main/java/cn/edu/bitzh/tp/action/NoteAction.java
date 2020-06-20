@@ -53,7 +53,7 @@ public class NoteAction extends ActionSupport {
 	public String insert() {
 		this.note.setNotePostDate(new Date());
 		User author = new User();
-		author.setUserId(1001);
+		author.setUserId(1000);
 		note.setNoteAuthor(author);
 		Set<Region> regions = new HashSet<Region>();
 		Region region = rs.get(regionId);

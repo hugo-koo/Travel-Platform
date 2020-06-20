@@ -40,6 +40,9 @@
 		<div class="row">
 			<div class="col-sm-1"></div>
 			<div class="col-6 col-lg-8">
+				<%
+					if (note != null) {
+				%>
 				<div class="jumbotron jumbotron-fluid"
 					style="background-color: <%="#F0EDE5"%>;">
 					<div class="container">
@@ -51,6 +54,10 @@
 						</div>
 					</div>
 				</div>
+				<%
+					;
+					}
+				%>
 			</div>
 			<div class="col-3 col-lg-3" id="cards-flows">
 				<%
@@ -113,7 +120,7 @@
 				<%
 					;
 					}
-					if (note.getEndDate() != null) {
+					if (note.getApplicable() != null) {
 				%>
 				<div class="card text-white bg-info mb-3" style="max-width: 18rem;">
 					<div class="card-header">适宜人群</div>
