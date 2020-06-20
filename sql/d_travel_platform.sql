@@ -1,5 +1,5 @@
 /*
-SQLyog Ultimate v13.1.1 (64 bit)
+SQLyog Ultimate
 MySQL - 8.0.19 : Database - d_travel_platform
 *********************************************************************
 */
@@ -12,7 +12,7 @@ MySQL - 8.0.19 : Database - d_travel_platform
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-CREATE DATABASE /*!32312 IF NOT EXISTS*/`d_travel_platform` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`d_travel_platform` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 
 USE `d_travel_platform`;
 
@@ -92,11 +92,12 @@ DROP TABLE IF EXISTS `t_cost_content`;
 
 CREATE TABLE `t_cost_content` (
   `cost_id` int unsigned NOT NULL,
-  `cost_content` varchar(100) NOT NULL,
-  `produce_cost_type` varchar(10) NOT NULL,
-  `content_gmt_create` datetime NOT NULL,
-  `content_gmt_modified` datetime DEFAULT NULL,
-  KEY `cost_id` (`cost_id`),
+  `meals_cost` int NOT NULL,
+  `accommodation_fee` int NOT NULL,
+  `landmark_ticket` int NOT NULL,
+  `car_fare` int NOT NULL,
+  `guide_fee` int NOT NULL,
+  PRIMARY KEY (`cost_id`),
   CONSTRAINT `t_cost_content_ibfk_1` FOREIGN KEY (`cost_id`) REFERENCES `t_produce_cost` (`cost_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -182,13 +183,14 @@ CREATE TABLE `t_footprint_dtl` (
 DROP TABLE IF EXISTS `t_graphic_introduction`;
 
 CREATE TABLE `t_graphic_introduction` (
+  `graphic_id` int unsigned NOT NULL AUTO_INCREMENT,
   `produce_id` int unsigned NOT NULL,
   `graphic_introduction_content` varchar(2083) NOT NULL,
-  `introduction_gmt_create` datetime NOT NULL,
-  `introduction_gmt_modified` datetime DEFAULT NULL,
-  PRIMARY KEY (`produce_id`),
+  `graphic_type` int NOT NULL,
+  PRIMARY KEY (`graphic_id`),
+  KEY `t_graphic_introduction_ibfk_1` (`produce_id`),
   CONSTRAINT `t_graphic_introduction_ibfk_1` FOREIGN KEY (`produce_id`) REFERENCES `t_produce` (`produce_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 /*Table structure for table `t_note` */
 
@@ -198,18 +200,19 @@ CREATE TABLE `t_note` (
   `note_id` int unsigned NOT NULL AUTO_INCREMENT,
   `note_author` int unsigned NOT NULL DEFAULT '1000',
   `note_permission` enum('private','public') CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT 'public',
-  `note_post_date` datetime NOT NULL DEFAULT '2000-00-00 00:00:00',
+  `note_post_date` datetime NOT NULL DEFAULT '2000-01-01 00:00:00',
   `favorite_count` int unsigned NOT NULL DEFAULT '0',
   `like_count` int unsigned NOT NULL DEFAULT '0',
   `comment_count` int unsigned NOT NULL DEFAULT '0',
-  `region` int unsigned NOT NULL DEFAULT '0',
+  `travel_date` date DEFAULT '2000-01-01' COMMENT '出行日期',
+  `applicable` varchar(50) COLLATE utf8_bin DEFAULT NULL COMMENT '适用人群',
+  `postDateStr` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `end_date` date DEFAULT '2000-01-01' COMMENT '结束日期',
   PRIMARY KEY (`note_id`),
   UNIQUE KEY `note_id` (`note_id`),
   KEY `note_author` (`note_author`),
-  KEY `region` (`region`),
-  CONSTRAINT `t_note_ibfk_1` FOREIGN KEY (`note_author`) REFERENCES `t_user` (`user_id`),
-  CONSTRAINT `t_note_ibfk_2` FOREIGN KEY (`region`) REFERENCES `t_region` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1082 DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Created By 古学懂';
+  CONSTRAINT `t_note_ibfk_1` FOREIGN KEY (`note_author`) REFERENCES `t_user` (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1118 DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Created By 古学懂';
 
 /*Table structure for table `t_note_comment` */
 
@@ -233,27 +236,20 @@ CREATE TABLE `t_note_comment` (
 DROP TABLE IF EXISTS `t_note_dtl`;
 
 CREATE TABLE `t_note_dtl` (
-  `note_id` int unsigned NOT NULL,
-  `note_header` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `note_content` text CHARACTER SET utf8 COLLATE utf8_bin,
-  `note_toppic` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
-  PRIMARY KEY (`note_id`),
-  CONSTRAINT `t_note_dtl_ibfk_1` FOREIGN KEY (`note_id`) REFERENCES `t_note` (`note_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Created By 古学懂';
+  `note_id` int NOT NULL,
+  `note_content` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `note_header` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `note_toppic` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  PRIMARY KEY (`note_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Table structure for table `t_note_region` */
 
 DROP TABLE IF EXISTS `t_note_region`;
 
 CREATE TABLE `t_note_region` (
-  `related_note_id` int unsigned NOT NULL,
-  `related_region_id` int unsigned NOT NULL,
-  `related_id` int unsigned NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`related_id`),
-  KEY `related_note_id` (`related_note_id`),
-  KEY `related_region_id` (`related_region_id`),
-  CONSTRAINT `t_note_region_ibfk_1` FOREIGN KEY (`related_note_id`) REFERENCES `t_note` (`note_id`),
-  CONSTRAINT `t_note_region_ibfk_2` FOREIGN KEY (`related_region_id`) REFERENCES `t_region` (`id`)
+  `region_id` int NOT NULL,
+  `note_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Created By 古学懂';
 
 /*Table structure for table `t_produce` */
@@ -262,14 +258,14 @@ DROP TABLE IF EXISTS `t_produce`;
 
 CREATE TABLE `t_produce` (
   `produce_id` int unsigned NOT NULL AUTO_INCREMENT,
-  `produce_title` varchar(40) NOT NULL,
-  `produce_type` varchar(10) NOT NULL,
+  `produce_title` varchar(100) NOT NULL,
+  `produce_telephone` bigint NOT NULL,
   `produce_lindisfarne` varchar(10) NOT NULL,
-  `produce_cost_time` int NOT NULL,
-  `produce_gmt_create` datetime NOT NULL,
-  `produce_gmt_modified` datetime DEFAULT NULL,
+  `produce_cost_day` int NOT NULL,
+  `produce_min_price` int NOT NULL,
+  `produce_max_price` int NOT NULL,
   PRIMARY KEY (`produce_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 /*Table structure for table `t_produce_cost` */
 
@@ -278,13 +274,10 @@ DROP TABLE IF EXISTS `t_produce_cost`;
 CREATE TABLE `t_produce_cost` (
   `produce_id` int unsigned NOT NULL,
   `cost_id` int unsigned NOT NULL AUTO_INCREMENT,
-  `cost_gmt_create` datetime NOT NULL,
-  `cost_gmt_modified` datetime DEFAULT NULL,
-  `is_in_total` enum('true','flase') NOT NULL DEFAULT 'true',
   PRIMARY KEY (`cost_id`),
-  KEY `produce_id` (`produce_id`),
+  KEY `t_produce_cost_ibfk_1` (`produce_id`),
   CONSTRAINT `t_produce_cost_ibfk_1` FOREIGN KEY (`produce_id`) REFERENCES `t_produce` (`produce_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 /*Table structure for table `t_produce_status` */
 
@@ -311,7 +304,7 @@ CREATE TABLE `t_region` (
   `name_pinyin` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '中文拼音',
   `code` varchar(50) DEFAULT NULL COMMENT '代码',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4171 DEFAULT CHARSET=utf8 COMMENT='全球地区库，采集自腾讯QQ国内+国际版.ADD.JENA.20141221';
+) ENGINE=InnoDB AUTO_INCREMENT=4170 DEFAULT CHARSET=utf8 COMMENT='全球地区库，采集自腾讯QQ国内+国际版.ADD.JENA.20141221';
 
 /*Table structure for table `t_scenery` */
 
@@ -323,7 +316,7 @@ CREATE TABLE `t_scenery` (
   `scenery_author` int unsigned NOT NULL COMMENT '发布者id【用户id】',
   `scenery_region` int unsigned NOT NULL COMMENT '所在地区id*【地区id】',
   `scenery_ispublish` enum('true','false') CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT 'false' COMMENT '是否发布标识',
-  `sceenry_ischecked` enum('unchecked','pass','nopass') CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT 'unchecked',
+  `scenery_ischecked` enum('unchecked','pass','nopass') COLLATE utf8mb4_bin NOT NULL DEFAULT 'unchecked',
   `scenery_publish_time` datetime NOT NULL COMMENT '最新发布时间',
   `scenery_click` int unsigned NOT NULL DEFAULT '0' COMMENT '景点点击量',
   PRIMARY KEY (`scenery_id`),
@@ -333,7 +326,7 @@ CREATE TABLE `t_scenery` (
   CONSTRAINT `fk_scenery_pid` FOREIGN KEY (`scenery_pid`) REFERENCES `t_scenery` (`scenery_id`),
   CONSTRAINT `fk_scenery_region` FOREIGN KEY (`scenery_region`) REFERENCES `t_region` (`id`),
   CONSTRAINT `t_scenery_ibfk_1` FOREIGN KEY (`scenery_author`) REFERENCES `t_user` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='景点表';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='景点表';
 
 /*Table structure for table `t_scenery_content` */
 
@@ -360,6 +353,7 @@ CREATE TABLE `t_scenery_review` (
   `scenery_review_score` enum('1','2','3','4','5') CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL COMMENT '评分',
   `scenery_review_dtl` datetime NOT NULL COMMENT '点评内容',
   `scenery_review_time` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '点评时间',
+  `scenery_review_author` int DEFAULT NULL,
   PRIMARY KEY (`scenery_review_id`,`user_review_id`),
   KEY `fk_user_score_id` (`user_review_id`),
   CONSTRAINT `fk_scenery_review` FOREIGN KEY (`user_review_id`) REFERENCES `t_user` (`user_id`),
