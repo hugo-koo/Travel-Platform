@@ -2,13 +2,17 @@ package cn.edu.bitzh.tp.service.impl;
 
 import java.util.List;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import cn.edu.bitzh.tp.dao.INoteDao;
-import cn.edu.bitzh.tp.dao.impl.NoteDao;
 import cn.edu.bitzh.tp.model.Note;
 import cn.edu.bitzh.tp.service.INoteService;
+import cn.edu.bitzh.tp.util.CookieUtil;
 
 /**
  * @author 古学懂_Victor
@@ -52,9 +56,42 @@ public class NoteService implements INoteService {
 	public List<Note> list() {
 		return nd.list();
 	}
-	
-	public List<Note> listHotestNotes(){
+
+	@Override
+	public List<Note> listHotestNotes() {
 		return nd.listHotestNotes();
+	}
+
+	@Override
+	public int like(HttpServletRequest request, HttpServletResponse response, int id) {
+		System.out.println("like" + id);
+		int type = 3;
+		Cookie cookie;
+		CookieUtil cu = new CookieUtil();
+		boolean hasLiked = false;
+		cookie = cu.getCookie(request, "LIKE");
+		String[] likes = { "" };
+		String cookieVal = "";
+		if (cookie != null) {
+			cookieVal = cookie.getValue();
+			likes = cookieVal.split("\\|");
+			for (String like : likes) {
+				if (like.equals(Integer.toString(id))) {
+					cookieVal = cookieVal.replaceAll(Integer.toString(id)+"\\|", "");
+					hasLiked = true;
+				}
+			}
+		}
+		if (hasLiked) {
+			System.out.println("UNLIKE ");
+			cu.addCookie(response, "LIKE", cookieVal, 120);
+			type = INoteDao.UNLIKE;
+		} else {
+			System.out.println("LIKE ");
+			cu.addCookie(response, "LIKE", cookieVal + Integer.toString(id) + "|", 120);
+			type = INoteDao.LIKE;
+		}
+		return nd.like(id, type);
 	}
 
 }

@@ -5,6 +5,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.struts2.ServletActionContext;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -24,6 +28,8 @@ import cn.edu.bitzh.tp.service.impl.RegionService;
  */
 public class NoteAction extends ActionSupport {
 	private static final long serialVersionUID = 1L;
+	HttpServletRequest request = ServletActionContext.getRequest();
+	HttpServletResponse response = ServletActionContext.getResponse();
 	private ApplicationContext applicationContext = new ClassPathXmlApplicationContext("beans.xml");
 	private INoteService ns = (NoteService) applicationContext.getBean("noteService");
 	private ApplicationContext applicationContext2 = new ClassPathXmlApplicationContext("beans.xml");
@@ -32,6 +38,7 @@ public class NoteAction extends ActionSupport {
 	private List<Note> notes;
 	private int noteId = 1000;
 	private int regionId = 0;
+	private int likeCount = -1;
 	/** 页码 */
 	private int page = 1;
 	/** 页总数 */
@@ -77,7 +84,8 @@ public class NoteAction extends ActionSupport {
 	 */
 	public String listLatestNotes() {
 		this.notes = ns.listAllNotes();
-		if(notes == null ) return ActionSupport.ERROR;
+		if (notes == null)
+			return ActionSupport.ERROR;
 		if (this.notes.size() % itemsPerPage != 0) {
 			totalPages = this.notes.size() / itemsPerPage + 1;
 		} else {
@@ -103,7 +111,8 @@ public class NoteAction extends ActionSupport {
 	 */
 	public String listHotestNotes() {
 		this.notes = ns.listHotestNotes();
-		if(notes == null ) return ActionSupport.ERROR;
+		if (notes == null)
+			return ActionSupport.ERROR;
 		if (this.notes.size() % itemsPerPage != 0) {
 			totalPages = this.notes.size() / itemsPerPage + 1;
 		} else {
@@ -117,10 +126,14 @@ public class NoteAction extends ActionSupport {
 		}
 		return ActionSupport.SUCCESS;
 	}
-	
+
 	public String like() {
 		// TODO Like function
-		return null;
+		this.likeCount = ns.like(request, response, noteId);
+		if (this.likeCount != -1)
+			return "success";
+		else
+			return "error";
 	}
 
 	public int getRegionId() {
@@ -189,6 +202,20 @@ public class NoteAction extends ActionSupport {
 	 */
 	public void setItemsPerPage(int itemsPerPage) {
 		this.itemsPerPage = itemsPerPage;
+	}
+
+	/**
+	 * @return the likeCount
+	 */
+	public int getLikeCount() {
+		return likeCount;
+	}
+
+	/**
+	 * @param likeCount the likeCount to set
+	 */
+	public void setLikeCount(int likeCount) {
+		this.likeCount = likeCount;
 	}
 
 }
