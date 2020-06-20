@@ -12,7 +12,7 @@ MySQL - 8.0.19 : Database - d_travel_platform
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-CREATE DATABASE /*!32312 IF NOT EXISTS*/`d_travel_platform` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`d_travel_platform` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_bin */ /*!80016 DEFAULT ENCRYPTION='N' */;
 
 USE `d_travel_platform`;
 
@@ -208,11 +208,13 @@ CREATE TABLE `t_note` (
   `applicable` varchar(50) COLLATE utf8_bin DEFAULT NULL COMMENT '适用人群',
   `postDateStr` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   `end_date` date DEFAULT '2000-01-01' COMMENT '结束日期',
+  `sdf` tinyblob,
   PRIMARY KEY (`note_id`),
   UNIQUE KEY `note_id` (`note_id`),
   KEY `note_author` (`note_author`),
+  CONSTRAINT `FKjlj2h9pvo0shyc3wr8xywy9wv` FOREIGN KEY (`note_author`) REFERENCES `t_user` (`user_id`),
   CONSTRAINT `t_note_ibfk_1` FOREIGN KEY (`note_author`) REFERENCES `t_user` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1118 DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Created By 古学懂';
+) ENGINE=InnoDB AUTO_INCREMENT=1142 DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Created By 古学懂';
 
 /*Table structure for table `t_note_comment` */
 
@@ -408,9 +410,10 @@ CREATE TABLE `t_user` (
   `user_name` varchar(50) NOT NULL,
   `user_password` varchar(50) NOT NULL,
   `user_emile` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `user_email` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `user_id_UNIQUE` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1001 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1002 DEFAULT CHARSET=utf8;
 
 /*Table structure for table `t_user_info` */
 

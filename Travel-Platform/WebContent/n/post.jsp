@@ -3,6 +3,7 @@
 <%@page import="org.springframework.context.ApplicationContext"%>
 <%@page import="cn.edu.bitzh.tp.model.Note"%>
 <%@page import="cn.edu.bitzh.tp.model.Region"%>
+<%@page import="cn.edu.bitzh.tp.util.CookieUtil"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Set"%>
 <%@page
@@ -18,6 +19,15 @@
 	INoteService ns = (NoteService) applicationContext.getBean("noteService");
 	Note note = ns.get(Integer.parseInt(noteId));
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+// 	Cookie[] cookies;
+// 	CookieUtil cu =new CookieUtil();
+// 	cu.addCookie(response, "like", "1140", 60);
+//     cookies = cu.listCookies(request);
+//     if (cookies != null) {
+//         for (Cookie cookie : cookies) {
+//             System.out.println("cookie " + cookie.getName() + ", " + cookie.getValue());
+//         }
+//     }
 %>
 <!DOCTYPE html>
 <html>
@@ -25,9 +35,11 @@
 <head>
 <%--导入站点全局首部--%>
 <%@ include file="/site-head.jsp"%>
+<script type="text/javascript" src="/Travel-Platform/_scripts/post.js"></script>
 </head>
 
 <body>
+    <script type="text/javascript">setNoteId(<%=noteId%>);</script>
 	<header>
 		<%@ include file="/site-header.jsp"%>
 	</header>
@@ -137,7 +149,9 @@
 	</div>
 	<button id="like-button" type="button" class="btn btn-light float-left"
 		onclick="like()">
-		<img alt="like" src="/Travel-Platform/_img/like.svg">
+		<img alt="like" id="like-icon" src="/Travel-Platform/_img/like.svg">
+		<img alt="like" id="liked-icon" style="display: none;" src="/Travel-Platform/_img/liked.svg">
+		<div id="like-count"><%=note.getLikeCount() %></div>
 	</button>
 	<button id="favourites-button" type="button"
 		class="btn btn-light float-left" onclick="favourites()">

@@ -2,6 +2,9 @@ package cn.edu.bitzh.tp.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import cn.edu.bitzh.tp.dao.INoteDao;
 import cn.edu.bitzh.tp.model.Note;
 
@@ -63,5 +66,7 @@ public interface INoteService extends IBaseService<Note> {
 	Note get(int id);
 
 	List<Note> listHotestNotes();
+
+	int like(HttpServletRequest request, HttpServletResponse response, int id);
 
 }

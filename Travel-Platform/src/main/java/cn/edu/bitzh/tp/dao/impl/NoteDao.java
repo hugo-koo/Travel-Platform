@@ -31,7 +31,8 @@ public class NoteDao implements INoteDao {
 			switch (type) {
 			case ALL:
 				session = sessionFactory.openSession();
-				q = session.createQuery("select n from Note n where n.notePermission like 'public' order by notePostDate desc");
+				q = session.createQuery(
+						"select n from Note n where n.notePermission like 'public' order by notePostDate desc");
 				notes = q.list();
 				if (notes.isEmpty())
 					return null;
@@ -107,6 +108,27 @@ public class NoteDao implements INoteDao {
 	}
 
 	@Override
+	public int like(int id, int type) {
+		try {
+			session = sessionFactory.openSession();
+			transaction = session.beginTransaction();
+			Note note = session.load(Note.class, id);
+			if (type == INoteDao.LIKE)
+				note.setLikeCount(note.getLikeCount() + 1);
+			else if (type == INoteDao.UNLIKE)
+				note.setLikeCount(note.getLikeCount() - 1);
+			session.saveOrUpdate(note);
+			transaction.commit();
+			return note.getLikeCount();
+		} catch (Exception x) {
+			x.printStackTrace();
+			return 0;
+		} finally {
+			sessionFactory.close();
+		}
+	}
+
+	@Override
 	public int insert(Note note) {
 		try {
 			session = sessionFactory.openSession();
@@ -152,7 +174,8 @@ public class NoteDao implements INoteDao {
 		Query<Note> q;
 		try {
 			session = sessionFactory.openSession();
-			q = session.createQuery("select n from Note n where n.notePermission like 'public' order by (likeCount + favoriteCount + commentCount) desc");
+			q = session.createQuery(
+					"select n from Note n where n.notePermission like 'public' order by (likeCount + favoriteCount + commentCount) desc");
 			notes = q.list();
 			if (notes.isEmpty())
 				return null;
