@@ -141,7 +141,7 @@
 	</button>
 	<button id="favourites-button" type="button"
 		class="btn btn-light float-left" onclick="favourites()">
-		<img alt="like" src="/Travel-Platform/_img/favourites.svg">
+		<img alt="favourites" src="/Travel-Platform/_img/favourites.svg">
 	</button>
 	<footer>
 		<%@ include file="/site-footer.jsp"%>
