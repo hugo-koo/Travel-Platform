@@ -1,7 +1,7 @@
 /**
  * @author 古学懂_Victor
  */
-var getNoteHtml = function () {
+var getNoteHtml = () => {
 	var x = document.getElementsByTagName("iframe")[0].contentWindow;
 	var noteHtml = x.document.getElementById("editor").innerHTML;
 	return noteHtml;
@@ -10,7 +10,7 @@ var getNoteHtml = function () {
 // 最终的地区ID
 var regionId = 0;
 // 从大洲列表开始初始化
-var regionInit = function () {
+var regionInit = () => {
 	// 清除子列表
 	for (var i = 2; i <= 5; i++) {
 		if ($("#region-" + i).length > 0)
@@ -20,20 +20,21 @@ var regionInit = function () {
 		type: "post",
 		url: "/Travel-Platform/region_listContinents.action",
 		data: {},
-		success: function (data) {
+		success: (data) => {
 			for (var i = 0; i < data.regions.length; i++) {
 				$('#region-1').append(
 					"<option value='" + data.regions[i].id + "' >"
 					+ data.regions[i].name + "</option>");
 			}
 		},
-		error: function () {
+		error: () => {
 			alert("加载地区失败");
 		}
 	});
 }
+
 // 获取各级子地区列表
-var regionChange = function (rank) {
+var regionChange = (rank) => {
 	rank += 1;
 	console.log(rank);
 	// 获取父级地区ID
@@ -52,7 +53,7 @@ var regionChange = function (rank) {
 		data: {
 			"pid": pId
 		},
-		success: function (data) {
+		success: (data) => {
 			// 如果子列表不存在，即最终级地区
 			if (data.regions <= 0) {
 				regionId = pId;
@@ -74,48 +75,70 @@ var regionChange = function (rank) {
 					+ data.regions[i].name + "</option>");
 			}
 		},
-		error: function () {
+		error: () => {
 			alert("加载地区失败");
 		}
 	});
 }
+
 /** 保存游记 */
-var post = function () {
-	$("#post-spinner").css("display", "inline-block");
-	$("#post-success").css("display", "none");
+var post = () => {
 	// 将地区id值注入表单
 	$("#regionId").val(regionId);
 	// 将内容注入表单
 	$("#noteContent").val(getNoteHtml());
-	if ($("#noteHeader").text() == null) {
+	if ($("#noteHeader").text() == "") {
 		$("#noteHeader").text('未命名游记');
 	}
 	console.log($("#regionId").val());
-	$.ajax({
-		type: "POST",
-		dataType: "json",
-		url: "/Travel-Platform/note_insert.action",
-		data: $('#note').serialize(),
-		success: function (data) {
-			$("#post-spinner").css("display", "none");
-			$("#post-success").css("display", "inline-block");
-			console.log(data);
-			window.location.href = "/Travel-Platform/n/post.jsp?noteId="
-				+ data.noteId;
-		},
-		error: function () {
-			$("#post-spinner").css("display", "none");
-			alert("发布失败！");
-		}
-	});
+	// 校验数据
+	if (validate()){
+		$("#post-spinner").css("display", "inline-block");
+		$("#post-success").css("display", "none");
+		$.ajax({
+			type: "POST",
+			dataType: "json",
+			url: "/Travel-Platform/note_insert.action",
+			data: $('#note').serialize(),
+			success: (data) => {
+				$("#post-spinner").css("display", "none");
+				$("#post-success").css("display", "inline-block");
+				console.log(data);
+				window.location.href = "/Travel-Platform/note/" + data.noteId;
+			},
+			error: () => {
+				$("#post-spinner").css("display", "none");
+				alert("发布失败！");
+			}
+		});
+	}
 }
-var saveDraft = function () {
+
+/**校验器 */
+var validate = () => {
+	var finish = true;
+	if ($("#date").val() == "") {
+		$("#date").after('<div class="error" id="date-error">--开始时间未填写--</div>');
+		finish = false;
+	}
+	if ($("#endDate").val() == "") {
+		$("#endDate").after('<div class="error" id="end-date-error">--结束时间未填写--</div>');
+		finish = false;
+	}
+	if ($("#noteHeader").val() == "") {
+		$("#noteHeader").after('<div class="error" id="header-error">--标题未填写--</div>');
+		finish = false;
+	}
+	return finish;
+}
+
+var saveDraft = () => {
 	alert("功能未完善");
 }
 
-$(function () {
+$(() => {
 	var date = '';
-	/**开始日期 */
+	// 开始日期
 	$("#date").datepicker({
 		format: "yyyy-mm-dd",
 		maxViewMode: 2,
@@ -124,7 +147,7 @@ $(function () {
 		language: "zh-CN"
 	}).on(
 		"changeDate",
-		function (e) {
+		(e) => {
 			if (e.date) {
 				$("#endDate").datepicker('setStartDate',
 					new Date(e.date.valueOf()))
@@ -132,7 +155,7 @@ $(function () {
 				$("#endDate").datepicker('setStartDate', null);
 			}
 		});
-	/**结束日期，在开始日期之后 */
+	// 结束日期，在开始日期之后
 	$("#endDate").datepicker({
 		format: "yyyy-mm-dd",
 		maxViewMode: 2,
@@ -141,7 +164,7 @@ $(function () {
 		language: "zh-CN"
 	}).on(
 		"changeDate",
-		function (e) {
+		(e) => {
 			if (e.date) {
 				$("#startDate").datepicker('setEndDate',
 					new Date(e.date.valueOf()))
@@ -149,4 +172,8 @@ $(function () {
 				$("#startDate").datepicker('setEndDate', new Date());
 			}
 		});
+	
+	$("input").focus(() => {
+		$(".error").remove();
+	});
 });

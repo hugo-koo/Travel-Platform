@@ -61,6 +61,8 @@
 							</div>
 							<div id="post-success" style="display: none;">
 								<img alt="success" src="/Travel-Platform/_img/success.svg">
+								发布成功，若页面未响应，请点击<a
+									href="javascript: '/Travel-Platform/note/' + data.noteId">这里</a>
 							</div>
 						</div>
 						<div class="form-group col-sm-4">
@@ -102,7 +104,7 @@
 							<input id="date" type="text" name="note.travelDate"
 								class="form-control" />
 							<script type="text/javascript">
-
+								
 							</script>
 						</div>
 					</div>
@@ -113,7 +115,7 @@
 							<input id="endDate" type="text" name="note.endDate"
 								class="form-control" />
 							<script type="text/javascript">
-
+								
 							</script>
 						</div>
 					</div>
