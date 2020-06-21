@@ -138,3 +138,7 @@ div[data-role="editor-toolbar"] {
     left: 0;
     z-index: 20;
 }
+
+#toppic {
+	cursor: pointer;
+}

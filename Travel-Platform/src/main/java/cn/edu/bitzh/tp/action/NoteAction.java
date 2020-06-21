@@ -128,7 +128,6 @@ public class NoteAction extends ActionSupport {
 	}
 
 	public String like() {
-		// TODO Like function
 		this.likeCount = ns.like(request, response, noteId);
 		if (this.likeCount != -1)
 			return "success";
