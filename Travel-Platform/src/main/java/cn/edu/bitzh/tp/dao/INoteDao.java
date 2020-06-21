@@ -13,6 +13,8 @@ public interface INoteDao extends IBaseDao<Note> {
 	/** Used for query by author */
 	public static final int AUTHOR = 1;
 	public static final int DATE = 2;
+	public static final int LIKE = 3;
+	public static final int UNLIKE = 4;
 
 	/**
 	 * 插入游记
@@ -62,5 +64,15 @@ public interface INoteDao extends IBaseDao<Note> {
 	}
 
 	List<Note> listHotestNotes();
+
+	/**
+	 * Type=3为未点赞者点赞，Type=4为已点赞者取消赞
+	 * @author 古学懂_Victor
+	 * @date 2020年6月20日
+	 * @param id
+	 * @param type 
+	 * @return
+	 */
+	int like(int id, int type);
 
 }

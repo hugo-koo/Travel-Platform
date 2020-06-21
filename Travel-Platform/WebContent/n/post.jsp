@@ -3,6 +3,7 @@
 <%@page import="org.springframework.context.ApplicationContext"%>
 <%@page import="cn.edu.bitzh.tp.model.Note"%>
 <%@page import="cn.edu.bitzh.tp.model.Region"%>
+<%@page import="cn.edu.bitzh.tp.util.CookieUtil"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Set"%>
 <%@page
@@ -25,21 +26,28 @@
 <head>
 <%--导入站点全局首部--%>
 <%@ include file="/site-head.jsp"%>
+<script type="text/javascript" src="/Travel-Platform/_scripts/post.js"></script>
 </head>
 
 <body>
+	<script type="text/javascript">
+		setNoteId(<%=noteId%>);
+	</script>
 	<header>
 		<%@ include file="/site-header.jsp"%>
 	</header>
 	<div class="container-fluid">
 		<div class="row align-items-start">
-			<img src="<%="/Travel-Platform/_img/青岛_樱花.png"%>" class="img-fluid"
+			<img src="<%=note.getNoteDtl().getNoteToppic()%>" class="img-fluid"
 				alt="头图">
 		</div>
 		<hr>
 		<div class="row">
 			<div class="col-sm-1"></div>
 			<div class="col-6 col-lg-8">
+				<%
+					if (note != null) {
+				%>
 				<div class="jumbotron jumbotron-fluid"
 					style="background-color: <%="#F0EDE5"%>;">
 					<div class="container">
@@ -51,6 +59,10 @@
 						</div>
 					</div>
 				</div>
+				<%
+					;
+					}
+				%>
 			</div>
 			<div class="col-3 col-lg-3" id="cards-flows">
 				<%
@@ -62,7 +74,7 @@
 						String pRegionName;
 				%>
 				<div class="card" style="width: 18rem;">
-					<img src="<%="/Travel-Platform/_img/青岛_樱花.png"%>"
+					<img src="<%="/Travel-Platform/_img/page_bg.jpg"%>"
 						class="card-img-top" alt="<%=regionName%>">
 					<div class="card-body">
 						<h5 class="card-title"><%=regionName%></h5>
@@ -113,7 +125,7 @@
 				<%
 					;
 					}
-					if (note.getEndDate() != null) {
+					if (note.getApplicable() != null) {
 				%>
 				<div class="card text-white bg-info mb-3" style="max-width: 18rem;">
 					<div class="card-header">适宜人群</div>
@@ -130,11 +142,14 @@
 	</div>
 	<button id="like-button" type="button" class="btn btn-light float-left"
 		onclick="like()">
-		<img alt="like" src="/Travel-Platform/_img/like.svg">
+		<img alt="like" id="like-icon" src="/Travel-Platform/_img/like.svg">
+		<img alt="like" id="liked-icon" style="display: none;"
+			src="/Travel-Platform/_img/liked.svg">
+		<div id="like-count"><%=note.getLikeCount()%></div>
 	</button>
 	<button id="favourites-button" type="button"
 		class="btn btn-light float-left" onclick="favourites()">
-		<img alt="like" src="/Travel-Platform/_img/favourites.svg">
+		<img alt="favourites" src="/Travel-Platform/_img/favourites.svg">
 	</button>
 	<footer>
 		<%@ include file="/site-footer.jsp"%>

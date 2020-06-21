@@ -12,9 +12,6 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import com.opensymphony.xwork2.util.Key;
 
 /**
  * 游记内容
@@ -35,8 +32,24 @@ public class NoteDtl {
 	@Lob
 	@Column(name = "note_content")
 	private String noteContent;
+	@Lob
 	@Column(name = "note_toppic")
 	private String noteToppic;
+	
+	/**
+	 * @return the noteToppic
+	 */
+	public String getNoteToppic() {
+		return noteToppic;
+	}
+
+	/**
+	 * @param noteToppic the noteToppic to set
+	 */
+	public void setNoteToppic(String noteToppic) {
+		this.noteToppic = noteToppic;
+	}
+
 	@OneToOne(optional = false, fetch = FetchType.LAZY)
 	@PrimaryKeyJoinColumn
 	private Note note;
@@ -71,14 +84,6 @@ public class NoteDtl {
 
 	public void setNoteContent(String noteContent) {
 		this.noteContent = noteContent;
-	}
-	
-	public String getNoteToppic() {
-		return noteToppic;
-	}
-
-	public void setNoteToppic(String noteToppic) {
-		this.noteToppic = noteToppic;
 	}
 	
 }

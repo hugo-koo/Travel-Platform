@@ -25,10 +25,11 @@
 	<div class="container-fluid">
 		<div class="row align-items-start">
 			<img src="<%="/Travel-Platform/_img/page_bg.jpg"%>" class="img-fluid"
-				alt="头图"> <input type="file" class="inner-text" name="toppic"
-				accept="image/jpeg,.JPEG,image/png,image/gif" id=""
+				alt="头图" id="toppic-show"> <input type="file"
+				class="inner-text" name="noteToppic"
+				accept="image/jpeg,.JPEG,image/png,image/gif" id="toppic"
 				style="z-index: 11; opacity: 0;">
-			<div class="inner-text" style="">
+			<div class="inner-text" style="" id="toppic-tip">
 				<svg t="1591593080866" class="icon" viewBox="0 0 1028 1024"
 					version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2579"
 					width="64" height="64">
@@ -75,7 +76,8 @@
 					</div>
 					<input type="hidden" name="note.noteDtl.noteContent" value=""
 						id="noteContent" /> <input type="hidden" name="regionId"
-						value="0" id="regionId" />
+						value="0" id="regionId" /><input type="hidden" name="note.noteDtl.noteToppic"
+                        value="0" id="toppic-input" />
 					<iframe class="border-0" id="editorFrame" title="Editor"
 						width="100%" style="height: 750px"
 						src="/Travel-Platform/n/editor.jsp?Type=note"> </iframe>
@@ -123,7 +125,7 @@
 						<div class="card-header">适宜人群</div>
 						<div class="card-body" id="">
 							<h5 class="card-title" id=""></h5>
-							<input id="applicable" type="text" name="applicable"
+							<input id="applicable" type="text" name="note.applicable"
 								class="form-control" />
 						</div>
 					</div>
