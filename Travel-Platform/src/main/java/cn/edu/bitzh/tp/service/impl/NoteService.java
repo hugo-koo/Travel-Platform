@@ -65,7 +65,7 @@ public class NoteService implements INoteService {
 	@Override
 	public int like(HttpServletRequest request, HttpServletResponse response, int id) {
 		System.out.println("like" + id);
-		int type = 3;
+		int type = INoteDao.LIKE;
 		Cookie cookie;
 		CookieUtil cu = new CookieUtil();
 		boolean hasLiked = false;
@@ -84,11 +84,11 @@ public class NoteService implements INoteService {
 		}
 		if (hasLiked) {
 			System.out.println("UNLIKE ");
-			cu.addCookie(response, "LIKE", cookieVal, 120);
+			cu.addCookie(response, "LIKE", cookieVal, 60*60*24*30);
 			type = INoteDao.UNLIKE;
 		} else {
 			System.out.println("LIKE ");
-			cu.addCookie(response, "LIKE", cookieVal + Integer.toString(id) + "|", 120);
+			cu.addCookie(response, "LIKE", cookieVal + Integer.toString(id) + "|", 60*60*24*30);
 			type = INoteDao.LIKE;
 		}
 		return nd.like(id, type);
