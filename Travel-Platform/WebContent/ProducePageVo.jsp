@@ -177,7 +177,7 @@
 							<%if (k<=1) {%>
 								<a class="page-link" href=" ${pageContext.request.contextPath}/produce_page.action?currPage=1 ">上一页</a>
 							<%} %>
-							<!-- 如果当前页码小于等于一，上一页正常跳转-->
+							<!-- 如果当前页码大于一，上一页正常跳转-->
 							<%if (k>1) {%>
 								<a class="page-link" href=" ${pageContext.request.contextPath}/produce_page.action?currPage=<%=k-1%> ">上一页<%=k-1%></a>
 							<% }%>
