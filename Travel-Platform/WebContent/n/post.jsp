@@ -19,15 +19,6 @@
 	INoteService ns = (NoteService) applicationContext.getBean("noteService");
 	Note note = ns.get(Integer.parseInt(noteId));
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-// 	Cookie[] cookies;
-// 	CookieUtil cu =new CookieUtil();
-// 	cu.addCookie(response, "like", "1140", 60);
-//     cookies = cu.listCookies(request);
-//     if (cookies != null) {
-//         for (Cookie cookie : cookies) {
-//             System.out.println("cookie " + cookie.getName() + ", " + cookie.getValue());
-//         }
-//     }
 %>
 <!DOCTYPE html>
 <html>
@@ -39,13 +30,15 @@
 </head>
 
 <body>
-    <script type="text/javascript">setNoteId(<%=noteId%>);</script>
+	<script type="text/javascript">
+		setNoteId(<%=noteId%>);
+	</script>
 	<header>
 		<%@ include file="/site-header.jsp"%>
 	</header>
 	<div class="container-fluid">
 		<div class="row align-items-start">
-			<img src="<%="/Travel-Platform/_img/青岛_樱花.png"%>" class="img-fluid"
+			<img src="<%=note.getNoteDtl().getNoteToppic()%>" class="img-fluid"
 				alt="头图">
 		</div>
 		<hr>
@@ -150,8 +143,9 @@
 	<button id="like-button" type="button" class="btn btn-light float-left"
 		onclick="like()">
 		<img alt="like" id="like-icon" src="/Travel-Platform/_img/like.svg">
-		<img alt="like" id="liked-icon" style="display: none;" src="/Travel-Platform/_img/liked.svg">
-		<div id="like-count"><%=note.getLikeCount() %></div>
+		<img alt="like" id="liked-icon" style="display: none;"
+			src="/Travel-Platform/_img/liked.svg">
+		<div id="like-count"><%=note.getLikeCount()%></div>
 	</button>
 	<button id="favourites-button" type="button"
 		class="btn btn-light float-left" onclick="favourites()">

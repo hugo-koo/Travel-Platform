@@ -17,6 +17,7 @@ var checkLiked = ()=>{
 		 $("#liked-icon").css("display", "none");
 	}
 }
+/** 点赞方法 */
 var like = ()=>{
 	$.ajax({
         type: "post",
@@ -37,8 +38,9 @@ var like = ()=>{
 var setNoteId = (id) => {
 	noteId = id;
 }
-var getCookieVal = (cname) => {
-  var name = cname + "=";
+/** 获取对应Cookie */
+var getCookieVal = (cName) => {
+  var name = cName + "=";
   var ca = document.cookie.split(';');
   for(var i=0; i<ca.length; i++){
     var c = ca[i].trim();
@@ -46,11 +48,12 @@ var getCookieVal = (cname) => {
   }
   return "";
 }
+/** 判断是否已点赞该游记 */
 var isLiked = (id) =>{
 	var likes = getCookieVal("LIKE");
 	var notes = likes.split('|');
 	for(var i=0; i<notes.length; i++){
-		if(id==notes[i])return true;
+		if(id==notes[i]) return true;
 	}
 	return false;
 }
