@@ -1,11 +1,11 @@
 /**
  * @author 古学懂_Victor
  */
-// 总页数
+/** 总页数 */
 var totalPages = 1;
-// 每页项数
+/** 每页项数 */
 var itemsPerPage = 5;
-// 当前页码
+/** 当前页码 */
 var page = 1;
 /** 生成卡片 */
 var noteCard = (
@@ -15,7 +15,8 @@ var noteCard = (
     favoriteCount = 0,
     likeCount = 0,
     noteHeader = '',
-    summary = ''
+    summary = '',
+    toppic = ''
 ) => {
     var likeIcon = '<svg style="vertical-align: baseline;" t="1591709280779" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2611" width="16" height="16" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><style type="text/css"></style></defs><path d="M939.358266 410.159945H666.684894C772.374573 19.898057 593.892003 0 593.892003 0c-75.592618 0-59.994141 59.794161-65.693585 69.793184 0 190.781369-202.680207 340.366761-202.680207 340.366761v541.147154c0 53.394786 72.792891 72.692901 101.390099 72.692901h409.659994c38.596231 0 69.993165-101.090128 69.993165-101.090128C1007.951567 578.243531 1007.951567 475.75354 1007.951567 475.75354c-0.09999-71.293038-68.593301-65.593594-68.593301-65.593595zM213.629138 410.259936H50.345083c-33.696709 0-34.19666 33.096768-34.19666 33.096767l33.696709 545.746705c0 34.696612 34.796602 34.696612 34.796602 34.696612h141.286203c29.397129 0 29.197149-22.997754 29.197148-22.997755V451.655893c0-41.895909-41.495948-41.395957-41.495947-41.395957z" p-id="2612" fill="#0f4c81"></path></svg>';
     var commentIcon = '<svg style="vertical-align: baseline;" t="1592318387213" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2685" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16"><defs><style type="text/css"></style></defs><path d="M844.8 73.6H179.2c-63.6 0-115.1 51.6-115.2 115.2v454.9c0 63.5 51.7 115.2 115.2 115.2h352l180.3 180.3c7.5 7.5 17.3 11.2 27.2 11.2 9.8 0 19.7-3.7 27.2-11.2 15-15 15-39.3 0-54.3l-184-184c-12-12.1-28.3-18.8-45.3-18.8H179.2c-21.2 0-38.4-17.2-38.4-38.4V188.8c0-21.2 17.2-38.4 38.4-38.4h665.6c21.2 0 38.4 17.2 38.4 38.4v454.9c0 21.2-17.2 38.4-38.4 38.4h-87c-21.2 0-38.4 17.2-38.4 38.4s17.2 38.4 38.4 38.4h87c63.5 0 115.2-51.7 115.2-115.2V188.8c0-63.5-51.7-115.2-115.2-115.2z" p-id="2686" fill="#0f4c81"></path></svg>';
@@ -23,7 +24,10 @@ var noteCard = (
     if (noteHeader == 'null') {
         noteHeader = "未命名游记";
     }
-    return '<div class="card mb-3" style="max-width: 715px;"><div class="row no-gutters"><div class="col-md-4"><img src="/Travel-Platform/_img/Test_1.jpg" class="card-img" alt="首图"></div><div class="col-md-8"><div class="card-body"><a href="/Travel-Platform/note/' + noteId + '"><h5 class="card-title">' + noteHeader + '</h5></a><p class="card-text">' + summary + '</p><p class="card-text"><small class="text-muted">发布于' + postDate + '  ' + likeIcon + likeCount + ' ' + commentIcon + commentCount + ' ' + favouritesIcon + favoriteCount + ' </small></p></div></div></div></div><hr>'
+    if (toppic == '') {
+    	toppic = '/Travel-Platform/_img/Test_1.jpg';
+    }
+    return '<div class="card mb-3" style="max-width: 715px;"><div class="row no-gutters"><div class="col-md-4"><img src="'+toppic+'" class="card-img" alt="首图"></div><div class="col-md-8"><div class="card-body"><a href="/Travel-Platform/note/' + noteId + '"><h5 class="card-title">' + noteHeader + '</h5></a><p class="card-text">' + summary + '</p><p class="card-text"><small class="text-muted">发布于' + postDate + '  ' + likeIcon + likeCount + ' ' + commentIcon + commentCount + ' ' + favouritesIcon + favoriteCount + ' </small></p></div></div></div></div><hr>'
 }
 /** 生成页面 */
 var createPage = (page = 1, method = "listHotestNotes") => {
@@ -57,6 +61,7 @@ var createPage = (page = 1, method = "listHotestNotes") => {
                 var likeCount = data.notes[i].likeCount;
                 var noteHeader = '' + data.notes[i].noteDtl.noteHeader;
                 var summary = '' + (data.notes[i].noteDtl.noteContent).substring(0, 10) + '...';
+                var toppic = '' + data.notes[i].noteDtl.noteToppic;
                 totalPages = data.totalPages;
                 itemsPerPage = data.itemsPerPage;
                 $(target).append(noteCard(
@@ -66,13 +71,21 @@ var createPage = (page = 1, method = "listHotestNotes") => {
                     favoriteCount,
                     likeCount,
                     noteHeader,
-                    summary
+                    summary,
+                    toppic
                 ));
             }
             // 停止显示加载中图标
             $("#note-loding").css("display", "none");
             $("#paginav").empty();
             $("#paginav").append(pageNav(page, totalPages, method));
+            // 更新流转图片
+            $("#note-toppic-1").eq(0).attr("src", $("#hotlist").find("img")[0].src);
+            $("#note-link-1").html($("#hotlist").find("a")[0]);
+            $("#note-toppic-2").eq(0).attr("src", $("#hotlist").find("img")[1].src);
+            $("#note-link-2").html($("#hotlist").find("a")[1]);
+            $("#note-toppic-3").eq(0).attr("src", $("#hotlist").find("img")[2].src);
+            $("#note-link-3").html($("#hotlist").find("a")[2]);
         },
         error: () => {
             alert("游记获取失败");

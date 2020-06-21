@@ -29,7 +29,7 @@
 				class="inner-text" name="noteToppic"
 				accept="image/jpeg,.JPEG,image/png,image/gif" id="toppic"
 				style="z-index: 11; opacity: 0;">
-			<div class="inner-text" style="">
+			<div class="inner-text" style="" id="toppic-tip">
 				<svg t="1591593080866" class="icon" viewBox="0 0 1028 1024"
 					version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2579"
 					width="64" height="64">
@@ -125,7 +125,7 @@
 						<div class="card-header">适宜人群</div>
 						<div class="card-body" id="">
 							<h5 class="card-title" id=""></h5>
-							<input id="applicable" type="text" name="applicable"
+							<input id="applicable" type="text" name="note.applicable"
 								class="form-control" />
 						</div>
 					</div>
