@@ -74,7 +74,7 @@
 						String pRegionName;
 				%>
 				<div class="card" style="width: 18rem;">
-					<img src="<%="/Travel-Platform/_img/青岛_樱花.png"%>"
+					<img src="<%="/Travel-Platform/_img/page_bg.jpg"%>"
 						class="card-img-top" alt="<%=regionName%>">
 					<div class="card-body">
 						<h5 class="card-title"><%=regionName%></h5>

@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.apache.struts2.json.annotations.JSON;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -69,6 +70,7 @@ public class User {
 	/**
 	 * @return the userPassword
 	 */
+	@JSON(serialize = false)
 	public String getUserPassword() {
 		return userPassword;
 	}
