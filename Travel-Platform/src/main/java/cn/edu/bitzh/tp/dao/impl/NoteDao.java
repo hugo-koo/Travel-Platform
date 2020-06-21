@@ -31,7 +31,8 @@ public class NoteDao implements INoteDao {
 			switch (type) {
 			case ALL:
 				session = sessionFactory.openSession();
-				q = session.createQuery("select n from Note n where n.notePermission like 'public' order by notePostDate desc");
+				q = session.createQuery(
+						"select n from Note n where n.notePermission like 'public' order by notePostDate desc");
 				notes = q.list();
 				if (notes.isEmpty())
 					return null;
@@ -78,13 +79,50 @@ public class NoteDao implements INoteDao {
 	public boolean update(Note note) {
 		try {
 			session = sessionFactory.openSession();
-			Note noteT = session.get(Note.class, note.getNoteId());
-			session.update(noteT);
+			transaction = session.beginTransaction();
+			Note noteT = session.load(Note.class, note.getNoteId());
+			note.getNoteDtl().setNote(note);
+			noteT.setNoteDtl(note.getNoteDtl());
+			noteT.setApplicable(note.getApplicable());
+			noteT.setCommentCount(note.getCommentCount());
+			noteT.setEndDate(note.getEndDate());
+			noteT.setFavoriteCount(note.getFavoriteCount());
+			noteT.setLikeCount(note.getLikeCount());
+			noteT.setNoteAuthor(note.getNoteAuthor());
+			noteT.setNotePermission(note.getNotePermission());
+			noteT.setNotePostDate(note.getNotePostDate());
+			noteT.setPostDateStr(note.getPostDateStr());
+			noteT.setRegions(note.getRegions());
+			noteT.setTravelDate(note.getTravelDate());
+			session.saveOrUpdate(noteT);
+			session.clear();
+			session.saveOrUpdate(note.getNoteDtl());
 			transaction.commit();
 			return true;
 		} catch (Exception x) {
 			x.printStackTrace();
 			return false;
+		} finally {
+			sessionFactory.close();
+		}
+	}
+
+	@Override
+	public int like(int id, int type) {
+		try {
+			session = sessionFactory.openSession();
+			transaction = session.beginTransaction();
+			Note note = session.load(Note.class, id);
+			if (type == INoteDao.LIKE)
+				note.setLikeCount(note.getLikeCount() + 1);
+			else if (type == INoteDao.UNLIKE)
+				note.setLikeCount(note.getLikeCount() - 1);
+			session.saveOrUpdate(note);
+			transaction.commit();
+			return note.getLikeCount();
+		} catch (Exception x) {
+			x.printStackTrace();
+			return 0;
 		} finally {
 			sessionFactory.close();
 		}
@@ -110,13 +148,23 @@ public class NoteDao implements INoteDao {
 
 	@Override
 	public boolean delete(int id) {
-		// TODO Auto-generated method stub
-		return false;
+		try {
+			session = sessionFactory.openSession();
+			transaction = session.beginTransaction();
+			Note note = session.load(Note.class, id);
+			session.delete(note);
+			transaction.commit();
+			return true;
+		} catch (Exception x) {
+			x.printStackTrace();
+			return false;
+		} finally {
+			sessionFactory.close();
+		}
 	}
 
 	@Override
 	public List<Note> list() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -126,7 +174,8 @@ public class NoteDao implements INoteDao {
 		Query<Note> q;
 		try {
 			session = sessionFactory.openSession();
-			q = session.createQuery("select n from Note n where n.notePermission like 'public' order by (likeCount + favoriteCount + commentCount) desc");
+			q = session.createQuery(
+					"select n from Note n where n.notePermission like 'public' order by (likeCount + favoriteCount + commentCount) desc");
 			notes = q.list();
 			if (notes.isEmpty())
 				return null;

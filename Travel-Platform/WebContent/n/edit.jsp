@@ -25,8 +25,9 @@
 	<div class="container-fluid">
 		<div class="row align-items-start">
 			<img src="<%="/Travel-Platform/_img/page_bg.jpg"%>" class="img-fluid"
-				alt="头图"> <input type="file" class="inner-text" name="toppic"
-				accept="image/jpeg,.JPEG,image/png,image/gif" id=""
+				alt="头图" id="toppic-show"> <input type="file"
+				class="inner-text" name="noteToppic"
+				accept="image/jpeg,.JPEG,image/png,image/gif" id="toppic"
 				style="z-index: 11; opacity: 0;">
 			<div class="inner-text" style="">
 				<svg t="1591593080866" class="icon" viewBox="0 0 1028 1024"
@@ -61,6 +62,8 @@
 							</div>
 							<div id="post-success" style="display: none;">
 								<img alt="success" src="/Travel-Platform/_img/success.svg">
+								发布成功，若页面未响应，请点击<a
+									href="javascript: '/Travel-Platform/note/' + data.noteId">这里</a>
 							</div>
 						</div>
 						<div class="form-group col-sm-4">
@@ -73,7 +76,8 @@
 					</div>
 					<input type="hidden" name="note.noteDtl.noteContent" value=""
 						id="noteContent" /> <input type="hidden" name="regionId"
-						value="0" id="regionId" />
+						value="0" id="regionId" /><input type="hidden" name="note.noteDtl.noteToppic"
+                        value="0" id="toppic-input" />
 					<iframe class="border-0" id="editorFrame" title="Editor"
 						width="100%" style="height: 750px"
 						src="/Travel-Platform/n/editor.jsp?Type=note"> </iframe>
@@ -102,7 +106,7 @@
 							<input id="date" type="text" name="note.travelDate"
 								class="form-control" />
 							<script type="text/javascript">
-
+								
 							</script>
 						</div>
 					</div>
@@ -113,7 +117,7 @@
 							<input id="endDate" type="text" name="note.endDate"
 								class="form-control" />
 							<script type="text/javascript">
-
+								
 							</script>
 						</div>
 					</div>

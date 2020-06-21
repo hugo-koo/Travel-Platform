@@ -22,7 +22,7 @@
 		<action name="note_*" class="cn.edu.bitzh.tp.action.NoteAction"
 			method="{1}">
 			<result type="json" />
-			<allowed-methods>get, insert, listLatestNotes, listHotestNotes</allowed-methods>
+			<allowed-methods>get, insert, listLatestNotes, listHotestNotes, like</allowed-methods>
 		</action>
 	</package>
 	
@@ -56,6 +56,12 @@
 		<action name="produce_show"
 			class="cn.edu.bitzh.tp.action.ProduceShowAction">
 			<result name="success">/ProduceMessageVo.jsp</result>
+			<result name="error">/test.jsp</result>
+		</action>
+	</package>
+	<package name="produce_page" namespace="/" extends="json-default">
+		<action name="produce_page" class="cn.edu.bitzh.tp.action.ProducePageAction">
+			<result name="success">/ProducePageVo.jsp</result>
 			<result name="error">/test.jsp</result>
 		</action>
 	</package>

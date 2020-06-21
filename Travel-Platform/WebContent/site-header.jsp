@@ -30,7 +30,7 @@
 						<div class="dropdown-divider"></div>
 						<a class="dropdown-item" href="#">游记</a>
 					</div></li>
-				<li class="nav-item"><a class="nav-link" href="#">去旅行</a></li>
+				<li class="nav-item"><a class="nav-link" href="/Travel-Platform/produce_page.action?currPage=1">去旅行</a></li>
 				<li class="nav-item"><a class="nav-link" href="#">我的</a></li>
 			</ul>
 			<form class="form-inline my-2 my-lg-0">
