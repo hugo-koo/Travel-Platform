@@ -1,6 +1,7 @@
 /**
  * @author 古学懂_Victor
  */
+/** 头图 */
 var toppic = '';
 
 var getNoteHtml = () => {
@@ -48,6 +49,7 @@ var regionChange = (rank) => {
 		if ($("#region-" + i).length > 0)
 			$("#region-" + i).remove();
 	}
+	$("#region-name").text(pName);
 	regionId = pId;
 	$.ajax({
 		type: "post",
@@ -59,7 +61,6 @@ var regionChange = (rank) => {
 			/** 如果子列表不存在，即最终级地区 */
 			if (data.regions <= 0) {
 				regionId = pId;
-				$("#region-name").text(pName);
 				console.log(regionId);
 				return;
 			}
@@ -70,7 +71,7 @@ var regionChange = (rank) => {
 				+ "\" onchange=\"regionChange(" + rank
 				+ ")\"></select>");
 			$("#region-" + rank).append(
-				"<option selected=\"selected\" value=\"-1\">请选择...</option>");
+				"<option selected=\"selected\" value=\"-1\">选择地区（非必选）...</option>");
 			for (var i = 0; i < data.regions.length; i++) {
 				$('#region-' + rank).append(
 					"<option value='" + data.regions[i].id + "' >"
@@ -98,10 +99,6 @@ var post = () => {
 	// 构建FormData对象
 	var noteForm = document.getElementById("note");
 	var noteFormData = new FormData(noteForm);
-	// 注入头图文件
-// noteFormData.append('note.noteDtl.noteToppic', toppicElm.files[0]);
-// noteFormData.append('note.noteDtl.noteToppic',
-// $("#toppic").prop("files")[0]);
 	// 校验数据并进入待保存状态
 	if (validate()){
 		$("#post-spinner").css("display", "inline-block");
@@ -191,17 +188,19 @@ $(() => {
 		$(".error").remove();
 	});
 	
+	// 转换图片数据
     $("#toppic").change(function() {
         var oFile = this.files[0];
         console.log("oFile")
         console.log(oFile)
         var reader = new FileReader();
-     // 调用自带方法进行转换
+        // 调用自带方法进行转换
         reader.readAsDataURL(oFile); 
         reader.onload = function(e) {
         	// 将转换后的编码存入src完成预览
             $("#toppic-show").attr("src", this.result); 
             toppic = this.result;
+            $("#toppic-tip").html('修改头图');
             var rFilter = /^(image\/bmp|image\/gif|image\/jpeg|image\/png|image\/tiff)$/i;
             console.log(oFile.type);
             if(!rFilter.test(oFile.type)) {
@@ -218,6 +217,3 @@ var file = ()=>{
 	var toppicElm = document.getElementById('toppic');
 	formData.append('note.noteDtl.noteToppic', toppicElm.files[0]);
 }
-$(()=>{
-
-});

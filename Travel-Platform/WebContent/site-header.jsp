@@ -25,10 +25,10 @@
 					role="button" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="false">社区</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="#">问答</a> <a class="dropdown-item"
-							href="#">点评</a>
+						<!-- <a class="dropdown-item" href="#">问答</a> -->
+						<a class="dropdown-item" href="#">点评</a>
 						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="#">游记</a>
+						<a class="dropdown-item" href="/Travel-Platform/note/edit">创建游记</a>
 					</div></li>
 				<li class="nav-item"><a class="nav-link" href="/Travel-Platform/produce_page.action?currPage=1">去旅行</a></li>
 				<li class="nav-item"><a class="nav-link" href="#">我的</a></li>
