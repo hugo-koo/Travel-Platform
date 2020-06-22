@@ -254,7 +254,7 @@
 							for (j = 1; j < (int) session.getAttribute("totalPage") + 1; j++) {
 						%>
 						<li class="page-item">
-							<a class="page-link" href="${pageContext.request.contextPath}/produce_page.action?currPage=<%= j%> "></a>
+							<a class="page-link" href="${pageContext.request.contextPath}/produce_page.action?currPage=<%= j%> "><%= j%></a>
 						</li>
 						<%
 							}
