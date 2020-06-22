@@ -1,5 +1,5 @@
 /**
- * 古学懂_Victor（原作者）
+ * @author 古学懂_Victor（原作者）
  * @author 陈君锐
  */
 var getNoteHtml = function() {
