@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8" info="去旅行"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
    
     
-    <title>My JSP 'messagetest.jsp' starting page</title>
+<!--     <title>My JSP 'messagetest.jsp' starting page</title> -->
     <style type="text/css">
     	li{ list-style-type:none }
     	div{padding:3px;}
@@ -32,7 +32,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  	
  	<div class="row">
  		<div class="col-md-1 col-lg-2 col-xl-3 " style="">
- 			<pre>left</pre>
+<!--  			<pre>left</pre> -->
  		
  		
  		</div>
@@ -366,7 +366,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  		
  		
  		<div class="col-md-1 col-lg-2 col-xl-3">
-		<pre>right</pre>	
+<!-- 		<pre>right</pre>	 -->
 		</div>
 		
 		
