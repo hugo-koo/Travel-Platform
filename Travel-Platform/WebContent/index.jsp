@@ -29,7 +29,7 @@
 						<img id="note-toppic-1"
 							src="<%=" /Travel-Platform/_img/page_bg.jpg "%>"
 							class="d-block w-100" alt="...">
-						<div class="carousel-caption d-none d-md-block">
+						<div class="d-none d-md-block ca-link">
 							<h5 id="note-link-1"></h5>
 							<p></p>
 						</div>
@@ -38,7 +38,7 @@
 						<img id="note-toppic-2"
 							src="<%=" /Travel-Platform/_img/page_bg.jpg "%>"
 							class="d-block w-100" alt="...">
-						<div class="carousel-caption d-none d-md-block">
+						<div class="d-none d-md-block ca-link">
 							<h5 id="note-link-2"></h5>
 							<p></p>
 						</div>
@@ -47,7 +47,7 @@
 						<img id="note-toppic-3"
 							src="<%=" /Travel-Platform/_img/page_bg.jpg "%>"
 							class="d-block w-100" alt="...">
-						<div class="carousel-caption d-none d-md-block">
+						<div class="d-none d-md-block ca-link">
 							<h5 id="note-link-3"></h5>
 							<p></p>
 						</div>
@@ -70,9 +70,9 @@
 			<div class="col-6 col-lg-8">
 				<ul class="nav nav-tabs" id="mainTab" role="tablist">
 					<li class="nav-item" role="presentation"><a
-						class="nav-link " id="hotlist-tab" data-toggle="tab"
+						class="nav-link active" id="hotlist-tab" data-toggle="tab"
 						href="#hotlist" role="tab">热门游记</a></li>
-					<li class="nav-item" role="presentation"><a class="nav-link active"
+					<li class="nav-item" role="presentation"><a class="nav-link"
 						id="latest-tab" data-toggle="tab" href="#latest" role="tab">最新推荐</a>
 					</li>
 				</ul>
@@ -85,10 +85,9 @@
 						</div>
 					</div>
 					<!-- 热门 -->
-					<div class="tab-pane fade" id="hotlist" role="tabpanel">
-					</div>
+					<div class="tab-pane fade active show" id="hotlist" role="tabpanel"></div>
 					<!-- 最新 -->
-					<div class="tab-pane fade active" id="latest" role="tabpanel"></div>
+					<div class="tab-pane fade" id="latest" role="tabpanel"></div>
 					<div id="paginav"></div>
 				</div>
 			</div>

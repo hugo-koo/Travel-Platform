@@ -27,7 +27,7 @@ var noteCard = (
     if (toppic == '') {
     	toppic = '/Travel-Platform/_img/Test_1.jpg';
     }
-    return '<div class="card mb-3" style="max-width: 715px;"><div class="row no-gutters"><div class="col-md-4"><img src="'+toppic+'" class="card-img" alt="首图"></div><div class="col-md-8"><div class="card-body"><a href="/Travel-Platform/note/' + noteId + '"><h5 class="card-title">' + noteHeader + '</h5></a><p class="card-text">' + summary + '</p><p class="card-text"><small class="text-muted">发布于' + postDate + '  ' + likeIcon + likeCount + ' ' + commentIcon + commentCount + ' ' + favouritesIcon + favoriteCount + ' </small></p></div></div></div></div><hr>'
+    return '<div class="card mb-3" style="max-width: 715px;"><div class="row no-gutters"><div class="col-md-4"><img src="'+toppic+'" class="card-img" alt="首图"></div><div class="col-md-8"><div class="card-body"><a href="/Travel-Platform/note/' + noteId + '"><h5 class="card-title">' + noteHeader + '</h5></a>'+'<p class="card-text">' + summary + '</p><p class="card-text"><small class="text-muted">发布于' + postDate + '  ' + likeIcon + likeCount + ' ' + commentIcon + commentCount + ' ' + favouritesIcon + favoriteCount + ' </small></p></div></div></div></div><hr>'
 }
 /** 生成页面 */
 var createPage = (page = 1, method = "listHotestNotes") => {
@@ -81,11 +81,11 @@ var createPage = (page = 1, method = "listHotestNotes") => {
             $("#paginav").append(pageNav(page, totalPages, method));
             // 更新流转图片
             $("#note-toppic-1").eq(0).attr("src", $("#hotlist").find("img")[0].src);
-            $("#note-link-1").html($("#hotlist").find("a")[0]);
+            $("#note-link-1").append('<a href="'+$("#hotlist").find("a")[0].href+'">'+$("#hotlist").find("a")[0].text+'</a>');
             $("#note-toppic-2").eq(0).attr("src", $("#hotlist").find("img")[1].src);
-            $("#note-link-2").html($("#hotlist").find("a")[1]);
+            $("#note-link-2").append('<a href="'+$("#hotlist").find("a")[2].href+'">'+$("#hotlist").find("a")[2].text+'</a>');
             $("#note-toppic-3").eq(0).attr("src", $("#hotlist").find("img")[2].src);
-            $("#note-link-3").html($("#hotlist").find("a")[2]);
+            $("#note-link-3").append('<a href="'+$("#hotlist").find("a")[4].href+'">'+$("#hotlist").find("a")[4].text+'</a>');
         },
         error: () => {
             alert("游记获取失败");
