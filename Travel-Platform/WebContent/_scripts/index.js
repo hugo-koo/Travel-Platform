@@ -83,9 +83,9 @@ var createPage = (page = 1, method = "listHotestNotes") => {
             $("#note-toppic-1").eq(0).attr("src", $("#hotlist").find("img")[0].src);
             $("#note-link-1").append('<a href="'+$("#hotlist").find("a")[0].href+'">'+$("#hotlist").find("a")[0].text+'</a>');
             $("#note-toppic-2").eq(0).attr("src", $("#hotlist").find("img")[1].src);
-            $("#note-link-2").append('<a href="'+$("#hotlist").find("a")[2].href+'">'+$("#hotlist").find("a")[2].text+'</a>');
+            $("#note-link-2").append('<a href="'+$("#hotlist").find("a")[1].href+'">'+$("#hotlist").find("a")[1].text+'</a>');
             $("#note-toppic-3").eq(0).attr("src", $("#hotlist").find("img")[2].src);
-            $("#note-link-3").append('<a href="'+$("#hotlist").find("a")[4].href+'">'+$("#hotlist").find("a")[4].text+'</a>');
+            $("#note-link-3").append('<a href="'+$("#hotlist").find("a")[2].href+'">'+$("#hotlist").find("a")[2].text+'</a>');
         },
         error: () => {
             alert("游记获取失败");
