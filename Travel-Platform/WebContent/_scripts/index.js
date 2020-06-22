@@ -52,7 +52,7 @@ var createPage = (page = 1, method = "listHotestNotes") => {
             "itemsPerPage": itemsPerPage
         },
         success: (data) => {
-            console.log(data);
+//            console.log(data);
             for (var i = 0; i < data.notes.length; i++) {
                 var noteId = data.notes[i].noteId;
                 var postDate = data.notes[i].postDateStr;
