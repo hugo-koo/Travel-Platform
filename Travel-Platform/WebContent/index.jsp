@@ -24,7 +24,7 @@
 					<li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
 					<li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
 				</ol>
-				<div class="carousel-inner">
+				<div class="carousel-inner" style="max-height: 350px;">
 					<div class="carousel-item active">
 						<img id="note-toppic-1"
 							src="<%=" /Travel-Platform/_img/page_bg.jpg "%>"
@@ -70,9 +70,9 @@
 			<div class="col-6 col-lg-8">
 				<ul class="nav nav-tabs" id="mainTab" role="tablist">
 					<li class="nav-item" role="presentation"><a
-						class="nav-link active" id="hotlist-tab" data-toggle="tab"
+						class="nav-link " id="hotlist-tab" data-toggle="tab"
 						href="#hotlist" role="tab">热门游记</a></li>
-					<li class="nav-item" role="presentation"><a class="nav-link"
+					<li class="nav-item" role="presentation"><a class="nav-link active"
 						id="latest-tab" data-toggle="tab" href="#latest" role="tab">最新推荐</a>
 					</li>
 				</ul>
@@ -85,7 +85,7 @@
 						</div>
 					</div>
 					<!-- 热门 -->
-					<div class="tab-pane fade " id="hotlist" role="tabpanel">
+					<div class="tab-pane fade" id="hotlist" role="tabpanel">
 					</div>
 					<!-- 最新 -->
 					<div class="tab-pane fade active" id="latest" role="tabpanel"></div>

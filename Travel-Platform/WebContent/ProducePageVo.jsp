@@ -239,28 +239,22 @@
 							k = (int) session.getAttribute("pageNum");
 						%>
 						<li class="page-item">
-							<!-- 根据当前页码打印上一页链接--> <!-- 如果当前页码小于等于一，上一页跳转到第一页--> <%
- 	if (k <= 1) {
- %> <a class="page-link"
-							href=" ${pageContext.request.contextPath}/produce_page.action?currPage=1 ">上一页</a>
-							<%
-								;
-								}
-							%> <!-- 如果当前页码小于等于一，上一页正常跳转--> <%
- 	if (k > 1) {
- %> <a class="page-link"
-							href=" ${pageContext.request.contextPath}/produce_page.action?currPage=<%=k-1%> ">上一页<%=k - 1%></a>
-							<%
-								;
-								}
-							%>
+							<!-- 根据当前页码打印上一页链接-->
+							<!-- 如果当前页码小于等于一，上一页跳转到第一页-->
+							<%if (k<=1) {%>
+								<a class="page-link" href=" ${pageContext.request.contextPath}/produce_page.action?currPage=1 ">上一页</a>
+							<%} %>
+							<!-- 如果当前页码大于一，上一页正常跳转-->
+							<%if (k>1) {%>
+								<a class="page-link" href=" ${pageContext.request.contextPath}/produce_page.action?currPage=<%=k-1%> ">上一页</a>
+							<% }%>
 						</li>
 						<!-- 打印页面跳转链接-->
 						<%
 							for (j = 1; j < (int) session.getAttribute("totalPage") + 1; j++) {
 						%>
-						<li class="page-item"><a class="page-link"
-							href="${pageContext.request.contextPath}/produce_page.action?currPage=<%= j%> "><%=j%></a>
+						<li class="page-item">
+							<a class="page-link" href="${pageContext.request.contextPath}/produce_page.action?currPage=<%= j%> "></a>
 						</li>
 						<%
 							}
@@ -268,29 +262,16 @@
 						<!-- 根据当前页码打印下一页链接-->
 
 						<li class="page-item">
-							<%
-								if (k < (int) session.getAttribute("totalPage")) {
-							%> <a class="page-link"
-							href=" ${pageContext.request.contextPath}/produce_page.action?currPage=<%=k+1%>">下一页<%=k + 1%></a>
-							<%
-								;
-								}
-							%> <%
- 	if (k == (int) session.getAttribute("totalPage")) {
- %> <a class="page-link"
-							href=" ${pageContext.request.contextPath}/produce_page.action?currPage=<%=k%> ">下一页<%=k%></a>
-							<%
-								;
-								}
-							%> <%
- 	if (k > (int) session.getAttribute("totalPage")) {
- %> <a class="page-link"
-							href=" ${pageContext.request.contextPath}/produce_page.action?currPage=<%=(int)session.getAttribute("totalPage")%> ">下一页<%=(int) session.getAttribute("totalPage")%></a>
-							<%
-								;
-								}
-							%>
-
+							<%if (k<(int)session.getAttribute("totalPage")) {%>
+								<a class="page-link" href=" ${pageContext.request.contextPath}/produce_page.action?currPage=<%=k+1%>">下一页</a>
+							<%} %>
+							<%if (k==(int)session.getAttribute("totalPage")) {%>
+								<a class="page-link" href=" ${pageContext.request.contextPath}/produce_page.action?currPage=<%=k%> ">下一页</a>
+							<% }%>
+							<%if (k>(int)session.getAttribute("totalPage")) {%>
+								<a class="page-link" href=" ${pageContext.request.contextPath}/produce_page.action?currPage=<%=(int)session.getAttribute("totalPage")%> ">下一页</a>
+							<% }%>
+							
 						</li>
 						<li class="page-item"><a class="page-link"
 							href=" ${pageContext.request.contextPath}/produce_page.action?currPage=<s:property value='producePage.getTotalPage()'/> ">尾页</a>

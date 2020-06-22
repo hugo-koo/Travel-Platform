@@ -57,7 +57,7 @@ public class ProducePageAction extends ActionSupport {
 		producePage.getAdvertisingMap().get(0);
 		session.setAttribute("totalPage",producePage.getTotalPage());//存放总页数
 		session.setAttribute("onePageSize",producePage.getPageList().size());//存放当前页产品数量
-		session.setAttribute("pageNum",currPage+1);//存放当前页页数
+		session.setAttribute("pageNum",currPage);//存放当前页页数
 		return SUCCESS;
 		
 	}
