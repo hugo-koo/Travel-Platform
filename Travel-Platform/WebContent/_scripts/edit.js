@@ -191,7 +191,7 @@ $(() => {
 	// 转换图片数据
     $("#toppic").change(function() {
         var oFile = this.files[0];
-        console.log("oFile")
+//        console.log("oFile")
 //        console.log(oFile)
         var reader = new FileReader();
         // 调用自带方法进行转换
@@ -207,7 +207,7 @@ $(() => {
                 alert("文件格式必须为图片");
                 return;
             }
-            console.log(toppic);
+//            console.log(toppic);
         };
     });
 });
