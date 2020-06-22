@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" import="java.util.*,com.opensymphony.xwork2.util.*"%>
+	pageEncoding="UTF-8" import="java.util.*,com.opensymphony.xwork2.util.*" info="产品申请"%>
 
 <%
 	String path = request.getContextPath();
