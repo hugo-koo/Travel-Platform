@@ -23,23 +23,25 @@
 					<a class="nav-link active" href="/Travel-Platform">首页</a>
 				</dd>
 				<dd class="nav-item">
-					<a class="nav-link" href="/Travel-Platform/scenerylist_getSceneryList.action">目的地</a>
+					<a class="nav-link"
+						href="/Travel-Platform/scenerylist_getSceneryList.action">目的地</a>
 				</dd>
 				<dd>
-					<a class="nav-link" href="#">去旅行</a>
+					<a class="nav-link"
+						href="/Travel-Platform/produce_page.action?currPage=1">去旅行</a>
 				</dd>
 			</dl>
 			<div></div>
 			<dl class="nav flex-column col">
 				<dt class="display-5">社区</dt>
 				<dd class="nav-item">
-					<a class="nav-link" href="#">问答</a>
+<!-- 					<a class="nav-link" href="#">问答</a> -->
 				</dd>
 				<dd class="nav-item">
 					<a class="nav-link" href="#">点评</a>
 				</dd>
 				<dd class="nav-item">
-					<a class="nav-link" href="#">游记</a>
+					<a class="nav-link" href="/Travel-Platform/note/edit">创建游记</a>
 				</dd>
 			</dl>
 			<div class="col"></div>
