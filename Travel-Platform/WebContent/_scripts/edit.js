@@ -191,8 +191,8 @@ $(() => {
 	// 转换图片数据
     $("#toppic").change(function() {
         var oFile = this.files[0];
-        console.log("oFile")
-        console.log(oFile)
+//        console.log("oFile")
+//        console.log(oFile)
         var reader = new FileReader();
         // 调用自带方法进行转换
         reader.readAsDataURL(oFile); 
@@ -202,18 +202,12 @@ $(() => {
             toppic = this.result;
             $("#toppic-tip").html('修改头图');
             var rFilter = /^(image\/bmp|image\/gif|image\/jpeg|image\/png|image\/tiff)$/i;
-            console.log(oFile.type);
+//            console.log(oFile.type);
             if(!rFilter.test(oFile.type)) {
                 alert("文件格式必须为图片");
                 return;
             }
-            console.log(toppic);
+//            console.log(toppic);
         };
     });
 });
-
-var file = ()=>{
-	var formData = new FormData();
-	var toppicElm = document.getElementById('toppic');
-	formData.append('note.noteDtl.noteToppic', toppicElm.files[0]);
-}

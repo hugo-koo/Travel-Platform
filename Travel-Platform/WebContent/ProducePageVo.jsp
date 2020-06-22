@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" info="去旅行"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -10,7 +10,7 @@
 <body>
 	<%@ include file="/site-header.jsp"%>
 	<div class="row">
-		<div class="col-md-1 col-lg-2 col-xl-3">left</div>
+		<div class="col-md-1 col-lg-2 col-xl-3"></div>
 		<div class="col-md-10 col-lg-8 col-xl-6 border bg-light ">
 
 			<br> <br>
@@ -254,7 +254,7 @@
 							for (j = 1; j < (int) session.getAttribute("totalPage") + 1; j++) {
 						%>
 						<li class="page-item">
-							<a class="page-link" href="${pageContext.request.contextPath}/produce_page.action?currPage=<%= j%> "></a>
+							<a class="page-link" href="${pageContext.request.contextPath}/produce_page.action?currPage=<%= j%> "><%= j%></a>
 						</li>
 						<%
 							}
@@ -280,7 +280,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-1 col-lg-2 col-xl-3">right</div>
+		<div class="col-md-1 col-lg-2 col-xl-3"></div>
 	</div>
 	<%@ include file="/site-footer.jsp"%>
 </body>
