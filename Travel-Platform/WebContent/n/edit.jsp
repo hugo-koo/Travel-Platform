@@ -16,6 +16,27 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+<%
+	final int NEW = 0;
+	final int UPDATE = 1;
+	String noteIdStr = request.getParameter("noteId");
+	int noteId = 0;
+	int type = NEW;
+	// 判断是修改还是新建
+	if (noteIdStr != null) {
+		type = UPDATE;
+		noteId = Integer.parseInt(noteIdStr);
+%>
+<script type="text/javascript" src="/Travel-Platform/_scripts/modi.js"></script>
+<script type="text/javascript">
+	noteId =
+<%=noteIdStr%>
+	;
+</script>
+<%
+	;
+	}
+%>
 </head>
 
 <body>
@@ -49,13 +70,13 @@
 						<input type="text"
 							style="height: calc(2em + .75rem + 2px); font-size: 2rem; color: #0f4c81;"
 							class="form-control" id="noteHeader"
-							name="note.noteDtl.noteHeader" placeholder="游记标题">
+							name="note.noteDtl.noteHeader" placeholder="游记标题"> </input>
 					</div>
 					<div class="form-row row">
 						<div class="form-group col-sm-8">
 							<button type="button" class="btn btn-primary"
 								onclick="saveDraft()">保存至草稿</button>
-							<button type="button" class="btn" onclick="post()">发布</button>
+							<button type="button" class="btn" onclick="post(<%=type%>)">发布</button>
 							<div class="spinner-border text-info" id="post-spinner"
 								role="status" style="display: none;">
 								<span class="sr-only">Loading...</span>
@@ -76,8 +97,8 @@
 					</div>
 					<input type="hidden" name="note.noteDtl.noteContent" value=""
 						id="noteContent" /> <input type="hidden" name="regionId"
-						value="0" id="regionId" /><input type="hidden" name="note.noteDtl.noteToppic"
-                        value="0" id="toppic-input" />
+						value="0" id="regionId" /><input type="hidden"
+						name="note.noteDtl.noteToppic" value="0" id="toppic-input" />
 					<iframe class="border-0" id="editorFrame" title="Editor"
 						width="100%" style="height: 750px"
 						src="/Travel-Platform/n/editor.jsp?Type=note"> </iframe>
@@ -105,9 +126,6 @@
 							<h5 class="card-title" id=""></h5>
 							<input id="date" type="text" name="note.travelDate"
 								class="form-control" />
-							<script type="text/javascript">
-								
-							</script>
 						</div>
 					</div>
 					<div class="card text-white bg-info mb-3" style="max-width: 18rem;">
@@ -115,10 +133,7 @@
 						<div class="card-body" id="">
 							<h5 class="card-title" id=""></h5>
 							<input id="endDate" type="text" name="note.endDate"
-								class="form-control" />
-							<script type="text/javascript">
-								
-							</script>
+								class="form-control"></input>
 						</div>
 					</div>
 					<div class="card text-white bg-info mb-3" style="max-width: 18rem;">
@@ -126,7 +141,7 @@
 						<div class="card-body" id="">
 							<h5 class="card-title" id=""></h5>
 							<input id="applicable" type="text" name="note.applicable"
-								class="form-control" />
+								class="form-control"></input>
 						</div>
 					</div>
 				</div>

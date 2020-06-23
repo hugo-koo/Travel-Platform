@@ -87,7 +87,7 @@ var createPage = (page = 1, method = "listHotestNotes") => {
             $("#paginav").empty();
             $("#paginav").append(pageNav(page, totalPages, method));
             // 更新轮转图片
-            if(method=="listHotestNotes"){
+            if (method == "listHotestNotes") {
             	$("#note-toppic-1").eq(0).attr("src", $("#hotlist").find("img")[0].src);
                 $("#note-link-1").html('<a href="'+$("#hotlist").find("a")[0].href+'">'+$("#hotlist").find("a")[0].text+'</a>');
                 $("#note-toppic-2").eq(0).attr("src", $("#hotlist").find("img")[1].src);
