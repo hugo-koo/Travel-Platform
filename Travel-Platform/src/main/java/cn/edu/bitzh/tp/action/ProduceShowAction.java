@@ -29,32 +29,35 @@ import cn.edu.bitzh.tp.model.ProduceCost;
 import cn.edu.bitzh.tp.service.ProduceRequestService;
 
 public class ProduceShowAction extends ActionSupport{
-
-	private Produce produce;//产品基本信息实体类
-	private CostContent costContent;//产品费用内容实体类
-	private List<GraphicIntroduction> graphicIntroductions;//产品图实体类
+	/* 产品基本信息实体类 */
+	private Produce produce;
+	/* 产品费用内容实体类 */
+	private CostContent costContent;
+	/* 产品图相关实体类 */
+	private List<GraphicIntroduction> graphicIntroductions;
 	private List<CostContent> costContents;
 	private ProduceCost produceCost;
 	private GraphicIntroduction graphicIntroduction;
-	private int produceIdIn;//页面传来产品编号
-	private String produceId;//页面传来产品编号转化string
-	private ProduceRequestService produceRequestService;//产品显示service
+	/* 页面传来产品编号 */
+	private int produceIdIn;
+	/* 页面传来产品编号转化string */
+	private String produceId;
+	/* 产品显示service */
+	private ProduceRequestService produceRequestService;
+	/* 宣传图列表 */
 	private List<GraphicIntroduction> advertisingMap;
-	//private int produceId;
+	
 	public String execute(){
 		
-		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("beans.xml");//读取配置文件
-		produceRequestService = (ProduceRequestService) applicationContext.getBean("ProduceRequestService");//注入ProduceRequestService
+		/* 读取配置文件 */
+		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("beans.xml");
+		/* 注入ProduceRequestService */
+		produceRequestService = (ProduceRequestService) applicationContext.getBean("ProduceRequestService");
 		
 		
 		HttpServletRequest request = ServletActionContext.getRequest();
 		HttpSession session = ServletActionContext.getRequest().getSession();
 		
-		//String test="test";
-		//session.setAttribute("test", "test");
-		
-		//session.setAttribute(name, value);
-		System.out.println("ProduceShowAction Start");
 		
 		//实例化实体类对象
 		graphicIntroductions = new ArrayList<GraphicIntroduction>();//
@@ -64,22 +67,17 @@ public class ProduceShowAction extends ActionSupport{
 		costContents=new ArrayList<CostContent>();
 		advertisingMap = new ArrayList<GraphicIntroduction>();
 		
-		
 		//经url传入产品id为
-		
 		produceId=""+produceIdIn;
 		//执行产品信息查找
 		boolean flag=produceRequestService.find(produceId, produce, produceCost, costContents, graphicIntroductions,advertisingMap);
 		
-		
-		if(!flag) {//查找失败
+		//查找失败
+		if(!flag) {
 		
 		  System.out.println("查找失败\n");
 		  return ERROR;
 		}
-		//System.out.println("url is"+graphicIntroductions.get(0).getGraphicIntroductionContent()+"\n");
-		
-		
 		
 		if(graphicIntroductions.size()>0) {
 			System.out.println("ProduceShowAction +graphicIntroduction is"+graphicIntroductions.get(0).getGraphicIntroductionContent());
@@ -89,15 +87,14 @@ public class ProduceShowAction extends ActionSupport{
 			System.out.println("graphicIntroductions对象保存失败");
 		}
 		
-		
-		
-		for(int i=0;i<graphicIntroductions.size();i++) {//将产品图文详情url保存到session
+		//将产品图文详情url保存到session
+		for(int i=0;i<graphicIntroductions.size();i++) {
 			
 			session.setAttribute("graphicIntroductionContent"+i, graphicIntroductions.get(i).getGraphicIntroductionContent());
 			
 		}
-		
-		for(int i=0;i<advertisingMap.size();i++) {//将宣传图url保存到session
+		//将宣传图url保存到session
+		for(int i=0;i<advertisingMap.size();i++) {
 			
 			session.setAttribute("advertisingMapContent"+i, advertisingMap.get(i).getGraphicIntroductionContent());
 			
@@ -145,18 +142,6 @@ public class ProduceShowAction extends ActionSupport{
 		
 		
 	}
-
-
-
-	
-	
-	
-	
-	
-	
-
-
-	
 
 	public int getProduceIdIn() {
 		return produceIdIn;
@@ -252,14 +237,5 @@ public class ProduceShowAction extends ActionSupport{
 		this.produceRequestService = produceRequestService;
 	}
 	
-	
 
-	
-
-
-	
-	
-	
-	
-	
 }
