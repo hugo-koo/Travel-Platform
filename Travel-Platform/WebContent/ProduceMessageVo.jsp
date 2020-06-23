@@ -10,7 +10,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
    
     
-    <title>My JSP 'messagetest.jsp' starting page</title> 
+
+<!--     <title>My JSP 'messagetest.jsp' starting page</title> -->
     <style type="text/css">
     	li{ list-style-type:none }
     	div{padding:3px;}
@@ -33,7 +34,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  	<div class="row">
  		<div class="col-md-1 col-lg-2 col-xl-3 " style="">
  			<pre> </pre>
- 		
  		
  		</div>
  		
@@ -365,12 +365,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
  		</div>
  		
- 		
- 		
- 		
- 		
- 		
- 		
+
 		
  
  	
