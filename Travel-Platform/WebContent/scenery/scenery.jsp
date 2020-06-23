@@ -82,12 +82,10 @@
 				</s:iterator>
 			</table>
 			</div>
-		</div>
-		<!-- 最新景点E --><hr>
-		<!-- 热门景点S -->
-		<div class="text-center">
-			<h1 class="display-4">热门景点</h1>
-		</div>
+		</div><hr>
+		<!-- 最新景点E -->
+		<!-- 热门景点S --><!-- 
+		<h1 class="display-4">热门景点</h1>
 		<div class="row">
 			<div class="col-2"></div>
 			<div class="col-8">
@@ -106,53 +104,57 @@
 					</div>
 				</a>
 			</div>
-		</div>
-		<!-- 热门景点E --><hr>
+		</div><hr>
+		 --><!-- 热门景点E -->
 		<!-- 全球目的地S  -->
-		<div class="text-center">
-			<ul class="nav nav-pills mb-3 " id="pills-tab" role="tablist">
-				<li class="nav-item" role="presentation"><a
-					class="nav-link active" id="pills-Inland-tab" data-toggle="pill"
-					href="#pills-Inland" role="tab" aria-controls="pills-home"
-					aria-selected="true">国内</a></li>
-				<li class="nav-item" role="presentation"><a class="nav-link"
-					id="pills-Asia-tab" data-toggle="pill" href="#pills-Asia"
-					role="tab" aria-controls="pills-profile" aria-selected="false">亚洲</a>
-				</li>
-				<li class="nav-item" role="presentation"><a class="nav-link"
-					id="pills-Europe-tab" data-toggle="pill" href="#pills-Europe"
-					role="tab" aria-controls="pills-contact" aria-selected="false">欧洲</a>
-				</li>
-				<li class="nav-item" role="presentation"><a class="nav-link"
-					id="pills-America-tab" data-toggle="pill" href="#pills-America"
-					role="tab" aria-controls="pills-contact" aria-selected="false">美洲</a>
-				</li>
-				<li class="nav-item" role="presentation"><a class="nav-link"
-					id="pills-Africa-tab" data-toggle="pill" href="#pills-Africa"
-					role="tab" aria-controls="pills-contact" aria-selected="false">非洲</a>
-				</li>
-				<li class="nav-item" role="presentation"><a class="nav-link"
-					id="pills-Australia-tab" data-toggle="pill" href="#pills-Australia"
-					role="tab" aria-controls="pills-contact" aria-selected="false">大洋洲</a>
-				</li>
-			</ul>
-			<div class="tab-content" id="pills-tabContent">
-				<div class="tab-pane fade show active" id="pills-Inland"
-					role="tabpanel" aria-labelledby="pills-home-tab"><a href="/Travel-Platform/scenery/list.jsp">测试用</a></div>
-				<div class="tab-pane fade" id="pills-Asia" role="tabpanel"
-					aria-labelledby="pills-profile-tab">亚洲</div>
-				<div class="tab-pane fade" id="pills-Europe" role="tabpanel"
-					aria-labelledby="pills-contact-tab">欧洲</div>
-				<div class="tab-pane fade" id="pills-America" role="tabpanel"
-					aria-labelledby="pills-contact-tab">美洲</div>
-				<div class="tab-pane fade" id="pills-Africa" role="tabpanel"
-					aria-labelledby="pills-contact-tab">非洲</div>
-				<div class="tab-pane fade" id="pills-Australia" role="tabpanel"
-					aria-labelledby="pills-contact-tab">大洋洲</div>
+		<h1 class="display-4">各地景点</h1>
+		<div class="row">
+			<div class="col-2"></div>
+			<div class="col-8">
+				<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+					<li class="nav-item" role="presentation"><a class="nav-link active"
+						id="pills-Inland-tab" data-toggle="pill" href="#pills-Inland"
+						role="tab" aria-controls="pills-home" aria-selected="true">国内</a>
+					</li>
+					<li class="nav-item" role="presentation"><a class="nav-link"
+						id="pills-Asia-tab" data-toggle="pill" href="#pills-Asia"
+						role="tab" aria-controls="pills-profile" aria-selected="false">亚洲</a>
+					</li>
+					<li class="nav-item" role="presentation"><a class="nav-link"
+						id="pills-Europe-tab" data-toggle="pill" href="#pills-Europe"
+						role="tab" aria-controls="pills-contact" aria-selected="false">欧洲</a>
+					</li>
+					<li class="nav-item" role="presentation"><a class="nav-link"
+						id="pills-America-tab" data-toggle="pill" href="#pills-America"
+						role="tab" aria-controls="pills-contact" aria-selected="false">美洲</a>
+					</li>
+					<li class="nav-item" role="presentation"><a class="nav-link"
+						id="pills-Africa-tab" data-toggle="pill" href="#pills-Africa"
+						role="tab" aria-controls="pills-contact" aria-selected="false">非洲</a>
+					</li>
+					<li class="nav-item" role="presentation"><a class="nav-link"
+						id="pills-Australia-tab" data-toggle="pill" href="#pills-Australia"
+						role="tab" aria-controls="pills-contact" aria-selected="false">大洋洲</a>
+					</li>
+				</ul>
+				<div class="tab-content" id="pills-tabContent">
+					<div class="tab-pane fade show active" id="pills-Inland" role="tabpanel"
+						aria-labelledby="pills-home-tab">国内</div>
+					<div class="tab-pane fade" id="pills-Asia" role="tabpanel"
+						aria-labelledby="pills-profile-tab">亚洲</div>
+					<div class="tab-pane fade" id="pills-Europe" role="tabpanel"
+						aria-labelledby="pills-contact-tab">欧洲</div>
+					<div class="tab-pane fade" id="pills-America" role="tabpanel"
+						aria-labelledby="pills-contact-tab">美洲</div>
+					<div class="tab-pane fade" id="pills-Africa" role="tabpanel"
+						aria-labelledby="pills-contact-tab">非洲</div>
+					<div class="tab-pane fade" id="pills-Australia" role="tabpanel"
+						aria-labelledby="pills-contact-tab">大洋洲</div>
+				</div>
 			</div>
-
-		</div>
-		<!-- 全球目的地E  --><hr>
+			<div class="col-2"></div>
+		</div><hr>
+		<!-- 全球目的地E  -->
 	</div>
 	<footer>
 		<%@ include file="/site-footer.jsp"%>

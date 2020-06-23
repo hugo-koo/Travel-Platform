@@ -78,7 +78,7 @@ var regionChange = function(rank) {
 	});
 }
 
-function publish(){
+function publishScenery(){
 	var name = document.getElementById("publish_scenery_name").value.trim();
 	var dtl = document.getElementById("publish_scenery_dtl").value.trim();
 	var region = document.getElementById("region-1").value.trim();

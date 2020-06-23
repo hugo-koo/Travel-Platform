@@ -26,13 +26,13 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-2">左</div>
-			<div class="col-8" style="border: 1px solid black">
+			<div class="col-8" style="border: 1px solid #e0ddd4">
 				<h1 class="display-4">发布景点</h1>
 				<p class="tip">
 					<span class="necessary">*</span>为必填项目
 				</p>
 				<hr>
-				<s:form method="post" action="scenerypublish_publishScenery" namespace="/" enctype="multipart/form-data">
+				<s:form method="post" onsubmit="return publishScenery()" action="scenerypublish_publishScenery" namespace="/" enctype="multipart/form-data">
 					<!-- 景点基本信息S -->
 					<h4><span class="necessary">基础信息</span></h4>
 						<div>
@@ -80,7 +80,7 @@
 								placeholder="请填写可用的邮箱">
 						</div>
 					<!-- 景点联系信息E --><br>
-					<button type="submit" class="btn btn-primary" onclick="publish()">提交</button>
+					<button type="submit" class="btn btn-primary">提交</button>
 				</s:form>
 				<br>
 			</div>
