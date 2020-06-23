@@ -31,7 +31,9 @@
 
 <body>
 	<script type="text/javascript">
-		setNoteId(<%=noteId%>);
+		setNoteId(
+	<%=noteId%>
+		);
 	</script>
 	<header>
 		<%@ include file="/site-header.jsp"%>
@@ -147,9 +149,19 @@
 			src="/Travel-Platform/_img/liked.svg">
 		<div id="like-count"><%=note.getLikeCount()%></div>
 	</button>
-	<button id="favourites-button" type="button"
-		class="btn btn-light float-left" onclick="favourites()">
-		<img alt="favourites" src="/Travel-Platform/_img/favourites.svg">
+<!-- 	<button id="favourites-button" type="button" -->
+<!-- 		class="btn btn-light float-left" onclick="favourites()"> -->
+<!-- 		<img alt="favourites" src="/Travel-Platform/_img/favourites.svg"> -->
+<!-- 	</button> -->
+	<button id="create-button" type="button"
+		class="btn btn-light float-left"
+		onclick="window.location.href='/Travel-Platform/note/edit/<%=noteId%>'">
+		<img alt="favourites" src="/Travel-Platform/_img/edit.svg">
+	</button>
+	<button id="delete-button" type="button"
+		class="btn btn-light float-left"
+		onclick="deleteNote()">
+		<img alt="favourites" src="/Travel-Platform/_img/delete.svg">
 	</button>
 	<footer>
 		<%@ include file="/site-footer.jsp"%>

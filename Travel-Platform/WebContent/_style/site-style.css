@@ -143,6 +143,13 @@ div[data-role="editor-toolbar"] {
 	z-index: 20;
 }
 
+#delete-button {
+	position: fixed;
+	bottom: 100px;
+	left: 0;
+	z-index: 20;
+}
+
 #toppic {
 	cursor: pointer;
 }

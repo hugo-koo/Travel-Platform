@@ -139,6 +139,9 @@ public class NoteDao implements INoteDao {
 			session = sessionFactory.openSession();
 			transaction = session.beginTransaction();
 			Note note = session.load(Note.class, id);
+			note.getRegions().clear();
+			note.setRegions(null);
+			session.clear();
 			session.delete(note);
 			transaction.commit();
 			return true;

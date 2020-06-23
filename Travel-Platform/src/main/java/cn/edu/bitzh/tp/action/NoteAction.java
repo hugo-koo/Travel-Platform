@@ -35,7 +35,7 @@ public class NoteAction extends ActionSupport {
 	private ApplicationContext applicationContext2 = new ClassPathXmlApplicationContext("beans.xml");
 	private IRegionService rs = (RegionService) applicationContext2.getBean("regionService");
 	/** 游记，其中内容字段不编译为JSON，减少不必要的传输开支 */
-	private Note note = new Note();
+	private Note note;
 	private List<Note> notes;
 	private int noteId = 1000;
 	private int regionId = 0;
@@ -154,6 +154,15 @@ public class NoteAction extends ActionSupport {
 		regions.add(region);
 		this.note.setRegions(regions);
 		boolean flag = this.ns.update(this.note);
+		if (flag) {
+			return ActionSupport.SUCCESS;
+		} else {
+			return ActionSupport.ERROR;
+		}
+	}
+	
+	public String delete() {
+		boolean flag = this.ns.delete(noteId);
 		if (flag) {
 			return ActionSupport.SUCCESS;
 		} else {
