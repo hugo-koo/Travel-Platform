@@ -92,7 +92,7 @@ var regionChange = (rank) => {
 
 /** 保存游记 */
 var post = (method) => {
-	var target;
+	var target = 'insert';
 	if(method==0){
 		target = 'insert';
 	}
@@ -112,7 +112,8 @@ var post = (method) => {
 	// 构建FormData对象
 	var noteForm = document.getElementById("note");
 	var noteFormData = new FormData(noteForm);
-	noteFormData.set("noteId", noteId);
+	if(method==1)
+		noteFormData.set("noteId", noteId);
 	// 校验数据并进入待保存状态
 	if (validate()){
 		$("#post-spinner").css("display", "inline-block");
