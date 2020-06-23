@@ -57,3 +57,20 @@ var isLiked = (id) =>{
 	}
 	return false;
 }
+
+var deleteNote = ()=>{
+	$.ajax({
+        type: "post",
+        url: "/Travel-Platform/note_delete.action",
+        data: {
+        	"noteId": noteId
+        },
+        success: (data) => {
+        	alert("删除成功");
+        	window.location.href = "/Travel-Platform/index";
+        },
+        error: () => {
+            alert("删除失败");
+        }
+    });
+}
