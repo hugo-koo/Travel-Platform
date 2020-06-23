@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" info="去旅行"%>
+	pageEncoding="UTF-8" info="去旅行" %>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -10,21 +10,28 @@
 <body>
 	<%@ include file="/site-header.jsp"%>
 	<div class="row">
-		<div class="col-md-1 col-lg-2 col-xl-3"></div>
+		<div class="col-md-1 col-lg-2 col-xl-3"><pre> </pre></div>
+
 		<div class="col-md-10 col-lg-8 col-xl-6 border bg-light ">
 
 			<br> <br>
+			 <a href="${pageContext.request.contextPath}/ProduceRequestFromVo.jsp" class="btn btn-primary">产品申请</a>
 			<hr class="bg-warning">
 			<div class="row">
 
 				<div class="col-12">
 					<!-- 根据当前页数据量打印产品展示 card-->
 					<%!int z;%>
-					<%
+					<%!int pageNum; %>
+					<%!int flag; %>
+					<%	pageNum=(int) session.getAttribute("pageNum");
 						for (z = 0; z < (int) session.getAttribute("onePageSize"); z++) {
+							flag=pageNum*(z+1);
+							System.out.println("flag为"+flag);
 					%>
 					<%
-						if (z == 0) {
+						if (z == 0) {	
+							
 					%>
 
 					<div class="col-12">
@@ -41,7 +48,7 @@
 									<div class="card-body">
 										<h5 class="card-title">
 											<a class="text-dark"
-												href="produce_show.action?produceIdIn=<%=z + 1%>"> <s:property
+												href="produce_show.action?produceIdIn=<%=flag %>"> <s:property
 													value="producePage.getPageList().get(0).getProduceTitle()" />
 
 											</a>
@@ -82,7 +89,7 @@
 									<div class="card-body">
 										<h5 class="card-title">
 											<a class="text-dark"
-												href="produce_show.action?produceIdIn=<%=z + 1%>"> <s:property
+												href="produce_show.action?produceIdIn=<%=flag%>"> <s:property
 													value="producePage.getPageList().get(1).getProduceTitle()" />
 											</a>
 										</h5>
@@ -118,7 +125,7 @@
 									<div class="card-body">
 										<h5 class="card-title">
 											<a class="text-dark"
-												href="produce_show.action?produceIdIn=<%=z + 1%>"> <s:property
+												href="produce_show.action?produceIdIn=<%=flag%>"> <s:property
 													value="producePage.getPageList().get(2).getProduceTitle()" />
 
 											</a>
@@ -159,7 +166,7 @@
 									<div class="card-body">
 										<h5 class="card-title">
 											<a class="text-dark"
-												href="produce_show.action?produceIdIn=<%=z + 1%>"> <s:property
+												href="produce_show.action?produceIdIn=<%=flag%>"> <s:property
 													value="producePage.getPageList().get(3).getProduceTitle()" />
 
 											</a>
@@ -199,7 +206,7 @@
 									<div class="card-body">
 										<h5 class="card-title">
 											<a class="text-dark"
-												href="produce_show.action?produceIdIn=<%=z + 1%>"> <s:property
+												href="produce_show.action?produceIdIn=<%=flag%>"> <s:property
 													value="producePage.getPageList().get(4).getProduceTitle()" />
 
 											</a>
@@ -270,7 +277,7 @@
 							<% }%>
 							<%if (k>(int)session.getAttribute("totalPage")) {%>
 								<a class="page-link" href=" ${pageContext.request.contextPath}/produce_page.action?currPage=<%=(int)session.getAttribute("totalPage")%> ">下一页</a>
-							<% }%>
+							<% }%> 
 							
 						</li>
 						<li class="page-item"><a class="page-link"
@@ -280,7 +287,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-1 col-lg-2 col-xl-3"></div>
+		<div class="col-md-1 col-lg-2 col-xl-3"><pre> </pre></div>
 	</div>
 	<%@ include file="/site-footer.jsp"%>
 </body>

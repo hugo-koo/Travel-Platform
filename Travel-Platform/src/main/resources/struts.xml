@@ -46,7 +46,7 @@
 		<action name="produce_request"
 			class="cn.edu.bitzh.tp.action.ProduceRequestAction">
 			<result name="success">/index.jsp</result>
-			<result name="error">/test.jsp</result>
+			<result name="error">/404.jsp</result>
 			<result name="input">/ProduceRequestFromVo.jsp</result>
 		</action>
 
@@ -56,13 +56,13 @@
 		<action name="produce_show"
 			class="cn.edu.bitzh.tp.action.ProduceShowAction">
 			<result name="success">/ProduceMessageVo.jsp</result>
-			<result name="error">/test.jsp</result>
+			<result name="error">/404.jsp</result>
 		</action>
 	</package>
 	<package name="produce_page" namespace="/" extends="json-default">
 		<action name="produce_page" class="cn.edu.bitzh.tp.action.ProducePageAction">
 			<result name="success">/ProducePageVo.jsp</result>
-			<result name="error">/test.jsp</result>
+			<result name="error">/404.jsp</result>
 		</action>
 	</package>
 
