@@ -2,7 +2,10 @@
  * @author 古学懂_Victor
  */
 /** 头图 */
-var toppic = '';
+var toppic = '/Travel-Platform/_img/page_bg.jpg';
+/** 最终的地区ID */
+var regionId = 0;
+var editType = "NEW";
 
 var getNoteHtml = () => {
 	var x = document.getElementsByTagName("iframe")[0].contentWindow;
@@ -10,8 +13,11 @@ var getNoteHtml = () => {
 	return noteHtml;
 }
 
-/** 最终的地区ID */
-var regionId = 0;
+var setNoteHtml = (data) => {
+	var x = document.getElementsByTagName("iframe")[0].contentWindow;
+	x.document.getElementById("editor").innerHTML = data;
+}
+
 /** 从大洲列表开始初始化 */
 var regionInit = () => {
 	/** 清除子列表 */
@@ -85,7 +91,15 @@ var regionChange = (rank) => {
 }
 
 /** 保存游记 */
-var post = () => {
+var post = (method) => {
+	var target;
+	if(method==0){
+		target = 'insert';
+	}
+	else{
+		target = 'modify';
+	}
+	
 	// 将地区id值注入表单
 	$("#regionId").val(regionId);
 	// 将内容注入表单
@@ -95,10 +109,10 @@ var post = () => {
 	}
 	// 注入头图文件
 	$("#toppic-input").val(toppic);
-	var toppicElm = document.getElementById('toppic');
 	// 构建FormData对象
 	var noteForm = document.getElementById("note");
 	var noteFormData = new FormData(noteForm);
+	noteFormData.set("noteId", noteId);
 	// 校验数据并进入待保存状态
 	if (validate()){
 		$("#post-spinner").css("display", "inline-block");
@@ -106,7 +120,7 @@ var post = () => {
 		$.ajax({
 			type: "POST",
 			dataType: "json",
-			url: "/Travel-Platform/note_insert.action",
+			url: "/Travel-Platform/note_"+target+".action",
             // data: $('#note').serialize(),
 			data: noteFormData,
 			contentType: false,
@@ -199,7 +213,8 @@ $(() => {
         reader.onload = function(e) {
         	// 将转换后的编码存入src完成预览
             $("#toppic-show").attr("src", this.result); 
-            toppic = this.result;
+            if(this.result!=null)
+            	toppic = this.result;
             $("#toppic-tip").html('修改头图');
             var rFilter = /^(image\/bmp|image\/gif|image\/jpeg|image\/png|image\/tiff)$/i;
 //            console.log(oFile.type);

@@ -10,6 +10,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import org.apache.struts2.json.annotations.JSON;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
@@ -35,21 +36,6 @@ public class NoteDtl {
 	@Lob
 	@Column(name = "note_toppic")
 	private String noteToppic;
-	
-	/**
-	 * @return the noteToppic
-	 */
-	public String getNoteToppic() {
-		return noteToppic;
-	}
-
-	/**
-	 * @param noteToppic the noteToppic to set
-	 */
-	public void setNoteToppic(String noteToppic) {
-		this.noteToppic = noteToppic;
-	}
-
 	@OneToOne(optional = false, fetch = FetchType.LAZY)
 	@PrimaryKeyJoinColumn
 	private Note note;
@@ -78,12 +64,27 @@ public class NoteDtl {
 		this.noteHeader = noteHeader;
 	}
 
+	@JSON(serialize = false)
 	public String getNoteContent() {
 		return noteContent;
 	}
 
 	public void setNoteContent(String noteContent) {
 		this.noteContent = noteContent;
+	}
+	
+	/**
+	 * @return the noteToppic
+	 */
+	public String getNoteToppic() {
+		return noteToppic;
+	}
+
+	/**
+	 * @param noteToppic the noteToppic to set
+	 */
+	public void setNoteToppic(String noteToppic) {
+		this.noteToppic = noteToppic;
 	}
 	
 }
