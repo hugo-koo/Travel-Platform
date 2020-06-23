@@ -14,11 +14,11 @@ import cn.edu.bitzh.tp.model.Produce;
 import cn.edu.bitzh.tp.model.ProduceCost;
 import cn.edu.bitzh.tp.model.ProducePage;
 
-public interface ProduceRequestService {//产品申请service
+public interface ProduceRequestService {
 	//保存产品信息到数据库
-	public boolean save(Produce produce,ProduceCost produceCost ,CostContent costContent,List<GraphicIntroduction> graphicIntroductions);//产品存入数据库
-	//读取数据库产品信息
-	public boolean find(String produceId,Produce produce,ProduceCost produceCost ,List<CostContent> costContents,List<GraphicIntroduction> graphicIntroductions,List<GraphicIntroduction> advertisingMap);//产品存入数据库
+	public boolean save(Produce produce,ProduceCost produceCost ,CostContent costContent,List<GraphicIntroduction> graphicIntroductions);
+	//读取数据库特定产品信息
+	public boolean find(String produceId,Produce produce,ProduceCost produceCost ,List<CostContent> costContents,List<GraphicIntroduction> graphicIntroductions,List<GraphicIntroduction> advertisingMap);
 	//读取产品信息并分页显示
 	public ProducePage<Produce> findByPage(int currPage);
 	

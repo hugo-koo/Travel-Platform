@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" import="java.util.*,com.opensymphony.xwork2.util.*"%>
+	pageEncoding="UTF-8" import="java.util.*,com.opensymphony.xwork2.util.*" info="产品申请"%>
 
 <%
 	String path = request.getContextPath();
@@ -14,7 +14,7 @@
 </style>
 <script type="text/javascript">
 	var i = 0;
-	function addDay() {
+	function addDay() { 
 
 		i = document.getElementById("costday").value;
 		var ch = document.getElementById("activities_div");
@@ -49,7 +49,7 @@
 	<s:property value="errorMessage"/>
 	<div class="row">
 
-		<div class="col-md-1 col-lg-2 col-xl-3">right</div>
+		<div class="col-md-1 col-lg-2 col-xl-3"><pre> </pre></div>
 		<div class="col-md-10 col-lg-8 col-xl-6 border bg-light ">
 			
 			<s:form method="post" action="produce_request" namespace="/"
@@ -295,7 +295,7 @@
 
 
 
-		<div class="col-md-1 col-lg-2 col-xl-3">left</div>
+		<div class="col-md-1 col-lg-2 col-xl-3"><pre> </pre></div>
 
 
 		<br> <br> <br>
