@@ -20,18 +20,20 @@
 
 				<div class="col-12">
 					<!-- 根据当前页数据量打印产品展示 card-->
-					<%!int z;%>
+						<%!int z;%>
 					<%!int pageNum; %>
 					<%!int flag; %>
+					<%!int pageSize=5; %>
 					<%	pageNum=(int) session.getAttribute("pageNum");
 						for (z = 0; z < (int) session.getAttribute("onePageSize"); z++) {
-							flag=pageNum*(z+1);
-							System.out.println("flag为"+flag);
+							
+							flag=(pageNum-1)*pageSize+(z+1);
+						
 					%>
 					<%
 						if (z == 0) {	
 							
-					%>
+					%> 
 
 					<div class="col-12">
 						<div class="card">
