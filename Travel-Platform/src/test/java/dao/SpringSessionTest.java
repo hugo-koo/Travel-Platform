@@ -71,8 +71,8 @@ class SpringSessionTest {
 		IRegionService regionService = (RegionService) ctx.getBean("regionService");
 		Note note = new Note();
 		NoteDtl noteDtl = new NoteDtl();
-		note.setNoteId(1119);
-		noteDtl.setNoteId(1119);
+		note.setNoteId(1165);
+		noteDtl.setNoteId(1165);
 		Set<Region> regions = new HashSet<Region>();
 		regions.add(regionService.get(265));
 		User author = new User();

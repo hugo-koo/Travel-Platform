@@ -24,12 +24,12 @@
 					<li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
 					<li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
 				</ol>
-				<div class="carousel-inner">
+				<div class="carousel-inner" style="max-height: 350px;">
 					<div class="carousel-item active">
 						<img id="note-toppic-1"
 							src="<%=" /Travel-Platform/_img/page_bg.jpg "%>"
 							class="d-block w-100" alt="...">
-						<div class="carousel-caption d-none d-md-block">
+						<div class="d-none d-md-block ca-link">
 							<h5 id="note-link-1"></h5>
 							<p></p>
 						</div>
@@ -38,7 +38,7 @@
 						<img id="note-toppic-2"
 							src="<%=" /Travel-Platform/_img/page_bg.jpg "%>"
 							class="d-block w-100" alt="...">
-						<div class="carousel-caption d-none d-md-block">
+						<div class="d-none d-md-block ca-link">
 							<h5 id="note-link-2"></h5>
 							<p></p>
 						</div>
@@ -47,7 +47,7 @@
 						<img id="note-toppic-3"
 							src="<%=" /Travel-Platform/_img/page_bg.jpg "%>"
 							class="d-block w-100" alt="...">
-						<div class="carousel-caption d-none d-md-block">
+						<div class="d-none d-md-block ca-link">
 							<h5 id="note-link-3"></h5>
 							<p></p>
 						</div>
@@ -85,10 +85,9 @@
 						</div>
 					</div>
 					<!-- 热门 -->
-					<div class="tab-pane fade " id="hotlist" role="tabpanel">
-					</div>
+					<div class="tab-pane fade active show" id="hotlist" role="tabpanel"></div>
 					<!-- 最新 -->
-					<div class="tab-pane fade active" id="latest" role="tabpanel"></div>
+					<div class="tab-pane fade" id="latest" role="tabpanel"></div>
 					<div id="paginav"></div>
 				</div>
 			</div>
