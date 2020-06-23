@@ -10,7 +10,11 @@ var getNoteHtml = function() {
 
 // 最终的地区ID
 var regionId = 0;
-// 从大洲列表开始初始化
+/**
+ * 从大洲列表开始初始化
+ * @author 古学懂_Victor（原作者）
+ * @author 陈君锐
+ */
 var regionInit = function() {
 	// 清除子列表
 	for (var i = 2; i <= 5; i++) {
@@ -33,7 +37,11 @@ var regionInit = function() {
 		}
 	});
 }
-// 获取各级子地区列表
+/**
+ * 获取各级子地区列表
+ * @author 古学懂_Victor（原作者）
+ * @author 陈君锐
+ */
 var regionChange = function(rank) {
 	rank += 1;
 	console.log(rank);
@@ -78,7 +86,12 @@ var regionChange = function(rank) {
 	});
 }
 
-function publishScenery(){
+/**
+ * 景点发布校验
+ * @author 陈君锐
+ */
+var publishScenery = function(){
+//非空校验S
 	var name = document.getElementById("publish_scenery_name").value.trim();
 	var dtl = document.getElementById("publish_scenery_dtl").value.trim();
 	var region = document.getElementById("region-1").value.trim();
@@ -99,7 +112,8 @@ function publishScenery(){
 		alert("请填写景点位置");
 		return false;
 	}
-
+//非空校验E
+//内容填写校验S
 	var nameIsN = Number(name);
 	var dtlIsN = Number(dtl);
 	var locationIsN = Number(location);
@@ -115,7 +129,8 @@ function publishScenery(){
 		alert("景点位置不能只为数字");
 		return false;
 	}
-	
+//内容填写校验E
+//电话邮箱格式校验S
 	var phone = document.getElementById("publish_scenery_phone").value.trim();
 	if ( phone != ""){
 		if ( isNaN(phone)){
@@ -130,7 +145,6 @@ function publishScenery(){
 				return false;
 		}
 	}
-		
 	var email = document.getElementById("publish_scenery_email").value.trim();
 	var emailValidation = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;
 	if( email != ""){
@@ -139,6 +153,7 @@ function publishScenery(){
 			return false;
 		}
 	}
+//电话邮箱格式校验E
 	alert("发布成功");
 	return true;
 }

@@ -21,11 +21,12 @@
 </head>
 
 <body>
+	<!-- 头部 -->
 	<%@ include file="/site-header.jsp"%>
 
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-2">左</div>
+			<div class="col-2"></div>
 			<div class="col-8" style="border: 1px solid #e0ddd4">
 				<h1 class="display-4">发布景点</h1>
 				<p class="tip">
@@ -84,7 +85,7 @@
 				</s:form>
 				<br>
 			</div>
-			<div class="col-2">右</div>
+			<div class="col-2"></div>
 		</div>
 	</div>
 	<footer>

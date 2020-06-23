@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
+<script type="text/javascript" src="/Travel-Platform/_scripts/scenery-publish.js"></script>
 <div id="review">
 	<!-- 参与点评 -->
 	<button type="button" class="btn btn-primary" data-toggle="modal"
@@ -19,31 +21,31 @@
 					<p class="dtl">
 						<span class="necessary">*</span>为必填项目
 					</p>
-					<form>
+					<s:form method="post" onsubmit="return publishReview()" action="#" namespace="/" enctype="multipart/form-data">
 						<div class="radio">
 							<span class="necessary">*</span><label for="review">景点评分</label>
 							<br>&emsp;
-							<label><input type="radio" name="optradio" hidden checked></label>
-							<label><input type="radio" name="optradio" value="1">★&emsp;</label>
-							<label><input type="radio" name="optradio" value="2">★★&emsp;</label>
-							<label><input type="radio" name="optradio" value="3">★★★&emsp;</label>
-							<label><input type="radio" name="optradio" value="4">★★★★&emsp;</label>
-							<label><input type="radio" name="optradio" value="5">★★★★★&emsp;</label>
+							<label><input type="radio" value="0" id="publish_review_score_0" name="publish_review_score" hidden checked></label>
+							<label><input type="radio" value="1" id="publish_review_score_1" name="publish_review_score" >★</label>
+							<label><input type="radio" value="2" id="publish_review_score_2" name="publish_review_score" >★★</label>
+							<label><input type="radio" value="3" id="publish_review_score_3" name="publish_review_score" >★★★</label>
+							<label><input type="radio" value="4" id="publish_review_score_4" name="publish_review_score" >★★★★</label>
+							<label><input type="radio" value="5" id="publish_review_score_5" name="publish_review_score" >★★★★★</label>
 						</div>
 						<div>
 							<span class="necessary">*</span><label for="review">点评内容</label>
-							<textarea class="form-control" rows="6" id="review"
+							<textarea class="form-control" rows="6" id="publish_review_dtl" name="publish_review_dtl"
 								placeholder="写下你的旅途感受吧"></textarea>
 						</div>
 						<br>
-						<button type="submit" class="btn btn-primary">提交</button>
-					</form>
+						<button type="submit" class="btn btn-primary" >提交</button>
+					</s:form>
 				</div>
 			</div>
 		</div>
 	</div>
 	<!-- 点评发布模态框E -->
-	<!-- 点评列表S -->
+	<!-- 点评列表S --><!-- 示例 -->
 	<h1>景点点评</h1>
 	<p class="dtl">共有x条点评</p>
 	<ul class="list-group">
