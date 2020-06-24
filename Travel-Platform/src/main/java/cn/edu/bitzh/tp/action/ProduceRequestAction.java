@@ -34,51 +34,78 @@ import cn.edu.bitzh.tp.service.ProduceRequestService;
 import cn.edu.bitzh.tp.service.impl.ProduceRequestServiceImpl;
 
 public class ProduceRequestAction extends ActionSupport {
-	private String produceTitle;// 产品标题
-	private String produceTelephoneString;// 订购电话String
-	private long produceTelephone;//订购电话
-	private String produceMinPriceString;// 最低价String
-	private String produceMaxPriceString;// 最高价String
-	private int produceMinPrice;//最低价
-	private int produceMaxPrice;//最高价
-	private int produceCostDay;// 产品花费时间
-	private String produceLindisfarne;// 始发地
-	private int mealsCost;// 餐食费用
-	private int accommodationFee;// 住宿费用：
-	private int landmarkTicket;// 景点门票：
-	private int carFare;// 往来交通
-	private int guideFee;// 导游服务
-	private List<File> graphicIntroductionFile;// 图文介绍上传多文件
-	private List<String> graphicIntroductionFileContentType;// 图文介绍上传文件类型
-	private List<String> graphicIntroductionFileFileName;//// 图文介绍上传文件名字
-	private String savePath;// 文件保存路径
-	private List<File> advertisingMap;//宣传图
-	private List<String> advertisingMapContentType;//宣传图文件类型
-	private List<String> advertisingMapFileName;//宣传图文件名字
+	/* 产品标题 */
+	private String produceTitle;
+	/* 订购电话String */
+	private String produceTelephoneString;
+	/* 订购电话 */
+	private long produceTelephone;
+	/* 最低价String */
+	private String produceMinPriceString;
+	/* 最高价String */
+	private String produceMaxPriceString;
+	/* 最低价 */
+	private int produceMinPrice;
+	/* 产品花费时间 */
+	private int produceCostDay;
+	/* 最高价 */
+	private int produceMaxPrice;
+	/* 始发地 */
+	private String produceLindisfarne;
+	/* 餐食费用 */
+	private int mealsCost;
+	/* 住宿费用 */
+	private int accommodationFee;
+	/* 景点门票： */
+	private int landmarkTicket;
+	/* 往来交通 */
+	private int carFare;
+	/* 导游服务 */
+	private int guideFee;
+	/* 图文介绍上传多文件 */
+	private List<File> graphicIntroductionFile;
+	/* 图文介绍上传文件类型 */
+	private List<String> graphicIntroductionFileContentType;
+	/* 图文介绍上传文件名字 */
+	private List<String> graphicIntroductionFileFileName;
+	/* 文件保存路径 */
+	private String savePath;
+	/* 宣传图 */
+	private List<File> advertisingMap;
+	/* 宣传图文件类型 */
+	private List<String> advertisingMapContentType;
+	/* 宣传图文件名字 */
+	private List<String> advertisingMapFileName;
+	/* 产品申请service */
+	private ProduceRequestService produceRequestService;
+	/* 图文介绍及宣传图实体类 */
+	private GraphicIntroduction graphicIntroduction;
+	/* 产品基本信息实体类 */
+	private Produce produce;
+	/* 产品费用实体类 */
+	private ProduceCost produceCost;
+	/* 产品费用内容实体类 */
+	private CostContent costContent;
+	/* 图文介绍及宣传图实体类列表 */
+	private List<GraphicIntroduction> graphicIntroductions;
+	/* 校验错误信息 */
+	private String errorMessage;
 	
-	private ProduceRequestService produceRequestService;//产品申请service
-	
-	
-	private GraphicIntroduction graphicIntroduction;//图文介绍及宣传图实体类
-	private Produce produce;//产品基本信息实体类
-	private ProduceCost produceCost;//产品费用实体类
-	private CostContent costContent;//产品费用内容实体类
-	private List<GraphicIntroduction> graphicIntroductions;//图文介绍及宣传图实体类列表
-	private String errorMessage;//校验错误信息
 	public String execute() {
 		
-		
 		//System.out.println("ProduceRequestAction start\n");
-		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("beans.xml");//读取配置文件
-		produceRequestService = (ProduceRequestService) applicationContext.getBean("ProduceRequestService");//注入ProduceRequestService
+		//读取配置文件
+		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("beans.xml");
+		//注入ProduceRequestService
+		produceRequestService = (ProduceRequestService) applicationContext.getBean("ProduceRequestService");
 		
 		//实例化实体类对象
 		graphicIntroductions = new ArrayList<GraphicIntroduction>();
 		produce=new Produce();
 		produceCost =new ProduceCost();
 		costContent=new CostContent();
-		
-		savePath="D:/test/";//设置图片保存路径
+		//设置图片保存路径
+		savePath="D:\\tomcat9_file\\apache-tomcat-9.0.35\\webapps\\uploadfile\\images";
 		
 		
 		System.out.println("messageInit start\n");
@@ -97,24 +124,13 @@ public class ProduceRequestAction extends ActionSupport {
 		
 		
 	}
-	public void test() {//测试属性是否正常传入
-		System.out.println("ProduceRequestAction start....\n");
-		System.out.println("produceTitle is " + produceTitle + "\n");
-		System.out.println("produceTelephone is " + produceTelephone + "\n");
-		System.out.println("produceMinPrice is " + produceMinPrice + "\n");
-		System.out.println("produceMaxPrice is " + produceMaxPrice + "\n");
-		System.out.println("produceCostDay is " + produceCostDay + "\n");
-		//System.out.println("produceLindisfarne is " + produceLindisfarne + "\n");
-		System.out.println("produceLindisfarne is " + produceLindisfarne + "\n");
-		System.out.println("mealsCost is " + mealsCost + "\n");
-		System.out.println("landmarkTicket is " + landmarkTicket + "\n");
-		System.out.println("carFare is " + carFare + "\n");
-	}
-	
-	public void messageInit(Produce produce,ProduceCost produceCost,CostContent costContent,List<GraphicIntroduction> graphicIntroductions){//将表单信息保存到对应mobel类中
+
+	//将表单信息保存到对应mobel类中
+	public void messageInit(Produce produce,ProduceCost produceCost,CostContent costContent,List<GraphicIntroduction> graphicIntroductions){
 		
 		//保存产品基本信息到produce对象
-		produceTelephone=Long.parseLong(produceTelephoneString);//将表单获取的produceTelephoneString转化为long类型
+		//将表单获取的produceTelephoneString转化为long类型
+		produceTelephone=Long.parseLong(produceTelephoneString);
 		produce.setProduceTitle(produceTitle);
 		produce.setProduceTelephone(produceTelephone);
 		produce.setProduceLindisfarne(produceLindisfarne);
@@ -122,6 +138,7 @@ public class ProduceRequestAction extends ActionSupport {
 		produce.setProduceMaxPrice(produceMaxPrice);
 		produce.setProduceCostDay(produceCostDay);
 		System.out.println("保存产品基本信息到produce对象\n");
+		
 		//保存产品花费内容到produce对象
 		costContent.setAccommodationFee(accommodationFee);
 		costContent.setCarFare(carFare);
@@ -140,55 +157,56 @@ public class ProduceRequestAction extends ActionSupport {
 			 file.mkdir();
 		 }
 		
-		
-		for(int j=0;j<graphicIntroductionFile.size();j++) {//保存文件到指定位置，图文详情
+		// 保存文件到指定位置，图文详情
+		for(int j=0;j<graphicIntroductionFile.size();j++) {
 
 				try {
 					FileUtils.copyFile(graphicIntroductionFile.get(j), new File(file, graphicIntroductionFileFileName.get(j)));
 					
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
+					
 					e.printStackTrace();
 				}
 
 			}
 		
-		
-		for(int j=0;j<graphicIntroductionFile.size();j++) {//生成GraphicIntroduction对象，并保存文件路径和类型
+		// 生成GraphicIntroduction对象，并保存文件路径和类型 
+		for(int j=0;j<graphicIntroductionFile.size();j++) {
 			
 			graphicIntroductions.add(new GraphicIntroduction());
-			graphicIntroductions.get(j).setGraphicIntroductionContent("D:/test/"+graphicIntroductionFileFileName.get(j));
+			graphicIntroductions.get(j).setGraphicIntroductionContent("http://localhost:8081/uploadfile/images/"+graphicIntroductionFileFileName.get(j));
 			graphicIntroductions.get(j).setGraphicType(1);
 			
 	
 		}
-		System.out.println("//保存文件到指定位置，图文详情\n");
+		//System.out.println("//保存文件到指定位置，图文详情\n");
 		
 		//保存宣传图到graphicIntroduction对象列表
-		for(int i=0; i<advertisingMap.size();i++){//保存文件到指定位置
+		for(int i=0; i<advertisingMap.size();i++){
 			
-			System.out.println(graphicIntroductionFileFileName.get(i));
+			//System.out.println(graphicIntroductionFileFileName.get(i));
 			try {
+				//保存文件到指定位置
 				FileUtils.copyFile(advertisingMap.get(i), new File(file, advertisingMapFileName.get(i)));
 			
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
 			
 		}
 		
-
-		for(int j=(graphicIntroductionFile.size());j<(advertisingMap.size()+graphicIntroductionFile.size());j++) {//生成GraphicIntroduction对象，并保存文件路径和类型,宣传图
+		/* 生成GraphicIntroduction对象，并保存文件路径和类型,宣传图 */
+		for(int j=(graphicIntroductionFile.size());j<(advertisingMap.size()+graphicIntroductionFile.size());j++) {
 			
 			
 			graphicIntroductions.add(new GraphicIntroduction());
-			graphicIntroductions.get(j).setGraphicIntroductionContent("D:/test/"+advertisingMapFileName.get(j-graphicIntroductionFile.size()));
+			graphicIntroductions.get(j).setGraphicIntroductionContent("http://localhost:8081/uploadfile/images/"+advertisingMapFileName.get(j-graphicIntroductionFile.size()));
 			graphicIntroductions.get(j).setGraphicType(0);
 			
 		}
-		System.out.println("//保存宣传图到graphicIntroduction对象列表\n");
-		//System.out.println(graphicIntroductions.get(0).getGraphicIntroductionContent()+"\n");
+		
+		
 		
 	}
 	
@@ -401,14 +419,14 @@ public class ProduceRequestAction extends ActionSupport {
 		long produceTelephonemaxflag=99999999999L;//产品电话最大位数为11位
 		
 		
-
+		
 		if(produceTitle.equals("")) {//校验产品标题
 			request.setAttribute("errorMessage", "产品标题为空");
 			addFieldError("Esg","产品标题为空");
 		}
 		
 	
-		//long produceTelephoneminflag=10000000000L;
+		
 		
 		try {//校验电话号码是否为整数
 			

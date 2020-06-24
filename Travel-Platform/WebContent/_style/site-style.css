@@ -111,6 +111,10 @@ div[data-role="editor-toolbar"] {
 	font-size: 30px;
 }
 
+.inner-text:hover {
+	background-color: #0f4c8144;
+}
+
 #goto-top {
 	position: fixed;
 	bottom: 100px;
@@ -119,41 +123,48 @@ div[data-role="editor-toolbar"] {
 }
 
 #like-button {
-    position: fixed;
-    bottom: 200px;
-    left: 0;
-    z-index: 20;
+	position: fixed;
+	bottom: 200px;
+	left: 0;
+	z-index: 20;
 }
 
 #favourites-button {
-    position: fixed;
-    bottom: 150px;
-    left: 0;
-    z-index: 20;
+	position: fixed;
+	bottom: 150px;
+	left: 0;
+	z-index: 20;
 }
 
 #create-button {
-    position: fixed;
-    top: 330px;
-    left: 0;
-    z-index: 20;
+	position: fixed;
+	top: 330px;
+	left: 0;
+	z-index: 20;
+}
+
+#delete-button {
+	position: fixed;
+	bottom: 100px;
+	left: 0;
+	z-index: 20;
 }
 
 #toppic {
 	cursor: pointer;
 }
 
-.ca-link{
+.ca-link {
 	top: 240px;
 	position: absolute;
-    right: 15%;
-    /* bottom: 20px; */
-    left: 15%;
-    z-index: 10;
-    padding-top: 20px;
-    padding-bottom: 20px;
-/*     color: #fff; */
-    text-align: center;
-    background-color: #ffffff44;
-    border-radius: 10px;
+	right: 15%;
+	/* bottom: 20px; */
+	left: 15%;
+	z-index: 10;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	/*     color: #fff; */
+	text-align: center;
+	background-color: #ffffff44;
+	border-radius: 10px;
 }

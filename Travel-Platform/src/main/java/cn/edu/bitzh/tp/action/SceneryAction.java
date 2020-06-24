@@ -185,7 +185,6 @@ public class SceneryAction extends ActionSupport {
 		//====================数据写入S=====================
 		Scenery sceneryinpublish = new Scenery();
 		SceneryContent scenerycontentinpublish = new SceneryContent();
-		System.out.println("进入action");
 		sceneryinpublish.setSceneryContent(scenerycontentinpublish);
 		sceneryinpublish.setScenery_author(1000);
 		sceneryinpublish.setScenery_region(regionId);
@@ -202,7 +201,6 @@ public class SceneryAction extends ActionSupport {
 		sceneryinpublish.setScenery_ispulish("true");
 		sceneryinpublish.setScenery_ischecked("pass");
 		//====================状态写入E=====================
-		System.out.println("进入srv");
 		int id = this.scenerySrv.publishScenery(sceneryinpublish);
 		if (id != 0) {
 			this.sceneryid = id;

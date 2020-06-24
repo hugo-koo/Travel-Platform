@@ -26,38 +26,31 @@ public class ProducePageAction extends ActionSupport {
 	private ProducePage <Produce> producePage;
 	
 	public String execute() {
-		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("beans.xml");//读取配置文件
-		produceRequestService = (ProduceRequestService) applicationContext.getBean("ProduceRequestService");//注入ProduceRequestService
+		//读取配置文件
+		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("beans.xml");
+		//注入ProduceRequestService
+		produceRequestService = (ProduceRequestService) applicationContext.getBean("ProduceRequestService");
 		HttpServletRequest request = ServletActionContext.getRequest();
 		HttpSession session = ServletActionContext.getRequest().getSession();
-		
-		//System.out.println("ProducePageAction start");
-		
-		//System.out.println(currPage);
 		
 		
 		//产品分页查询
 		producePage=produceRequestService.findByPage(currPage);
+		//查找失败
 		if(producePage.getPageList().size()==0) {
-			
-			
-			
+			return ERROR;
 		}
-	    else {
-			for(int i=0;i<producePage.getPageList().size();i++) {
-				
-				System.out.println(producePage.getPageList().get(i).getProduceTitle()+"\n");
-				
-			}
-			
-			
-			
-		}
-		ActionContext.getContext().getValueStack().push(producePage);//在值栈内存放producePage
+		
+		//查找成功
+		//在值栈内存放producePage
+		ActionContext.getContext().getValueStack().push(producePage);
 		producePage.getAdvertisingMap().get(0);
-		session.setAttribute("totalPage",producePage.getTotalPage());//存放总页数
-		session.setAttribute("onePageSize",producePage.getPageList().size());//存放当前页产品数量
-		session.setAttribute("pageNum",currPage);//存放当前页页数
+		//存放总页数
+		session.setAttribute("totalPage",producePage.getTotalPage());
+		//存放当前页产品数量
+		session.setAttribute("onePageSize",producePage.getPageList().size());
+		//存放当前页页数
+		session.setAttribute("pageNum",currPage);
 		return SUCCESS;
 		
 	}
@@ -86,9 +79,5 @@ public class ProducePageAction extends ActionSupport {
 		this.producePage = producePage;
 	}
 	
-	
-	
-	
-	
-	
+
 }

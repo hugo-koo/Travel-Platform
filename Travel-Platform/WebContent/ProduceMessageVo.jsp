@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8" info="产品详情"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8" info="商品详细信息" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -10,6 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
    
     
+
 <!--     <title>My JSP 'messagetest.jsp' starting page</title> -->
     <style type="text/css">
     	li{ list-style-type:none }
@@ -32,8 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  	
  	<div class="row">
  		<div class="col-md-1 col-lg-2 col-xl-3 " style="">
-<!--  			<pre>left</pre> -->
- 		
+ 			<pre> </pre>
  		
  		</div>
  		
@@ -68,8 +68,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  					<div class="carousel-inner">
  						
  						<%	
+ 							System.out.println("demo_num is"+session.getAttribute("demo_num"));
     						for(int i=0;i<(int)session.getAttribute("demo_num");i++){//打印<img>以显示轮播图片
-    						
+    							
     							if(i == 0){
     								out.println("<div class='carousel-item active'>");
     								out.println("<img id='' class='rounded mh-75 mw-100' src=\""+session.getAttribute("advertisingMapContent"+i)+"\" >");
@@ -357,24 +358,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  		</div>
  		
  		<!--菜单跟随 end -->
- 		
- 		</div>
  		<!--中间信息图层 end  -->
- 		
- 		
- 		
- 		
- 		
  		<div class="col-md-1 col-lg-2 col-xl-3">
-<!-- 		<pre>right</pre>	 -->
+		<pre> </pre>	
 		</div>
 		
+ 		</div>
+ 		
+
 		
- 	</div>
+ 
  	
  	
  	<!--网页页脚  -->
- 	<div class="row bg-primary">
+ 	<div class="row">
  		<div class="col-12">
  			<%@ include file="/site-footer.jsp"%>
  			

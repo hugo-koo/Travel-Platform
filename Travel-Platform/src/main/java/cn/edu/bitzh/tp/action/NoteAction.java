@@ -24,7 +24,7 @@ import cn.edu.bitzh.tp.service.impl.RegionService;
 
 /**
  * @author 古学懂_Victor
- * @date 2020
+ * @date 2020年5月
  */
 public class NoteAction extends ActionSupport {
 	private static final long serialVersionUID = 1L;
@@ -34,10 +34,12 @@ public class NoteAction extends ActionSupport {
 	private INoteService ns = (NoteService) applicationContext.getBean("noteService");
 	private ApplicationContext applicationContext2 = new ClassPathXmlApplicationContext("beans.xml");
 	private IRegionService rs = (RegionService) applicationContext2.getBean("regionService");
+	/** 游记，其中内容字段不编译为JSON，减少不必要的传输开支 */
 	private Note note;
 	private List<Note> notes;
 	private int noteId = 1000;
 	private int regionId = 0;
+	/** 点赞数 */
 	private int likeCount = -1;
 	/** 页码 */
 	private int page = 1;
@@ -45,12 +47,16 @@ public class NoteAction extends ActionSupport {
 	private int totalPages = 1;
 	/** 每页项数 */
 	private int itemsPerPage = 5;
+	/** 独立的内容字段，使允许在JSON中获取内容 */
+	private String noteContent = null;
 
 	public String get() {
 		final Note note = ns.get(this.noteId);
 		// 权限判断
 //		if (note.getNotePermission().equals("public")) {
 		this.note = note;
+		// 向内容字段赋值
+		this.noteContent = this.note.getNoteDtl().getNoteContent();
 //		} else {
 //			return ActionSupport.NONE;
 //		}
@@ -106,7 +112,7 @@ public class NoteAction extends ActionSupport {
 	 * 获取最热的公开游记并分页
 	 * 
 	 * @author 古学懂_Victor
-	 * @date 2020年6月15日 下午3:08:29
+	 * @date 2020年6月15日
 	 * @return
 	 */
 	public String listHotestNotes() {
@@ -133,6 +139,35 @@ public class NoteAction extends ActionSupport {
 			return "success";
 		else
 			return "error";
+	}
+
+	public String modify() {
+		System.out.println(noteId);
+		this.note.setNoteId(noteId);
+		this.note.getNoteDtl().setNoteId(noteId);
+		this.note.setNotePostDate(new Date());
+		User author = new User();
+		author.setUserId(1000);
+		note.setNoteAuthor(author);
+		Set<Region> regions = new HashSet<Region>();
+		Region region = rs.get(regionId);
+		regions.add(region);
+		this.note.setRegions(regions);
+		boolean flag = this.ns.update(this.note);
+		if (flag) {
+			return ActionSupport.SUCCESS;
+		} else {
+			return ActionSupport.ERROR;
+		}
+	}
+	
+	public String delete() {
+		boolean flag = this.ns.delete(noteId);
+		if (flag) {
+			return ActionSupport.SUCCESS;
+		} else {
+			return ActionSupport.INPUT;
+		}
 	}
 
 	public int getRegionId() {
@@ -215,6 +250,20 @@ public class NoteAction extends ActionSupport {
 	 */
 	public void setLikeCount(int likeCount) {
 		this.likeCount = likeCount;
+	}
+
+	/**
+	 * @return the noteContent
+	 */
+	public String getNoteContent() {
+		return noteContent;
+	}
+
+	/**
+	 * @param noteContent the noteContent to set
+	 */
+	public void setNoteContent(String noteContent) {
+		this.noteContent = noteContent;
 	}
 
 }
