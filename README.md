@@ -15,7 +15,6 @@ Travel Platform JSP project
 
 表 1-1 开发技术简介表
 
-|------------|---------------------------------|
 | 开发语言   | Java，HTML/CSS/JavaScript，JSP  |
 | 开发框架   | Struts2.5、Hibernate5.4、Spring |
 | 数据库工具 | MySQL 5.7                    |
