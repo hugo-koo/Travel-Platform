@@ -14,8 +14,9 @@ Travel Platform JSP project
 轻量级应用服务器[Tomcat](https://zh.wikipedia.org/zh-cn/Apache_Tomcat)，相关信息如下表1-1所示：
 
 表 1-1 开发技术简介表
-
+  
+|||
+|--------|-------------------|
 | 开发语言   | Java，HTML/CSS/JavaScript，JSP  |
 | 开发框架   | Struts2.5、Hibernate5.4、Spring |
 | 数据库工具 | MySQL 5.7                    |
-
