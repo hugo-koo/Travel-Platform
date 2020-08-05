@@ -3,16 +3,16 @@
 "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
 "http://struts.apache.org/dtds/struts-2.5.dtd">
 <struts>
-	<package name="default" namespace="/" extends="struts-default">
-		<action name="action_*"
-			class="cn.edu.bitzh.tp.action.ActionTest" method="{1}">
-			<result type="redirect" name="success">
-				<param name="location">/index.jsp</param>
-			</result>
+<!-- 	<package name="default" namespace="/" extends="struts-default"> -->
+<!-- 		<action name="action_*" -->
+<!-- 			class="cn.edu.bitzh.tp.action.ActionTest" method="{1}"> -->
+<!-- 			<result type="redirect" name="success"> -->
+<!-- 				<param name="location">/index.jsp</param> -->
+<!-- 			</result> -->
 			<!-- 重点！Struts2.5使用通配符调用方法时，内部会验证是否允许访问该方法 ，注：可使用正则表达式 -->
-			<allowed-methods>test</allowed-methods>
-		</action>
-	</package>
+<!-- 			<allowed-methods>test</allowed-methods> -->
+<!-- 		</action> -->
+<!-- 	</package> -->
 	<package name="json-api" namespace="/" extends="json-default">
 		<action name="region_*"
 			class="cn.edu.bitzh.tp.action.RegionAction" method="{1}">
