@@ -20,3 +20,37 @@ Travel Platform JSP project
 | 开发语言   | Java，HTML/CSS/JavaScript，JSP  |
 | 开发框架   | Struts2.5、Hibernate5.4、Spring |
 | 数据库工具 | MySQL 5.7                    |
+
+## 页面展示（游记部分）
+
+### 主页1  
+![主页1](/docs/images/主页1.png)  
+  
+### 主页2  
+![主页2](/docs/images/主页2.png)  
+
+### 编辑1  
+![编辑1](/docs/images/编辑1.png)  
+
+### 编辑3
+![编辑3](/docs/images/编辑3.png)  
+
+### 查看1  
+![查看1](/docs/images/查看1.png)  
+
+### 查看2  
+![查看2](/docs/images/查看2.png)  
+
+## 架构展示（游记部分）  
+
+### 游记业务类图  
+![游记业务类图](/docs/images/游记业务类图.png)  
+
+### 首页数据流  
+![首页数据流](/docs/images/首页数据流.png)  
+
+### 创建数据流  
+![创建数据流](/docs/images/创建数据流.png)  
+
+### 查看数据流  
+![查看数据流](/docs/images/查看数据流.png)  
